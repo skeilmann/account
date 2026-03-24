@@ -1,0 +1,42 @@
+{
+  "kpi": {
+    "revenue": "Ricavi totali",
+    "expenses": "Spese totali",
+    "profit": "Utile netto",
+    "margin": "Margine di profitto",
+    "stock_value": "Valore magazzino",
+    "cash_position": "Posizione di cassa"
+  },
+  "expense_groups": {
+    "marfa": "Costo delle merci vendute",
+    "transport": "Trasporto e logistica",
+    "administrative": "Spese amministrative",
+    "servicii_externe": "Servizi esterni",
+    "financiare": "Spese finanziarie",
+    "personal": "Personale (stipendi + contributi)",
+    "ambalaje": "Imballaggi e consumabili",
+    "intretinere": "Manutenzione e riparazioni",
+    "marketing": "Marketing e pubblicità",
+    "taxe": "Tasse e imposte",
+    "amortizari": "Ammortamenti",
+    "combustibil_materiale": "Carburante e materiali",
+    "chirii_asigurari": "Affitti e assicurazioni",
+    "altele": "Altre spese"
+  },
+  "sections": {
+    "overview": "Panoramica",
+    "expenses": "Spese per categoria",
+    "revenue_chart": "Ricavi per azienda",
+    "expense_chart": "Distribuzione delle spese",
+    "cash": "Posizione di cassa",
+    "alerts": "Avvisi e segnalazioni"
+  },
+  "labels": {
+    "of_revenue": "dei ricavi",
+    "vs_previous": "vs. periodo precedente",
+    "per_company": "per azienda",
+    "deductible": "Deducibile",
+    "non_deductible": "Non deducibile",
+    "partial_deductible": "Parzialmente deducibile"
+  }
+}

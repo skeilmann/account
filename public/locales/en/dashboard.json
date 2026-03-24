@@ -1,0 +1,42 @@
+{
+  "kpi": {
+    "revenue": "Total Revenue",
+    "expenses": "Total Expenses",
+    "profit": "Net Profit",
+    "margin": "Profit Margin",
+    "stock_value": "Stock Value",
+    "cash_position": "Cash Position"
+  },
+  "expense_groups": {
+    "marfa": "Cost of goods sold",
+    "transport": "Transport & logistics",
+    "administrative": "Administrative expenses",
+    "servicii_externe": "External services",
+    "financiare": "Financial expenses",
+    "personal": "Personnel (salaries + contributions)",
+    "ambalaje": "Packaging & consumables",
+    "intretinere": "Maintenance & repairs",
+    "marketing": "Marketing & advertising",
+    "taxe": "Taxes & duties",
+    "amortizari": "Depreciation",
+    "combustibil_materiale": "Fuel & materials",
+    "chirii_asigurari": "Rent & insurance",
+    "altele": "Other expenses"
+  },
+  "sections": {
+    "overview": "Overview",
+    "expenses": "Expenses by category",
+    "revenue_chart": "Revenue by company",
+    "expense_chart": "Expense distribution",
+    "cash": "Cash position",
+    "alerts": "Alerts & warnings"
+  },
+  "labels": {
+    "of_revenue": "of revenue",
+    "vs_previous": "vs. previous period",
+    "per_company": "per company",
+    "deductible": "Deductible",
+    "non_deductible": "Non-deductible",
+    "partial_deductible": "Partially deductible"
+  }
+}

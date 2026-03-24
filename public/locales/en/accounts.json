@@ -1,0 +1,22 @@
+{
+  "121": "Profit and loss",
+  "129": "Profit distribution",
+  "371": "Goods / Merchandise",
+  "401": "Suppliers",
+  "4111": "Clients / Accounts receivable",
+  "421": "Salaries payable",
+  "4411": "Corporate income tax",
+  "4423": "VAT payable",
+  "4424": "VAT receivable",
+  "4426": "Input VAT (deductible)",
+  "4427": "Output VAT (collected)",
+  "5121": "Bank accounts in RON",
+  "5124": "Bank accounts in foreign currency",
+  "5311": "Cash in RON",
+  "607": "Cost of goods sold",
+  "624": "Transport expenses",
+  "641": "Salary expenses",
+  "691": "Corporate income tax expense",
+  "704": "Revenue from services",
+  "707": "Revenue from goods sold"
+}

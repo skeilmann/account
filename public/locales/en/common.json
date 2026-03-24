@@ -1,0 +1,42 @@
+{
+  "app_title": "Financial Dashboard",
+  "company": {
+    "ifp": "IFP Filati Pregiati",
+    "filato": "Filato a Modo Tuo",
+    "combined": "Combined"
+  },
+  "currency": {
+    "ron": "RON",
+    "eur": "EUR",
+    "rate_label": "BNR Rate",
+    "rate_date": "{{date}}"
+  },
+  "period": {
+    "year": "Year",
+    "quarter": "Quarter",
+    "month": "Month",
+    "full_year": "Year {{year}}"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "upload": "Upload Data",
+    "stock": "Inventory",
+    "settings": "Settings"
+  },
+  "actions": {
+    "upload": "Upload",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close"
+  },
+  "status": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "no_data": "No data available",
+    "upload_prompt": "Upload files to get started"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "sources": {
+    "codul_fiscal": "Fiscal Code (Law 227/2015, amended by GEO 89/2025 and GEO 8/2026)",
+    "legea_contabilitatii": "Accounting Law (Law 82/1991, amended by GEO 138/2024)",
+    "omfp_1802": "OMFP 1802/2014 — Accounting regulations aligned with EU directives",
+    "legea_239": "Law 239/2025 — Share capital changes and financial statement penalties",
+    "legea_141": "Law 141/2025 — VAT rate changes",
+    "oug_8_2026": "GEO 8/2026 — 2026 fiscal package"
+  },
+  "tva": {
+    "title": "Value Added Tax (VAT) 2026",
+    "cota_standard": "Standard VAT rate: 21% (increased from 19%, per Law 141/2025)",
+    "cota_redusa": "Single reduced rate: 11% (replaces 5% and 9% rates, per Law 141/2025)",
+    "cota_tranzitorie": "Transitional 9% rate for housing (until 31.07.2026, with conditions)",
+    "plafon_scutire": "VAT exemption threshold: 395,000 RON (increased from 300,000, per EU Directive 2020/285)",
+    "plafon_incasare": "Cash-basis VAT threshold: 5,000,000 RON (increased by GEO 8/2026, rises to 5,500,000 in 2027)",
+    "deadline_d300": "D300 VAT return due monthly by the 25th. Form 300 modified by Order 174/2026.",
+    "e_factura": "RO e-Invoice: transmission deadline 5 business days from issuance (extended by GEO 89/2025). Mandatory B2B and B2C.",
+    "e_tva": "RO e-VAT: Pre-filled VAT return by ANAF from e-Invoice + cash register data. Verified via SPV portal."
+  },
+  "profit_tax": {
+    "title": "Corporate Income Tax 2026",
+    "rate": "Corporate income tax rate: 16% (Art. 13-46 Fiscal Code)",
+    "micro": "Micro-enterprises: flat 1% rate (simplified by GEO 89/2025). Threshold: 100,000 EUR (~509,850 RON). Conditions: min. 1 employee, shareholders max 25% in other micro-enterprises.",
+    "deadline": "D101 — quarterly, by the 25th of the month following quarter end",
+    "dividende": "Dividend tax: 16% (increased from 10%, effective 01.01.2026, per Law 141/2025)",
+    "mijloace_fixe": "Minimum value for depreciable fixed assets: 5,000 RON (increased from 2,500 RON by GEO 8/2026)"
+  },
+  "salary": {
+    "cas": "CAS (pension contribution): 25% — borne by employee",
+    "cass": "CASS (health contribution): 10% — borne by employee",
+    "cam": "CAM (work insurance contribution): 2.25% — borne by employer",
+    "impozit": "Salary income tax: 10%"
+  },
+  "saft": {
+    "title": "SAF-T (Declaration 406) 2026",
+    "descriere": "Standard Audit File for Tax — mandatory for all taxpayers from 2026, no grace periods.",
+    "periodicitate_lunar": "Monthly — for companies with monthly VAT returns. Deadline: last calendar day of following month.",
+    "periodicitate_trimestrial": "Quarterly — for companies with quarterly VAT returns or non-VAT payers.",
+    "active": "Asset reporting: annually, at financial statement filing date.",
+    "stocuri": "Stock reporting: only upon ANAF request, minimum 30-day deadline."
+  },
+  "bilant": {
+    "title": "Annual Financial Statements 2025",
+    "termen": "150 days from year-end = June 2, 2026 (May 31 is Sunday, June 1 is holiday). Order 2,036/2026.",
+    "format": "Electronic filing only via e-guvernare.ro",
+    "continut": "Balance sheet, P&L, Explanatory notes, Directors' report, Responsibility statement",
+    "sanctiuni": "Delay > 5 months: ANAF declares company fiscally inactive (Law 239/2025). Inactive 1 year: dissolution at Trade Registry."
+  },
+  "capital_social": {
+    "title": "Minimum Share Capital 2026",
+    "srl_nou": "New LLCs: minimum 500 RON (Law 239/2025)",
+    "srl_existent": "Existing LLCs with turnover > 400,000 RON: must increase to 5,000 RON (2-year deadline)",
+    "cont_bancar": "Mandatory payment account at Romanian bank or Treasury from 01.01.2026"
+  },
+  "fiscal_calendar": {
+    "d300": "D300 (VAT Return) — monthly, by the 25th",
+    "d390": "D390 (Recapitulative statement) — monthly, by the 25th",
+    "d394": "D394 (Informative declaration) — semi-annually",
+    "d101": "D101 (Corporate income tax) — quarterly, by the 25th",
+    "d406_lunar": "D406 SAF-T monthly — last calendar day of following month",
+    "d406_trimestrial": "D406 SAF-T quarterly — last calendar day of month following quarter",
+    "bilant": "2025 Financial statements — effective deadline June 2, 2026",
+    "bonificatie": "3% discount for paying 2025 obligations by April 15, 2026"
+  }
+}

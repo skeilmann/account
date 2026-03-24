@@ -1,0 +1,42 @@
+{
+  "app_title": "Tablou de Bord Financiar",
+  "company": {
+    "ifp": "IFP Filati Pregiati",
+    "filato": "Filato a Modo Tuo",
+    "combined": "Combinat"
+  },
+  "currency": {
+    "ron": "RON",
+    "eur": "EUR",
+    "rate_label": "Curs BNR",
+    "rate_date": "{{date}}"
+  },
+  "period": {
+    "year": "An",
+    "quarter": "Trimestru",
+    "month": "Lună",
+    "full_year": "Anul {{year}}"
+  },
+  "nav": {
+    "dashboard": "Tablou de bord",
+    "upload": "Încărcare date",
+    "stock": "Stocuri",
+    "settings": "Setări"
+  },
+  "actions": {
+    "upload": "Încarcă",
+    "save": "Salvează",
+    "cancel": "Anulează",
+    "confirm": "Confirmă",
+    "back": "Înapoi",
+    "next": "Înainte",
+    "close": "Închide"
+  },
+  "status": {
+    "loading": "Se încarcă...",
+    "error": "Eroare",
+    "success": "Succes",
+    "no_data": "Nu există date",
+    "upload_prompt": "Încarcă fișiere pentru a începe"
+  }
+}

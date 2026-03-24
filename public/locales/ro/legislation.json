@@ -1,0 +1,77 @@
+{
+  "sources": {
+    "codul_fiscal": "Codul Fiscal (Legea 227/2015, cu modificările din OUG 89/2025 și OUG 8/2026)",
+    "legea_contabilitatii": "Legea Contabilității (Legea 82/1991, modificată prin OUG 138/2024)",
+    "omfp_1802": "OMFP 1802/2014 — Reglementări contabile conforme cu directivele europene",
+    "legea_239": "Legea 239/2025 — Modificări privind capitalul social și sancțiuni bilanț",
+    "legea_141": "Legea 141/2025 — Modificarea cotelor de TVA",
+    "oug_8_2026": "OUG 8/2026 — Pachetul fiscal 2026"
+  },
+  "tva": {
+    "title": "Taxa pe Valoarea Adăugată (TVA) 2026",
+    "cota_standard": "Cota standard TVA: 21% (majorată de la 19%, conform Legea 141/2025)",
+    "cota_redusa": "Cota redusă unică: 11% (înlocuiește cotele de 5% și 9%, conform Legea 141/2025)",
+    "cota_tranzitorie": "Cotă tranzitorie 9% pentru locuințe (până la 31.07.2026, cu condiții)",
+    "plafon_scutire": "Plafon scutire TVA: 395.000 RON (majorat de la 300.000, conform Directiva UE 2020/285)",
+    "plafon_incasare": "Plafon TVA la încasare: 5.000.000 RON (majorat prin OUG 8/2026, crește la 5.500.000 în 2027)",
+    "deadline_d300": "Decontul D300 se depune lunar, până pe 25 a lunii următoare. Formular 300 modificat prin Ordinul 174/2026.",
+    "e_factura": "RO e-Factura: termen de transmitere 5 zile lucrătoare de la emitere (extins de OUG 89/2025 de la 5 zile calendaristice). Obligatoriu B2B și B2C.",
+    "e_tva": "RO e-TVA: Decont precompletat de ANAF din date e-Factura + case de marcat. Se verifică prin SPV."
+  },
+  "profit_tax": {
+    "title": "Impozitul pe profit 2026",
+    "rate": "Cota impozitului pe profit: 16% (Art. 13-46 Cod Fiscal)",
+    "micro": "Microîntreprinderi: cotă unică 1% (simplificată prin OUG 89/2025). Plafon: 100.000 EUR (~509.850 RON). Condiții: minim 1 salariat, asociați max 25% în alte micro.",
+    "deadline": "D101 — trimestrial, până pe 25 a lunii următoare încheierii trimestrului",
+    "dividende": "Impozit dividende: 16% (majorat de la 10%, aplicabil din 01.01.2026, conform Legea 141/2025)",
+    "mijloace_fixe": "Valoare minimă mijloace fixe amortizabile: 5.000 RON (majorat de la 2.500 RON prin OUG 8/2026)"
+  },
+  "salary": {
+    "cas": "CAS (contribuția la pensii): 25% — suportat de salariat",
+    "cass": "CASS (contribuția de sănătate): 10% — suportat de salariat",
+    "cam": "CAM (contribuția asiguratorie de muncă): 2.25% — suportat de angajator",
+    "impozit": "Impozit pe venit din salarii: 10%"
+  },
+  "saft": {
+    "title": "SAF-T (Declarația 406) 2026",
+    "descriere": "Fișierul Standard de Control Fiscal — obligatoriu pentru toți contribuabilii din 2026, fără perioade de grație.",
+    "periodicitate_lunar": "Lunar — pentru firmele cu decont TVA lunar. Termen: ultima zi calendaristică a lunii următoare.",
+    "periodicitate_trimestrial": "Trimestrial — pentru firmele cu decont TVA trimestrial sau neplătitoare de TVA.",
+    "active": "Raportarea activelor: anual, la data depunerii situațiilor financiare.",
+    "stocuri": "Raportarea stocurilor: doar la solicitarea ANAF, termen min. 30 zile."
+  },
+  "bilant": {
+    "title": "Situații financiare anuale 2025",
+    "termen": "150 de zile de la încheierea exercițiului = 2 iunie 2026 (31 mai cade duminică, 1 iunie zi liberă). Ordinul 2.036/2026.",
+    "format": "Depunere exclusiv electronic prin e-guvernare.ro",
+    "continut": "Bilanț, Cont de Profit și Pierdere, Note explicative, Raportul Administratorilor, Declarație de asumare",
+    "sanctiuni": "Întârziere > 5 luni: ANAF declară firma inactivă fiscal (Legea 239/2025). Inactivitate 1 an: dizolvare la Registrul Comerțului."
+  },
+  "capital_social": {
+    "title": "Capital social minim 2026",
+    "srl_nou": "SRL nou-înființate: minim 500 RON (Legea 239/2025)",
+    "srl_existent": "SRL existente cu CA > 400.000 RON: majorare la 5.000 RON (termen 2 ani)",
+    "cont_bancar": "Obligatoriu cont de plăți la bancă română sau Trezorerie din 01.01.2026"
+  },
+  "fiscal_calendar": {
+    "d300": "D300 (Decont TVA) — lunar, până pe 25",
+    "d390": "D390 (Declarație recapitulativă) — lunar, până pe 25",
+    "d394": "D394 (Declarație informativă) — semestrial",
+    "d101": "D101 (Impozit pe profit) — trimestrial, până pe 25",
+    "d406_lunar": "D406 SAF-T lunar — ultima zi calendaristică a lunii următoare",
+    "d406_trimestrial": "D406 SAF-T trimestrial — ultima zi calendaristică a lunii următoare trimestrului",
+    "bilant": "Bilanț 2025 — termen efectiv 2 iunie 2026",
+    "bonificatie": "Bonificație 3% pentru plata obligațiilor 2025 până la 15 aprilie 2026"
+  },
+  "surse_url": {
+    "monitorul_oficial": "https://monitoruloficial.ro/",
+    "anaf_cod_fiscal": "https://static.anaf.ro/static/10/Anaf/Legislatie_R/Codfiscal.htm",
+    "anaf_noutati": "https://www.anaf.ro/anaf/internet/ANAF/asistenta_contribuabili/legislatie/noutati_legislative",
+    "mfinante": "https://mfinante.gov.ro/",
+    "ceccar": "https://ceccar.ro/",
+    "ccf": "https://www.ccfiscali.ro/",
+    "e_factura_info": "https://startupcafe.ro/modificari-fiscale-2026-lista-noilor-masuri-si-a-obligatiilor-legale-pe-care-trebuie-sa-le-respecte-firmele-91980",
+    "saft_termene": "https://permisdeantreprenor.ro/saf-t-2026-termen-d406-calendar/",
+    "saga_modificari": "https://www.sagasoftware.ro/modificari-fiscale-oug-8-2026/"
+  }
+}

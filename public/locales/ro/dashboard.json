@@ -1,0 +1,42 @@
+{
+  "kpi": {
+    "revenue": "Venituri totale",
+    "expenses": "Cheltuieli totale",
+    "profit": "Profit net",
+    "margin": "Marjă de profit",
+    "stock_value": "Valoare stocuri",
+    "cash_position": "Poziție de numerar"
+  },
+  "expense_groups": {
+    "marfa": "Cheltuieli cu marfa",
+    "transport": "Transport și logistică",
+    "administrative": "Cheltuieli administrative",
+    "servicii_externe": "Servicii externe",
+    "financiare": "Cheltuieli financiare",
+    "personal": "Personal (salarii + contribuții)",
+    "ambalaje": "Ambalaje și consumabile",
+    "intretinere": "Întreținere și reparații",
+    "marketing": "Marketing și publicitate",
+    "taxe": "Taxe și impozite",
+    "amortizari": "Amortizări",
+    "combustibil_materiale": "Combustibil și materiale",
+    "chirii_asigurari": "Chirii și asigurări",
+    "altele": "Alte cheltuieli"
+  },
+  "sections": {
+    "overview": "Prezentare generală",
+    "expenses": "Cheltuieli pe categorii",
+    "revenue_chart": "Venituri pe companii",
+    "expense_chart": "Distribuția cheltuielilor",
+    "cash": "Poziția de numerar",
+    "alerts": "Alerte și atenționări"
+  },
+  "labels": {
+    "of_revenue": "din venituri",
+    "vs_previous": "vs. perioada anterioară",
+    "per_company": "pe companie",
+    "deductible": "Deductibil",
+    "non_deductible": "Nedeductibil",
+    "partial_deductible": "Parțial deductibil"
+  }
+}

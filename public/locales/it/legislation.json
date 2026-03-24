@@ -1,0 +1,29 @@
+{
+  "sources": {
+    "codul_fiscal": "Codice Fiscale (Legge 227/2015, modificato da OUG 89/2025 e OUG 8/2026)",
+    "legea_contabilitatii": "Legge sulla Contabilit\u00e0 (Legge 82/1991, modificata da OUG 138/2024)",
+    "omfp_1802": "OMFP 1802/2014 \u2014 Regolamenti contabili conformi alle direttive europee",
+    "legea_239": "Legge 239/2025 \u2014 Modifiche al capitale sociale e sanzioni bilancio",
+    "legea_141": "Legge 141/2025 \u2014 Modifiche alle aliquote IVA",
+    "oug_8_2026": "OUG 8/2026 \u2014 Pacchetto fiscale 2026"
+  },
+  "tva": {
+    "title": "Imposta sul Valore Aggiunto (IVA) 2026",
+    "cota_standard": "Aliquota IVA standard: 21% (aumentata dal 19%, Legge 141/2025)",
+    "cota_redusa": "Aliquota ridotta unica: 11% (sostituisce le aliquote del 5% e 9%, Legge 141/2025)",
+    "deadline_d300": "Dichiarazione D300 dovuta mensilmente entro il 25. Modulo 300 modificato dall'Ordine 174/2026.",
+    "e_factura": "RO e-Fattura: termine di trasmissione 5 giorni lavorativi dall'emissione (esteso da OUG 89/2025). Obbligatoria B2B e B2C."
+  },
+  "profit_tax": {
+    "title": "Imposta sul reddito delle societ\u00e0 2026",
+    "rate": "Aliquota imposta sul reddito: 16% (Art. 13-46 Codice Fiscale)",
+    "dividende": "Imposta sui dividendi: 16% (aumentata dal 10%, dal 01.01.2026, Legge 141/2025)",
+    "deadline": "D101 \u2014 trimestrale, entro il 25 del mese successivo alla chiusura del trimestre"
+  },
+  "salary": {
+    "cas": "CAS (contributo pensionistico): 25% \u2014 a carico del dipendente",
+    "cass": "CASS (contributo sanitario): 10% \u2014 a carico del dipendente",
+    "cam": "CAM (contributo assicurativo lavoro): 2,25% \u2014 a carico del datore di lavoro",
+    "impozit": "Imposta sul reddito da stipendio: 10%"
+  }
+}

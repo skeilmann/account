@@ -1,0 +1,42 @@
+{
+  "app_title": "Cruscotto Finanziario",
+  "company": {
+    "ifp": "IFP Filati Pregiati",
+    "filato": "Filato a Modo Tuo",
+    "combined": "Combinato"
+  },
+  "currency": {
+    "ron": "RON",
+    "eur": "EUR",
+    "rate_label": "Tasso BNR",
+    "rate_date": "{{date}}"
+  },
+  "period": {
+    "year": "Anno",
+    "quarter": "Trimestre",
+    "month": "Mese",
+    "full_year": "Anno {{year}}"
+  },
+  "nav": {
+    "dashboard": "Cruscotto",
+    "upload": "Carica dati",
+    "stock": "Magazzino",
+    "settings": "Impostazioni"
+  },
+  "actions": {
+    "upload": "Carica",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "confirm": "Conferma",
+    "back": "Indietro",
+    "next": "Avanti",
+    "close": "Chiudi"
+  },
+  "status": {
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "success": "Successo",
+    "no_data": "Nessun dato disponibile",
+    "upload_prompt": "Carica i file per iniziare"
+  }
+}
