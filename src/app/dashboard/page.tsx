@@ -20,6 +20,7 @@ import { BusinessInsights } from "@/components/organisms/business-insights";
 import { CompanyComparison } from "@/components/organisms/company-comparison";
 import { LegislationPanel } from "@/components/organisms/legislation-panel";
 import { DividendExplainer } from "@/components/organisms/dividend-explainer";
+import { CustomCards } from "@/components/organisms/custom-card";
 import { Calculator } from "@/components/organisms/calculator";
 import { useDataStore } from "@/stores/data-store";
 
@@ -59,6 +60,9 @@ export default function DashboardPage() {
       <main className="flex-1 p-6 space-y-6">
         {kpiSet ? (
           <>
+            {/* Custom cards */}
+            <CustomCards />
+
             {/* Alerts */}
             <motion.div variants={fadeUp} initial="hidden" animate="show">
               <AlertsPanel />
