@@ -19,6 +19,7 @@ import { AlertsPanel } from "@/components/organisms/alerts-panel";
 import { BusinessInsights } from "@/components/organisms/business-insights";
 import { CompanyComparison } from "@/components/organisms/company-comparison";
 import { LegislationPanel } from "@/components/organisms/legislation-panel";
+import { DividendExplainer } from "@/components/organisms/dividend-explainer";
 import { Calculator } from "@/components/organisms/calculator";
 import { useDataStore } from "@/stores/data-store";
 
@@ -105,7 +106,10 @@ export default function DashboardPage() {
               transition={{ delay: 0.5 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-6"
             >
-              <BusinessInsights />
+              <div className="space-y-6">
+                <BusinessInsights />
+                <DividendExplainer />
+              </div>
               <CompanyComparison />
             </motion.div>
 

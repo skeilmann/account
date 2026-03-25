@@ -51,8 +51,8 @@ const ITEMS = [
     cont: "457",
     side: "C" as const,
     color: "#8b5cf6",
-    tipRo: "Profit distribuit ac\u021Bionarilor dar nepl\u0103tit \u00EEnc\u0103. Necesit\u0103 plata impozitului pe dividende (8%).",
-    tipEn: "Profit distributed to shareholders but not yet paid. Requires dividend tax payment (8%).",
+    tipRo: "Profit distribuit ac\u021Bionarilor dar nepl\u0103tit \u00EEnc\u0103. Impozit 16% re\u021Binut la surs\u0103 (Legea 141/2025). CASS 10% peste 24.300 RON. La plat\u0103 se depune D100.",
+    tipEn: "Profit distributed to shareholders but not yet paid. 16% tax withheld at source (Law 141/2025). 10% CASS above 24,300 RON. D100 filed upon payment.",
   },
 ];
 
