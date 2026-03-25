@@ -23,6 +23,13 @@
     "chirii_asigurari": "Chirii și asigurări",
     "altele": "Alte cheltuieli"
   },
+  "revenue_groups": {
+    "vanzari_marfa": "Vanzari marfa",
+    "venituri_servicii": "Venituri din servicii",
+    "alte_venituri_exploatare": "Alte venituri din exploatare",
+    "venituri_financiare": "Venituri financiare",
+    "reduceri_comerciale": "Reduceri comerciale"
+  },
   "stock_kpi": {
     "stockKg": "Stoc actual (kg)",
     "purchasedKg": "Cumpărat (kg)",
@@ -40,7 +47,8 @@
     "expense_chart": "Distribuția cheltuielilor",
     "cash": "Poziția de numerar",
     "alerts": "Alerte și atenționări",
-    "stock_overview": "Stoc — totaluri"
+    "stock_overview": "Stoc — totaluri",
+    "revenue": "Venituri pe categorii"
   },
   "labels": {
     "of_revenue": "din venituri",

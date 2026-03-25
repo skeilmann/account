@@ -80,3 +80,35 @@ export const EXPENSE_GROUP_DEFINITIONS: ExpenseGroupDefinition[] = [
     accounts: ["6051", "625", "6231", "6581", "6583"],
   },
 ];
+
+/** Revenue group definitions — mirrors expense groups but for class 7 accounts */
+export type RevenueGroupDefinition = ExpenseGroupDefinition;
+export type RevenueGroupValue = ExpenseGroupValue;
+
+export const REVENUE_GROUP_DEFINITIONS: RevenueGroupDefinition[] = [
+  {
+    id: "vanzari_marfa",
+    icon: "\uD83E\uDDF6",
+    accounts: ["707"],
+  },
+  {
+    id: "venituri_servicii",
+    icon: "\uD83D\uDD27",
+    accounts: ["704"],
+  },
+  {
+    id: "alte_venituri_exploatare",
+    icon: "\uD83D\uDCE6",
+    accounts: ["758", "7588"],
+  },
+  {
+    id: "venituri_financiare",
+    icon: "\uD83D\uDCB0",
+    accounts: ["766", "767", "768"],
+  },
+  {
+    id: "reduceri_comerciale",
+    icon: "\uD83C\uDFF7\uFE0F",
+    accounts: ["709"],
+  },
+];

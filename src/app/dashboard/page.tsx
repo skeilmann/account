@@ -22,6 +22,7 @@ import { CompanyComparison } from "@/components/organisms/company-comparison";
 import { LegislationPanel } from "@/components/organisms/legislation-panel";
 import { DividendExplainer } from "@/components/organisms/dividend-explainer";
 import { CustomCards } from "@/components/organisms/custom-card";
+import { RevenueBreakdown } from "@/components/organisms/revenue-breakdown";
 import { Calculator } from "@/components/organisms/calculator";
 import { useDataStore } from "@/stores/data-store";
 
@@ -105,6 +106,7 @@ export default function DashboardPage() {
             >
               <div className="lg:col-span-2 space-y-6">
                 <ExpenseBreakdown />
+                <RevenueBreakdown />
                 <StockTable />
                 <ReceivablesPayables />
               </div>

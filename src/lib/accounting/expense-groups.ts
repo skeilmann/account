@@ -2,7 +2,9 @@ import type { NormalizedBalantaRow } from "@/types/balanta";
 import type { CompanyId } from "@/types/company";
 import {
   EXPENSE_GROUP_DEFINITIONS,
+  REVENUE_GROUP_DEFINITIONS,
   type ExpenseGroupValue,
+  type RevenueGroupValue,
 } from "@/types/expense-group";
 
 /**
@@ -80,4 +82,46 @@ function getGroupAmount(
         accountPrefixes.some((prefix) => r.cont.startsWith(prefix))
     )
     .reduce((sum, r) => sum + r.sumeTotaleD, 0);
+}
+
+function getGroupAmountCredit(
+  rows: NormalizedBalantaRow[],
+  accountPrefixes: string[]
+): number {
+  return rows
+    .filter(
+      (r) =>
+        !r.isClassTotal &&
+        !r.isGrandTotal &&
+        accountPrefixes.some((prefix) => r.cont.startsWith(prefix))
+    )
+    .reduce((sum, r) => sum + r.sumeTotaleC, 0);
+}
+
+/**
+ * Calculate combined revenue groups for both companies.
+ * Uses SumeTotale (credit side) for class 7 revenue accounts.
+ */
+export function calcCombinedRevenueGroups(
+  ifpRows: NormalizedBalantaRow[],
+  filatoRows: NormalizedBalantaRow[],
+  totalRevenue: number
+): RevenueGroupValue[] {
+  return REVENUE_GROUP_DEFINITIONS.map((def) => {
+    const ifpAmount = getGroupAmountCredit(ifpRows, def.accounts);
+    const filatoAmount = getGroupAmountCredit(filatoRows, def.accounts);
+    const totalAmount = ifpAmount + filatoAmount;
+
+    return {
+      definition: def,
+      totalAmount,
+      perCompany: {
+        ifp: ifpAmount,
+        filato: filatoAmount,
+      } as Record<CompanyId, number>,
+      percentOfExpenses: 0, // not applicable for revenue
+      percentOfRevenue:
+        totalRevenue > 0 ? (totalAmount / totalRevenue) * 100 : 0,
+    };
+  }).filter((g) => g.totalAmount > 0);
 }

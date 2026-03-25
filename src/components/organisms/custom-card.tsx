@@ -8,6 +8,7 @@ import { useCompanyStore } from "@/stores/company-store";
 import type { NormalizedBalantaRow } from "@/types/balanta";
 import type { DetailedAccountEntry } from "@/types/balanta-detaliata";
 import { useTranslation } from "react-i18next";
+import { useCustomCardStore } from "@/stores/custom-card-store";
 
 interface CustomField {
   id: string;
@@ -87,10 +88,23 @@ function getFieldValue(
 export function CustomCards() {
   const [cards, setCards] = useState<CustomCard[]>([]);
   const [showBuilder, setShowBuilder] = useState(false);
+  const [pendingFields, setPendingFields] = useState<CustomField[]>([]);
 
   useEffect(() => {
     setCards(loadCards());
   }, []);
+
+  // Watch for pending fields from breakdown "+" buttons
+  const pendingField = useCustomCardStore((s) => s.pendingField);
+  const clearPending = useCustomCardStore((s) => s.setPendingField);
+  useEffect(() => {
+    if (pendingField) {
+      setPendingFields((prev) => [...prev, pendingField as CustomField]);
+      setShowBuilder(true);
+      setEditingCard(null);
+      clearPending(null);
+    }
+  }, [pendingField, clearPending]);
 
   const updateCards = useCallback((newCards: CustomCard[]) => {
     setCards(newCards);
@@ -148,7 +162,12 @@ export function CustomCards() {
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <CardBuilder onSave={addCard} onCancel={() => setShowBuilder(false)} />
+            <CardBuilder
+              onSave={addCard}
+              onCancel={() => setShowBuilder(false)}
+              injectedFields={pendingFields}
+              onFieldsConsumed={() => setPendingFields([])}
+            />
           </motion.div>
         )}
       </AnimatePresence>
@@ -179,18 +198,56 @@ function CardBuilder({
   initialCard,
   onSave,
   onCancel,
+  injectedFields,
+  onFieldsConsumed,
 }: {
   initialCard?: CustomCard;
   onSave: (card: CustomCard) => void;
   onCancel: () => void;
+  injectedFields?: CustomField[];
+  onFieldsConsumed?: () => void;
 }) {
   const [title, setTitle] = useState(initialCard?.title ?? "");
   const [fields, setFields] = useState<CustomField[]>(initialCard?.fields ?? []);
+
+  // Consume injected fields from breakdown "+" buttons
+  useEffect(() => {
+    if (injectedFields && injectedFields.length > 0) {
+      setFields((prev) => [...prev, ...injectedFields]);
+      onFieldsConsumed?.();
+    }
+  }, [injectedFields, onFieldsConsumed]);
   const [showPresets, setShowPresets] = useState(false);
   const [showPartners, setShowPartners] = useState(false);
   const [partnerSearch, setPartnerSearch] = useState("");
   const [partnerParentFilter, setPartnerParentFilter] = useState("401");
   const getSubAccounts = useDataStore((s) => s.getSubAccounts);
+  const balanta = useDataStore((s) => s.balanta);
+  const { activeView } = useCompanyStore();
+
+  const ifpRows = (balanta.ifp?.rows ?? []) as NormalizedBalantaRow[];
+  const filatoRows = (balanta.filato?.rows ?? []) as NormalizedBalantaRow[];
+
+  function getValueForField(field: CustomField): number {
+    if (field.type === "manual") return field.manualValue ?? 0;
+
+    if (field.type === "partner" && field.partnerCont && field.partnerParent) {
+      const vf = field.valueField ?? "sumeTotaleD";
+      const entries = getSubAccounts(field.partnerParent, activeView === "combined" ? "combined" : activeView);
+      const match = entries.filter((e) => e.cont === field.partnerCont);
+      return match.reduce((sum, e) => sum + ((e as unknown as Record<string, number>)[vf] ?? 0), 0);
+    }
+
+    const codes = field.accountCodes ?? "";
+    const vf = field.valueField ?? "sumeTotaleD";
+    if (!codes) return 0;
+
+    if (activeView === "combined") {
+      return getFieldValue(ifpRows, codes, vf) + getFieldValue(filatoRows, codes, vf);
+    }
+    const rows = activeView === "ifp" ? ifpRows : filatoRows;
+    return getFieldValue(rows, codes, vf);
+  }
 
   function addPreset(preset: (typeof PRESETS)[0]) {
     setFields([
@@ -359,6 +416,11 @@ function CardBuilder({
                 </select>
               </>
             )}
+            {/* Live value */}
+            <Money
+              amount={getValueForField(field)}
+              className="text-[11px] font-semibold text-muted-foreground shrink-0 min-w-[80px] text-right"
+            />
             <button
               onClick={() => removeField(field.id)}
               className="text-muted-foreground hover:text-red-400 text-sm px-1"
@@ -368,6 +430,17 @@ function CardBuilder({
           </div>
         ))}
       </div>
+
+      {/* Running total */}
+      {fields.length > 0 && (
+        <div className="flex items-center justify-between text-xs border-t border-border/50 pt-2">
+          <span className="text-muted-foreground">Total</span>
+          <Money
+            amount={fields.reduce((s, f) => s + getValueForField(f), 0)}
+            className="text-sm font-bold"
+          />
+        </div>
+      )}
 
       {/* Add field buttons */}
       <div className="flex flex-wrap gap-2">

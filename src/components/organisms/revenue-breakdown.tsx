@@ -7,14 +7,13 @@ import { useDataStore } from "@/stores/data-store";
 import { useCompanyStore } from "@/stores/company-store";
 import { COMPANY_VIEW_COLORS } from "@/types/company";
 import type { NormalizedBalantaRow } from "@/types/balanta";
-import type { ExpenseGroupValue } from "@/types/expense-group";
+import type { RevenueGroupValue } from "@/types/expense-group";
 import { useTranslation } from "react-i18next";
 import { formatPercent, getLocaleCode } from "@/lib/utils/format";
-import { SubAccountDialog } from "@/components/molecules/sub-account-dialog";
 import { useCustomCardStore } from "@/stores/custom-card-store";
 
-export function ExpenseBreakdown() {
-  const expenseGroups = useDataStore((s) => s.expenseGroups);
+export function RevenueBreakdown() {
+  const revenueGroups = useDataStore((s) => s.revenueGroups);
   const balanta = useDataStore((s) => s.balanta);
   const getSubAccounts = useDataStore((s) => s.getSubAccounts);
   const { activeView } = useCompanyStore();
@@ -24,16 +23,16 @@ export function ExpenseBreakdown() {
   const [expandedAccountCont, setExpandedAccountCont] = useState<string | null>(null);
   const setPendingField = useCustomCardStore((s) => s.setPendingField);
 
-  if (expenseGroups.length === 0) return null;
+  if (revenueGroups.length === 0) return null;
 
-  const sorted = [...expenseGroups].sort(
+  const sorted = [...revenueGroups].sort(
     (a, b) => b.totalAmount - a.totalAmount
   );
 
   const ifpRows = (balanta.ifp?.rows ?? []) as NormalizedBalantaRow[];
   const filatoRows = (balanta.filato?.rows ?? []) as NormalizedBalantaRow[];
 
-  function getAccountsForGroup(group: ExpenseGroupValue): {
+  function getAccountsForGroup(group: RevenueGroupValue): {
     cont: string;
     denumire: string;
     ifpVal: number;
@@ -59,7 +58,7 @@ export function ExpenseBreakdown() {
           ifpVal: 0,
           filatoVal: 0,
         };
-        existing.ifpVal = r.sumeTotaleD;
+        existing.ifpVal = r.sumeTotaleC;
         accountMap.set(r.cont, existing);
       }
     }
@@ -76,7 +75,7 @@ export function ExpenseBreakdown() {
           ifpVal: 0,
           filatoVal: 0,
         };
-        existing.filatoVal = r.sumeTotaleD;
+        existing.filatoVal = r.sumeTotaleC;
         if (!existing.denumire) existing.denumire = r.denumire;
         accountMap.set(r.cont, existing);
       }
@@ -90,7 +89,7 @@ export function ExpenseBreakdown() {
 
   return (
     <div className="rounded-xl bg-card border border-border p-5">
-      <h3 className="text-sm font-semibold mb-4">{t("sections.expenses")}</h3>
+      <h3 className="text-sm font-semibold mb-4">{t("sections.revenue")}</h3>
       <div className="space-y-2">
         {sorted.map((group) => {
           const displayAmount =
@@ -119,7 +118,7 @@ export function ExpenseBreakdown() {
                       <span className="text-base">{group.definition.icon}</span>
                       <span className="text-sm truncate">
                         {t(
-                          `expense_groups.${group.definition.id}`,
+                          `revenue_groups.${group.definition.id}`,
                           group.definition.id
                         )}
                       </span>
@@ -133,11 +132,11 @@ export function ExpenseBreakdown() {
                     </div>
                     <div className="flex items-center gap-3 shrink-0">
                       <span className="text-xs text-muted-foreground">
-                        {formatPercent(group.percentOfExpenses, locale)}
+                        {formatPercent(group.percentOfRevenue, locale)}
                       </span>
                       <Money
                         amount={displayAmount}
-                        className="text-sm font-semibold"
+                        className="text-sm font-semibold text-emerald-400"
                       />
                     </div>
                   </div>
@@ -149,14 +148,14 @@ export function ExpenseBreakdown() {
                         <div
                           className="h-full transition-all"
                           style={{
-                            width: `${(group.perCompany.ifp / group.totalAmount) * group.percentOfExpenses}%`,
+                            width: `${(group.perCompany.ifp / group.totalAmount) * group.percentOfRevenue}%`,
                             backgroundColor: COMPANY_VIEW_COLORS.ifp,
                           }}
                         />
                         <div
                           className="h-full transition-all"
                           style={{
-                            width: `${(group.perCompany.filato / group.totalAmount) * group.percentOfExpenses}%`,
+                            width: `${(group.perCompany.filato / group.totalAmount) * group.percentOfRevenue}%`,
                             backgroundColor: COMPANY_VIEW_COLORS.filato,
                           }}
                         />
@@ -165,7 +164,7 @@ export function ExpenseBreakdown() {
                       <div
                         className="h-full rounded-full transition-all"
                         style={{
-                          width: `${group.percentOfExpenses}%`,
+                          width: `${group.percentOfRevenue}%`,
                           backgroundColor:
                             COMPANY_VIEW_COLORS[
                               activeView === "ifp" ? "ifp" : "filato"
@@ -182,10 +181,10 @@ export function ExpenseBreakdown() {
                     e.stopPropagation();
                     setPendingField({
                       id: crypto.randomUUID(),
-                      label: t(`expense_groups.${group.definition.id}`, group.definition.id),
+                      label: t(`revenue_groups.${group.definition.id}`, group.definition.id),
                       type: "account",
                       accountCodes: group.definition.accounts.join(","),
-                      valueField: "sumeTotaleD",
+                      valueField: "sumeTotaleC",
                     });
                   }}
                   className="w-5 h-5 rounded bg-primary/10 text-primary text-[10px] hover:bg-primary/20 opacity-0 hover:opacity-100 transition-opacity shrink-0"
@@ -205,7 +204,7 @@ export function ExpenseBreakdown() {
                     transition={{ duration: 0.2, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <div className="ml-8 mt-2 mb-1 space-y-1 border-l-2 border-primary/20 pl-3">
+                    <div className="ml-8 mt-2 mb-1 space-y-1 border-l-2 border-emerald-500/20 pl-3">
                       {accounts.map((acc) => {
                         const accDisplay =
                           activeView === "combined"
@@ -223,7 +222,7 @@ export function ExpenseBreakdown() {
                         const hasSubAccounts = getSubAccounts(acc.cont, activeView === "combined" ? "combined" : activeView).length > 0;
 
                         return (
-                          <div key={`exp-${group.definition.id}-${acc.cont}`}>
+                          <div key={`rev-${group.definition.id}-${acc.cont}`}>
                             <div className="flex items-center gap-1">
                               <button
                                 className="flex-1 flex items-center justify-between text-[11px] py-0.5 min-w-0 text-left hover:bg-secondary/30 rounded px-1 -mx-1 transition-colors"
@@ -233,7 +232,7 @@ export function ExpenseBreakdown() {
                                 disabled={!hasSubAccounts}
                               >
                                 <div className="flex items-center gap-1.5 min-w-0">
-                                  <span className="text-primary font-mono shrink-0 text-[10px]">
+                                  <span className="text-emerald-400/70 font-mono shrink-0 text-[10px]">
                                     {acc.cont}
                                   </span>
                                   <span className="text-muted-foreground truncate text-[10px]">
@@ -302,7 +301,7 @@ export function ExpenseBreakdown() {
                                     label: `${acc.denumire} (${acc.cont})`,
                                     type: "account",
                                     accountCodes: acc.cont,
-                                    valueField: "sumeTotaleD",
+                                    valueField: "sumeTotaleC",
                                   });
                                 }}
                                 className="w-4 h-4 rounded bg-primary/10 text-primary text-[9px] hover:bg-primary/20 opacity-0 hover:opacity-100 transition-opacity shrink-0"
@@ -322,17 +321,17 @@ export function ExpenseBreakdown() {
                                   transition={{ duration: 0.15, ease: "easeInOut" }}
                                   className="overflow-hidden"
                                 >
-                                  <div className="ml-6 mt-1 mb-1 space-y-0.5 border-l border-primary/10 pl-2">
+                                  <div className="ml-6 mt-1 mb-1 space-y-0.5 border-l border-emerald-500/10 pl-2">
                                     {subAccounts
-                                      .filter((s) => s.sumeTotaleD > 0)
-                                      .sort((a, b) => b.sumeTotaleD - a.sumeTotaleD)
+                                      .filter((s) => s.sumeTotaleC > 0)
+                                      .sort((a, b) => b.sumeTotaleC - a.sumeTotaleC)
                                       .map((sub, idx) => (
                                         <div
                                           key={`${sub.cont}-${idx}`}
                                           className="flex items-center justify-between text-[10px] py-0.5"
                                         >
                                           <div className="flex items-center gap-1 min-w-0">
-                                            <span className="text-primary/50 font-mono shrink-0 text-[9px]">
+                                            <span className="text-emerald-400/40 font-mono shrink-0 text-[9px]">
                                               {sub.cont}
                                             </span>
                                             <span className="text-muted-foreground/70 truncate text-[9px]">
@@ -340,7 +339,7 @@ export function ExpenseBreakdown() {
                                             </span>
                                           </div>
                                           <Money
-                                            amount={sub.sumeTotaleD}
+                                            amount={sub.sumeTotaleC}
                                             className="text-[10px] font-medium text-muted-foreground shrink-0 ml-2"
                                           />
                                         </div>
@@ -352,30 +351,6 @@ export function ExpenseBreakdown() {
                           </div>
                         );
                       })}
-
-                      {/* Related balance account detail dialogs */}
-                      {group.definition.relatedBalanceAccounts?.map(
-                        (relCont) => (
-                          <SubAccountDialog
-                            key={relCont}
-                            parentCont={relCont}
-                            parentName={`${t(
-                              `expense_groups.${group.definition.id}`,
-                              group.definition.id
-                            )} — ${relCont}`}
-                            side="D"
-                          >
-                            <div className="flex items-center gap-1.5 text-[10px] text-primary/70 hover:text-primary cursor-pointer mt-1 transition-colors">
-                              <span>📋</span>
-                              <span>
-                                {locale === "ro"
-                                  ? `Detalii cont ${relCont}`
-                                  : `Account ${relCont} details`}
-                              </span>
-                            </div>
-                          </SubAccountDialog>
-                        )
-                      )}
                     </div>
                   </motion.div>
                 )}

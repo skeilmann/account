@@ -4,8 +4,8 @@ import type { ParsedStock } from "@/types/stock";
 import type { CompanyId } from "@/types/company";
 import type { KPISet } from "@/types/kpi";
 import { calcKPISet } from "@/lib/accounting/kpi-calculator";
-import { calcCombinedExpenseGroups } from "@/lib/accounting/expense-groups";
-import type { ExpenseGroupValue } from "@/types/expense-group";
+import { calcCombinedExpenseGroups, calcCombinedRevenueGroups } from "@/lib/accounting/expense-groups";
+import type { ExpenseGroupValue, RevenueGroupValue } from "@/types/expense-group";
 import type {
   DetailedAccountEntry,
   ParsedBalantaDetaliata,
@@ -21,6 +21,7 @@ interface DataState {
   stock: Record<CompanyId, ParsedStock | null>;
   kpiSet: KPISet | null;
   expenseGroups: ExpenseGroupValue[];
+  revenueGroups: RevenueGroupValue[];
   setBalanta: (companyId: CompanyId, data: ParsedBalanta) => void;
   setBalantaDetaliata: (
     companyId: CompanyId,
@@ -37,13 +38,13 @@ interface DataState {
 function recompute(state: {
   balanta: Record<CompanyId, ParsedBalanta | null>;
   priorBalanta: Record<CompanyId, ParsedBalanta | null>;
-}): { kpiSet: KPISet | null; expenseGroups: ExpenseGroupValue[] } {
+}): { kpiSet: KPISet | null; expenseGroups: ExpenseGroupValue[]; revenueGroups: RevenueGroupValue[] } {
   const ifpRows = (state.balanta.ifp?.rows ?? []) as NormalizedBalantaRow[];
   const filatoRows = (state.balanta.filato?.rows ??
     []) as NormalizedBalantaRow[];
 
   if (ifpRows.length === 0 && filatoRows.length === 0) {
-    return { kpiSet: null, expenseGroups: [] };
+    return { kpiSet: null, expenseGroups: [], revenueGroups: [] };
   }
 
   const priorIfpRows = (state.priorBalanta.ifp?.rows ??
@@ -63,8 +64,13 @@ function recompute(state: {
     kpiSet.expenses.amount,
     kpiSet.revenue.amount
   );
+  const revenueGroups = calcCombinedRevenueGroups(
+    ifpRows,
+    filatoRows,
+    kpiSet.revenue.amount
+  );
 
-  return { kpiSet, expenseGroups };
+  return { kpiSet, expenseGroups, revenueGroups };
 }
 
 // Pre-compute from embedded data
@@ -96,6 +102,7 @@ export const useDataStore = create<DataState>((set, get) => ({
   stock: initialStock,
   kpiSet: initialComputed.kpiSet,
   expenseGroups: initialComputed.expenseGroups,
+  revenueGroups: initialComputed.revenueGroups,
 
   setBalanta: (companyId, data) => {
     const newBalanta = { ...get().balanta, [companyId]: data };

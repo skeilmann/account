@@ -23,6 +23,13 @@
     "chirii_asigurari": "Rent & insurance",
     "altele": "Other expenses"
   },
+  "revenue_groups": {
+    "vanzari_marfa": "Goods sales revenue",
+    "venituri_servicii": "Service revenue",
+    "alte_venituri_exploatare": "Other operating revenue",
+    "venituri_financiare": "Financial revenue",
+    "reduceri_comerciale": "Commercial discounts"
+  },
   "stock_kpi": {
     "stockKg": "Current stock (kg)",
     "purchasedKg": "Purchased (kg)",
@@ -40,7 +47,8 @@
     "expense_chart": "Expense distribution",
     "cash": "Cash position",
     "alerts": "Alerts & warnings",
-    "stock_overview": "Stock — totals"
+    "stock_overview": "Stock — totals",
+    "revenue": "Revenue by category"
   },
   "labels": {
     "of_revenue": "of revenue",

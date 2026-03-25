@@ -23,6 +23,13 @@
     "chirii_asigurari": "Affitti e assicurazioni",
     "altele": "Altre spese"
   },
+  "revenue_groups": {
+    "vanzari_marfa": "Ricavi vendita merci",
+    "venituri_servicii": "Ricavi da servizi",
+    "alte_venituri_exploatare": "Altri ricavi operativi",
+    "venituri_financiare": "Proventi finanziari",
+    "reduceri_comerciale": "Sconti commerciali"
+  },
   "stock_kpi": {
     "stockKg": "Giacenza attuale (kg)",
     "purchasedKg": "Acquistato (kg)",
@@ -40,7 +47,8 @@
     "expense_chart": "Distribuzione delle spese",
     "cash": "Posizione di cassa",
     "alerts": "Avvisi e segnalazioni",
-    "stock_overview": "Giacenza — totali"
+    "stock_overview": "Giacenza — totali",
+    "revenue": "Ricavi per categoria"
   },
   "labels": {
     "of_revenue": "dei ricavi",
