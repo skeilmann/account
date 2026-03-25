@@ -18,7 +18,7 @@ export const useCurrencyStore = create<CurrencyState>((set, get) => ({
   currency:
     (typeof window !== "undefined"
       ? (localStorage.getItem("currency") as CurrencyCode)
-      : null) || "RON",
+      : null) || "EUR",
   eurRate: DEFAULT_EUR_RATE,
   eurRateDate: "2026-03-24",
   customRate: null,

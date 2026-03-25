@@ -45,7 +45,7 @@ export function AlertsPanel() {
   const balanta = useDataStore((s) => s.balanta);
   const stock = useDataStore((s) => s.stock);
   const { i18n } = useTranslation();
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const lang = i18n.language;
 
   const alerts = useMemo(() => {

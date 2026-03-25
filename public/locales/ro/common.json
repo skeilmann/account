@@ -32,6 +32,18 @@
     "next": "Înainte",
     "close": "Închide"
   },
+  "stock_table": {
+    "products_count": "{{count}} produse",
+    "details": "Detalii",
+    "details_tooltip": "Afișează stoc inițial și intrări",
+    "search": "Caută...",
+    "col_product": "Produs",
+    "col_initial_stock": "Stoc inițial",
+    "col_entries": "Intrări",
+    "col_final_stock": "Stoc final",
+    "col_price_kg": "Preț/kg",
+    "col_value": "Valoare"
+  },
   "status": {
     "loading": "Se încarcă...",
     "error": "Eroare",

@@ -41,6 +41,7 @@ i18n
         legislation: itLegislation,
       },
     },
+    lng: "ro",
     fallbackLng: "ro",
     defaultNS: "common",
     ns: ["common", "accounts", "dashboard", "legislation"],

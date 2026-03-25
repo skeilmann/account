@@ -32,6 +32,18 @@
     "next": "Next",
     "close": "Close"
   },
+  "stock_table": {
+    "products_count": "{{count}} products",
+    "details": "Details",
+    "details_tooltip": "Show initial stock and entries",
+    "search": "Search...",
+    "col_product": "Product",
+    "col_initial_stock": "Initial stock",
+    "col_entries": "Entries",
+    "col_final_stock": "Final stock",
+    "col_price_kg": "Price/kg",
+    "col_value": "Value"
+  },
   "status": {
     "loading": "Loading...",
     "error": "Error",

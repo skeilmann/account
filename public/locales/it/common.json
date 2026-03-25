@@ -32,6 +32,18 @@
     "next": "Avanti",
     "close": "Chiudi"
   },
+  "stock_table": {
+    "products_count": "{{count}} prodotti",
+    "details": "Dettagli",
+    "details_tooltip": "Mostra scorte iniziali e arrivi",
+    "search": "Cerca...",
+    "col_product": "Prodotto",
+    "col_initial_stock": "Scorta iniziale",
+    "col_entries": "Arrivi",
+    "col_final_stock": "Scorta finale",
+    "col_price_kg": "Prezzo/kg",
+    "col_value": "Valore"
+  },
   "status": {
     "loading": "Caricamento...",
     "error": "Errore",
