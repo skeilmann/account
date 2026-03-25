@@ -23,13 +23,24 @@
     "chirii_asigurari": "Affitti e assicurazioni",
     "altele": "Altre spese"
   },
+  "stock_kpi": {
+    "stockKg": "Giacenza attuale (kg)",
+    "purchasedKg": "Acquistato (kg)",
+    "soldKg": "Venduto (kg)",
+    "stockValue": "Valore giacenza",
+    "purchasedValue": "Valore acquisti",
+    "soldValue": "Costo del venduto",
+    "salesRevenue": "Totale merce venduta",
+    "eurPerKg": "Prezzo medio per kg"
+  },
   "sections": {
     "overview": "Panoramica",
     "expenses": "Spese per categoria",
     "revenue_chart": "Ricavi per azienda",
     "expense_chart": "Distribuzione delle spese",
     "cash": "Posizione di cassa",
-    "alerts": "Avvisi e segnalazioni"
+    "alerts": "Avvisi e segnalazioni",
+    "stock_overview": "Giacenza — totali"
   },
   "labels": {
     "of_revenue": "dei ricavi",

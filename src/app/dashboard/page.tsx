@@ -15,6 +15,7 @@ import { ReceivablesPayables } from "@/components/organisms/receivables-payables
 import { KeyRatios } from "@/components/organisms/key-ratios";
 import { FiscalCalendar } from "@/components/organisms/fiscal-calendar";
 import { StockTable } from "@/components/organisms/stock-table";
+import { StockKPIGrid } from "@/components/organisms/stock-kpi-grid";
 import { AlertsPanel } from "@/components/organisms/alerts-panel";
 import { BusinessInsights } from "@/components/organisms/business-insights";
 import { CompanyComparison } from "@/components/organisms/company-comparison";
@@ -84,6 +85,16 @@ export default function DashboardPage() {
               <ExpenseChart />
             </motion.div>
 
+            {/* Stock KPI totals */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              transition={{ delay: 0.35 }}
+            >
+              <StockKPIGrid />
+            </motion.div>
+
             {/* Expense + right column */}
             <motion.div
               variants={fadeUp}
@@ -94,6 +105,7 @@ export default function DashboardPage() {
             >
               <div className="lg:col-span-2 space-y-6">
                 <ExpenseBreakdown />
+                <StockTable />
                 <ReceivablesPayables />
               </div>
               <div className="space-y-6">
@@ -118,21 +130,16 @@ export default function DashboardPage() {
               <CompanyComparison />
             </motion.div>
 
-            {/* Fiscal calendar + Stock */}
+            {/* Fiscal calendar + Legislation */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
               animate="show"
               transition={{ delay: 0.55 }}
-              className="grid grid-cols-1 lg:grid-cols-3 gap-6"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6"
             >
-              <div className="lg:col-span-2">
-                <StockTable />
-              </div>
-              <div className="space-y-6">
-                <FiscalCalendar />
-                <LegislationPanel />
-              </div>
+              <FiscalCalendar />
+              <LegislationPanel />
             </motion.div>
           </>
         ) : (

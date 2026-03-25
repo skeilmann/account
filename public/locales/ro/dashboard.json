@@ -23,13 +23,24 @@
     "chirii_asigurari": "Chirii și asigurări",
     "altele": "Alte cheltuieli"
   },
+  "stock_kpi": {
+    "stockKg": "Stoc actual (kg)",
+    "purchasedKg": "Cumpărat (kg)",
+    "soldKg": "Vândut (kg)",
+    "stockValue": "Valoare stoc",
+    "purchasedValue": "Valoare cumpărături",
+    "soldValue": "Cost marfă vândută",
+    "salesRevenue": "Total marfă vândută",
+    "eurPerKg": "Preț mediu per kg"
+  },
   "sections": {
     "overview": "Prezentare generală",
     "expenses": "Cheltuieli pe categorii",
     "revenue_chart": "Venituri pe companii",
     "expense_chart": "Distribuția cheltuielilor",
     "cash": "Poziția de numerar",
-    "alerts": "Alerte și atenționări"
+    "alerts": "Alerte și atenționări",
+    "stock_overview": "Stoc — totaluri"
   },
   "labels": {
     "of_revenue": "din venituri",

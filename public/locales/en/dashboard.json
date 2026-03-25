@@ -23,13 +23,24 @@
     "chirii_asigurari": "Rent & insurance",
     "altele": "Other expenses"
   },
+  "stock_kpi": {
+    "stockKg": "Current stock (kg)",
+    "purchasedKg": "Purchased (kg)",
+    "soldKg": "Sold (kg)",
+    "stockValue": "Stock value",
+    "purchasedValue": "Purchases value",
+    "soldValue": "Cost of goods sold",
+    "salesRevenue": "Total goods sold",
+    "eurPerKg": "Average price per kg"
+  },
   "sections": {
     "overview": "Overview",
     "expenses": "Expenses by category",
     "revenue_chart": "Revenue by company",
     "expense_chart": "Expense distribution",
     "cash": "Cash position",
-    "alerts": "Alerts & warnings"
+    "alerts": "Alerts & warnings",
+    "stock_overview": "Stock — totals"
   },
   "labels": {
     "of_revenue": "of revenue",
