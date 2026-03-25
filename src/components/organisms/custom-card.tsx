@@ -427,17 +427,17 @@ function CustomCardView({
       className="rounded-xl bg-card border border-primary/20 p-5 relative"
       style={{ borderTopColor: "#f59e0b", borderTopWidth: 3 }}
     >
-      <div className="absolute top-3 right-3 flex items-center gap-1.5">
+      <div className="absolute top-3 right-3 flex items-center gap-2">
         <button
           onClick={onEdit}
-          className="text-muted-foreground hover:text-primary text-xs transition-colors"
+          className="w-7 h-7 rounded-md bg-secondary/80 hover:bg-primary/20 text-muted-foreground hover:text-primary text-base flex items-center justify-center transition-colors"
           title="Editeaz\u0103"
         >
           {"\u270E"}
         </button>
         <button
           onClick={onRemove}
-          className="text-muted-foreground hover:text-red-400 text-xs transition-colors"
+          className="w-7 h-7 rounded-md bg-secondary/80 hover:bg-red-500/20 text-muted-foreground hover:text-red-400 text-base flex items-center justify-center transition-colors"
           title="\u0218terge"
         >
           {"\u2715"}

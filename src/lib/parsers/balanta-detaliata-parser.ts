@@ -1,4 +1,3 @@
-import type { CompanyId } from "@/types/company";
 import type {
   DetailedAccountEntry,
   ParsedBalantaDetaliata,
@@ -51,24 +50,24 @@ function extractPeriod(text: string): {
 }
 
 /**
- * Match a dotted sub-account code at the start of a line.
+ * Match a dotted sub-account code on its own line.
  * Examples: "401.00001", "214.1", "2813.2", "462.15"
- * Does NOT match pure parent accounts like "401" or "4111".
  */
-const SUB_ACCOUNT_REGEX = /^(\d{3,4})\.(\d+)/;
+const SUB_ACCOUNT_LINE_REGEX = /^(\d{3,4})\.(\d+)$/;
 
 /**
- * Match a parent account code (3-4 digits optionally followed by uppercase text).
+ * Parse detailed trial balance text.
+ *
+ * The SAGA C detailed PDF extracts as (FILATO-style layout):
+ *   NAME LINE 1           (text, may span multiple lines)
+ *   NAME LINE 2           (continuation of name)
+ *   1234.56  5678.90 ...  (8 numbers on one line)
+ *   401.00001              (dotted sub-account code on its own line)
+ *
+ * We accumulate text as pendingName, detect number lines (8+ numbers),
+ * then look ahead for the dotted code line.
  */
-const PARENT_ACCOUNT_REGEX = /^(\d{3,4})([A-Z]|$)/;
-
-/**
- * Parse the IFP detailed PDF (8-column format with dotted sub-accounts).
- * The IFP detailed format has lines like:
- *   "401.00001CAZACU A. GHEORGHE... 77 125.00  77 125.00  ..."
- * or multi-line where name wraps.
- */
-function parseIFPDetailed(text: string): DetailedAccountEntry[] {
+function parseDetailedEntries(text: string): DetailedAccountEntry[] {
   const entries: DetailedAccountEntry[] = [];
   const lines = text
     .split("\n")
@@ -76,62 +75,51 @@ function parseIFPDetailed(text: string): DetailedAccountEntry[] {
     .filter(Boolean);
 
   let i = 0;
+  let pendingName = "";
 
   while (i < lines.length) {
     const line = lines[i];
 
+    // Skip noise
     if (isNoiseLine(line)) {
       i++;
       continue;
     }
 
-    // Skip class totals, grand totals
+    // Skip class totals and grand totals
     if (line.startsWith("Total sume clasa") || line.includes("Totaluri:")) {
+      pendingName = "";
       i++;
       continue;
     }
 
-    // Try to match a dotted sub-account code
-    const subMatch = line.match(SUB_ACCOUNT_REGEX);
-    if (subMatch) {
-      const fullCode = subMatch[0]; // e.g. "401.00001"
-      const parentCont = subMatch[1]; // e.g. "401"
-      const restOfLine = line.slice(fullCode.length);
+    // If this line is a standalone dotted code (already consumed by look-ahead), skip
+    if (SUB_ACCOUNT_LINE_REGEX.test(line)) {
+      i++;
+      continue;
+    }
 
-      let numbers = extractNumbers(restOfLine);
-      let nameText = restOfLine
-        .replace(/-?(?:\d[\d\s]*\d|\d)\.\d{2}/g, "")
-        .trim();
+    // If this line is a standalone parent code (3-4 digits only), skip
+    if (line.match(/^\d{3,4}$/) && !line.match(/^\d{2}\.\d{2}/)) {
+      pendingName = "";
+      i++;
+      continue;
+    }
 
-      // Collect continuation lines if we don't have 8 numbers
-      while (numbers.length < 8 && i + 1 < lines.length) {
-        i++;
-        const nextLine = lines[i];
-        if (
-          nextLine.match(SUB_ACCOUNT_REGEX) ||
-          nextLine.match(PARENT_ACCOUNT_REGEX) ||
-          nextLine.startsWith("Total") ||
-          nextLine.includes("Totaluri:") ||
-          isNoiseLine(nextLine)
-        ) {
-          i--;
-          break;
-        }
-        const moreNumbers = extractNumbers(nextLine);
-        numbers = numbers.concat(moreNumbers);
-        const moreText = nextLine
-          .replace(/-?(?:\d[\d\s]*\d|\d)\.\d{2}/g, "")
-          .trim();
-        if (moreText && !moreText.match(/^[\s,.-]*$/)) {
-          nameText += " " + moreText;
-        }
-      }
+    // Check if this is a number line (has 8+ numbers)
+    const numbers = extractNumbers(line);
+    if (numbers.length >= 8) {
+      // Look ahead for dotted sub-account code
+      if (i + 1 < lines.length && SUB_ACCOUNT_LINE_REGEX.test(lines[i + 1].trim())) {
+        const codeLine = lines[i + 1].trim();
+        const codeMatch = codeLine.match(SUB_ACCOUNT_LINE_REGEX)!;
+        const fullCode = codeLine; // e.g. "401.00001"
+        const parentCont = codeMatch[1]; // e.g. "401"
 
-      if (numbers.length >= 8) {
         entries.push({
           cont: fullCode,
           parentCont,
-          denumire: nameText.trim(),
+          denumire: pendingName.trim(),
           sumePrecedenteD: numbers[0] ?? 0,
           sumePrecedenteC: numbers[1] ?? 0,
           rulajePerioadaD: numbers[2] ?? 0,
@@ -141,35 +129,27 @@ function parseIFPDetailed(text: string): DetailedAccountEntry[] {
           soldFinalD: numbers[6] ?? 0,
           soldFinalC: numbers[7] ?? 0,
         });
+
+        i += 2; // skip number line + code line
+        pendingName = "";
+        continue;
       }
 
+      // Number line without a dotted code after it = parent account row, skip
+      pendingName = "";
       i++;
       continue;
     }
 
-    // Skip parent account lines and other text
+    // Otherwise it's a text line — part of the account name
+    if (numbers.length === 0 && line.length > 0) {
+      pendingName = pendingName ? pendingName + " " + line : line;
+    }
+
     i++;
   }
 
   return entries;
-}
-
-/**
- * Parse the FILATO detailed PDF.
- * FILATO's "detailed" PDF has the same structure as its summary — no sub-accounts.
- * Returns empty entries array.
- */
-function parseFILATODetailed(text: string): DetailedAccountEntry[] {
-  // Check if there are any dotted sub-accounts
-  const lines = text.split("\n");
-  const hasSubAccounts = lines.some((l) => SUB_ACCOUNT_REGEX.test(l.trim()));
-
-  if (!hasSubAccounts) {
-    return [];
-  }
-
-  // If FILATO ever gets sub-accounts, parse them the same way
-  return parseIFPDetailed(text);
 }
 
 /**
@@ -190,13 +170,13 @@ function groupByParent(
 
 /**
  * Detect if a PDF text represents a detailed trial balance.
- * Detailed PDFs have dotted sub-account codes (e.g., "401.00001").
+ * Detailed PDFs have dotted sub-account codes (e.g., "401.00001") on standalone lines.
  */
 export function isDetailedBalanta(text: string): boolean {
   const lines = text.split("\n");
   let subAccountCount = 0;
   for (const line of lines) {
-    if (SUB_ACCOUNT_REGEX.test(line.trim())) {
+    if (SUB_ACCOUNT_LINE_REGEX.test(line.trim())) {
       subAccountCount++;
       if (subAccountCount >= 3) return true;
     }
@@ -216,11 +196,7 @@ export async function parseBalantaDetaliata(
 
   const company = detectCompany(text);
   const period = extractPeriod(text);
-
-  const entries =
-    company.companyId === "ifp"
-      ? parseIFPDetailed(text)
-      : parseFILATODetailed(text);
+  const entries = parseDetailedEntries(text);
 
   return {
     companyId: company.companyId,
