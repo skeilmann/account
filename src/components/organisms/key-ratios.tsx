@@ -6,6 +6,7 @@ import type { NormalizedBalantaRow } from "@/types/balanta";
 import { useTranslation } from "react-i18next";
 import { formatPercent, getLocaleCode } from "@/lib/utils/format";
 import { InfoIcon } from "@/components/atoms/info-tooltip";
+import { SubAccountDialog } from "@/components/molecules/sub-account-dialog";
 
 interface Ratio {
   labelRo: string;
@@ -13,6 +14,8 @@ interface Ratio {
   tipRo: string;
   tipEn: string;
   compute: (rows: NormalizedBalantaRow[]) => { value: number; display: string; rag: "green" | "amber" | "red" };
+  /** Accounts that can be drilled into via dialog */
+  linkedAccounts?: { cont: string; nameRo: string; nameEn: string; side: "D" | "C" }[];
 }
 
 function getAcc(rows: NormalizedBalantaRow[], cont: string, field: keyof NormalizedBalantaRow): number {
@@ -65,6 +68,10 @@ const RATIOS: Ratio[] = [
       const ratio = totalAssets > 0 ? (totalDebt / totalAssets) * 100 : 0;
       return { value: ratio, display: formatPercent(ratio), rag: ratio < 30 ? "green" : ratio < 60 ? "amber" : "red" };
     },
+    linkedAccounts: [
+      { cont: "401", nameRo: "Furnizori", nameEn: "Suppliers", side: "C" },
+      { cont: "462", nameRo: "Creditori", nameEn: "Creditors", side: "C" },
+    ],
   },
   {
     labelRo: "Rotație stoc (zile)",
@@ -89,6 +96,9 @@ const RATIOS: Ratio[] = [
       const days = revenue > 0 ? Math.round((clienti / revenue) * 365) : 0;
       return { value: days, display: `${days} zile`, rag: days < 30 ? "green" : days < 60 ? "amber" : "red" };
     },
+    linkedAccounts: [
+      { cont: "4111", nameRo: "Clienti", nameEn: "Clients", side: "D" },
+    ],
   },
 ];
 
@@ -118,26 +128,41 @@ export function KeyRatios() {
         {RATIOS.map((ratio) => {
           const result = ratio.compute(viewRows);
           return (
-            <div
-              key={ratio.labelRo}
-              className="flex items-center justify-between"
-            >
-              <div className="flex items-center gap-1 min-w-0">
-                <div
-                  className="w-2 h-2 rounded-full shrink-0"
-                  style={{ backgroundColor: RAG_COLORS[result.rag] }}
-                />
-                <span className="text-sm truncate">
-                  {lang === "en" ? ratio.labelEn : ratio.labelRo}
+            <div key={ratio.labelRo}>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1 min-w-0">
+                  <div
+                    className="w-2 h-2 rounded-full shrink-0"
+                    style={{ backgroundColor: RAG_COLORS[result.rag] }}
+                  />
+                  <span className="text-sm truncate">
+                    {lang === "en" ? ratio.labelEn : ratio.labelRo}
+                  </span>
+                  <InfoIcon
+                    text={lang === "en" ? ratio.tipEn : ratio.tipRo}
+                    position="bottom"
+                  />
+                </div>
+                <span className="text-sm font-mono font-semibold font-tabular shrink-0 ml-2">
+                  {result.display}
                 </span>
-                <InfoIcon
-                  text={lang === "en" ? ratio.tipEn : ratio.tipRo}
-                  position="bottom"
-                />
               </div>
-              <span className="text-sm font-mono font-semibold font-tabular shrink-0 ml-2">
-                {result.display}
-              </span>
+              {ratio.linkedAccounts && (
+                <div className="flex gap-2 ml-4 mt-0.5">
+                  {ratio.linkedAccounts.map((la) => (
+                    <SubAccountDialog
+                      key={la.cont}
+                      parentCont={la.cont}
+                      parentName={lang === "en" ? la.nameEn : la.nameRo}
+                      side={la.side}
+                    >
+                      <span className="text-[9px] text-primary/60 hover:text-primary cursor-pointer transition-colors">
+                        {lang === "en" ? la.nameEn : la.nameRo} ({la.cont}) →
+                      </span>
+                    </SubAccountDialog>
+                  ))}
+                </div>
+              )}
             </div>
           );
         })}

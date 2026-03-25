@@ -7,6 +7,7 @@ import type { NormalizedBalantaRow } from "@/types/balanta";
 import { calcCompanyKPIs } from "@/lib/accounting/kpi-calculator";
 import { useTranslation } from "react-i18next";
 import { formatPercent, getLocaleCode } from "@/lib/utils/format";
+import { SubAccountDialog } from "@/components/molecules/sub-account-dialog";
 
 interface ComparisonRow {
   labelRo: string;
@@ -15,6 +16,8 @@ interface ComparisonRow {
   filatoValue: number;
   isPercentage?: boolean;
   highlight?: boolean;
+  /** If set, the row label becomes clickable to drill into sub-accounts */
+  linkedCont?: { cont: string; side: "D" | "C" };
 }
 
 export function CompanyComparison() {
@@ -48,8 +51,8 @@ export function CompanyComparison() {
     { labelRo: "Valoare stocuri", labelEn: "Stock value", ifpValue: ifp.stockValue, filatoValue: filato.stockValue },
     { labelRo: "Nr. produse în stoc", labelEn: "Products in stock", ifpValue: stock.ifp?.rows.length ?? 0, filatoValue: stock.filato?.rows.length ?? 0 },
     { labelRo: "Numerar", labelEn: "Cash", ifpValue: ifp.cashPosition, filatoValue: filato.cashPosition },
-    { labelRo: "Clienți (de încasat)", labelEn: "Receivables", ifpValue: getAcc(ifpRows, "4111", "soldFinalD"), filatoValue: getAcc(filatoRows, "4111", "soldFinalD") },
-    { labelRo: "Furnizori (de plătit)", labelEn: "Payables", ifpValue: getAcc(ifpRows, "401", "soldFinalC"), filatoValue: getAcc(filatoRows, "401", "soldFinalC") },
+    { labelRo: "Clienți (de încasat)", labelEn: "Receivables", ifpValue: getAcc(ifpRows, "4111", "soldFinalD"), filatoValue: getAcc(filatoRows, "4111", "soldFinalD"), linkedCont: { cont: "4111", side: "D" } },
+    { labelRo: "Furnizori (de plătit)", labelEn: "Payables", ifpValue: getAcc(ifpRows, "401", "soldFinalC"), filatoValue: getAcc(filatoRows, "401", "soldFinalC"), linkedCont: { cont: "401", side: "C" } },
   ];
 
   function winner(ifpVal: number, filatoVal: number, lowerIsBetter = false): "ifp" | "filato" | "tie" {
@@ -101,7 +104,20 @@ export function CompanyComparison() {
                   className={`border-b border-border/30 ${row.highlight ? "bg-secondary/20" : ""}`}
                 >
                   <td className={`px-5 py-2 ${row.highlight ? "font-semibold" : "text-muted-foreground"}`}>
-                    {lang === "en" ? row.labelEn : row.labelRo}
+                    {row.linkedCont ? (
+                      <SubAccountDialog
+                        parentCont={row.linkedCont.cont}
+                        parentName={lang === "en" ? row.labelEn : row.labelRo}
+                        side={row.linkedCont.side}
+                      >
+                        <span className="hover:text-primary cursor-pointer transition-colors">
+                          {lang === "en" ? row.labelEn : row.labelRo}
+                          <span className="text-[8px] ml-1 text-primary/50">→</span>
+                        </span>
+                      </SubAccountDialog>
+                    ) : (
+                      lang === "en" ? row.labelEn : row.labelRo
+                    )}
                   </td>
                   <td className="px-5 py-2 text-right">
                     <span className={`font-mono font-tabular ${w === "ifp" ? "text-emerald-400 font-semibold" : ""}`}>

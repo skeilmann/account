@@ -9,6 +9,7 @@ import type { NormalizedBalantaRow } from "@/types/balanta";
 import { InfoIcon } from "@/components/atoms/info-tooltip";
 import { useTranslation } from "react-i18next";
 import { formatPercent, getLocaleCode } from "@/lib/utils/format";
+import { SubAccountDialog } from "@/components/molecules/sub-account-dialog";
 
 // Verified 2026 dividend tax rules:
 // - Impozit dividende: 16% (Legea 141/2025, Art. 43 alin. 1 Cod Fiscal, de la 10%)
@@ -140,9 +141,16 @@ export function DividendExplainer() {
       {/* Unpaid dividends section */}
       {hasAnyDividends && (
         <div className="mb-5">
-          <p className="text-xs font-medium text-amber-400 mb-2">
-            {lang === "en" ? "Unpaid dividends (cont 457)" : "Dividende neplătite (cont 457)"}
-          </p>
+          <SubAccountDialog
+            parentCont="457"
+            parentName={lang === "en" ? "Unpaid dividends" : "Dividende neplatite"}
+            side="C"
+          >
+            <p className="text-xs font-medium text-amber-400 mb-2 hover:text-amber-300 cursor-pointer transition-colors">
+              {lang === "en" ? "Unpaid dividends (cont 457)" : "Dividende neplătite (cont 457)"}
+              <span className="text-[8px] ml-1 opacity-60">→</span>
+            </p>
+          </SubAccountDialog>
           <div className="space-y-3">
             {showFilato && data.filatoDividende > 0 && (
               <DividendRow
@@ -196,6 +204,28 @@ export function DividendExplainer() {
           </div>
         </div>
       )}
+
+      {/* Related accounts */}
+      <div className="flex gap-3 mt-3 mb-1">
+        <SubAccountDialog
+          parentCont="462"
+          parentName={lang === "en" ? "Creditors (loans)" : "Creditori (imprumuturi)"}
+          side="C"
+        >
+          <span className="text-[9px] text-primary/60 hover:text-primary cursor-pointer transition-colors">
+            {lang === "en" ? "Loan contracts (462)" : "Contracte imprumut (462)"} →
+          </span>
+        </SubAccountDialog>
+        <SubAccountDialog
+          parentCont="456"
+          parentName={lang === "en" ? "Capital settlements" : "Decontari capital"}
+          side="D"
+        >
+          <span className="text-[9px] text-primary/60 hover:text-primary cursor-pointer transition-colors">
+            {lang === "en" ? "Capital settlements (456)" : "Decontari capital (456)"} →
+          </span>
+        </SubAccountDialog>
+      </div>
 
       {/* Legal references */}
       <div className="mt-4 pt-3 border-t border-border/50 space-y-1">
