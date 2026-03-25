@@ -57,11 +57,13 @@ export function calcStockValue(rows: NormalizedBalantaRow[]): number {
  * Cash = sum of (5121 + 5124 + 5311) sold_final_d.
  */
 export function calcCashPosition(rows: NormalizedBalantaRow[]): number {
-  const cashAccounts = ["5121", "5124", "5311"];
+  const cashPrefixes = ["5121", "5124", "5311"];
   return rows
     .filter(
       (r) =>
-        cashAccounts.includes(r.cont) && !r.isClassTotal && !r.isGrandTotal
+        cashPrefixes.some((p) => r.cont.startsWith(p)) &&
+        !r.isClassTotal &&
+        !r.isGrandTotal
     )
     .reduce((sum, r) => sum + r.soldFinalD, 0);
 }
@@ -89,37 +91,88 @@ export function calcCompanyKPIs(rows: NormalizedBalantaRow[]): {
 
 /**
  * Calculate full KPISet for combined view from both companies' data.
+ * Optionally accepts prior year rows to compute changePercent.
  */
 export function calcKPISet(
   ifpRows: NormalizedBalantaRow[],
-  filatoRows: NormalizedBalantaRow[]
+  filatoRows: NormalizedBalantaRow[],
+  priorIfpRows?: NormalizedBalantaRow[],
+  priorFilatoRows?: NormalizedBalantaRow[]
 ): KPISet {
   const ifp = calcCompanyKPIs(ifpRows);
   const filato = calcCompanyKPIs(filatoRows);
 
+  const priorIfp =
+    priorIfpRows && priorIfpRows.length > 0
+      ? calcCompanyKPIs(priorIfpRows)
+      : null;
+  const priorFilato =
+    priorFilatoRows && priorFilatoRows.length > 0
+      ? calcCompanyKPIs(priorFilatoRows)
+      : null;
+
+  type KpiFields = keyof ReturnType<typeof calcCompanyKPIs>;
+
+  function computeChange(
+    current: number,
+    prior: number | null
+  ): number | null {
+    if (prior === null || prior === 0) return null;
+    return ((current - prior) / Math.abs(prior)) * 100;
+  }
+
   function makeKPIValue(
     ifpVal: number,
     filatoVal: number,
+    kpiField: KpiFields,
     isPercentage = false
   ): KPIValue {
     const amount = isPercentage
       ? calcMargin(ifp.revenue + filato.revenue, ifp.profit + filato.profit)
       : ifpVal + filatoVal;
 
+    let priorAmount: number | null = null;
+    if (priorIfp && priorFilato) {
+      priorAmount = isPercentage
+        ? calcMargin(
+            priorIfp.revenue + priorFilato.revenue,
+            priorIfp.profit + priorFilato.profit
+          )
+        : priorIfp[kpiField] + priorFilato[kpiField];
+    }
+
     return {
       amount,
       perCompany: { ifp: ifpVal, filato: filatoVal },
-      changePercent: null, // No comparison data available yet
+      changePercent: computeChange(amount, priorAmount),
+      perCompanyChange: {
+        ifp: computeChange(
+          ifpVal,
+          priorIfp ? (isPercentage ? priorIfp.margin : priorIfp[kpiField]) : null
+        ),
+        filato: computeChange(
+          filatoVal,
+          priorFilato
+            ? isPercentage
+              ? priorFilato.margin
+              : priorFilato[kpiField]
+            : null
+        ),
+      },
     };
   }
 
   return {
-    revenue: makeKPIValue(ifp.revenue, filato.revenue),
-    expenses: makeKPIValue(ifp.expenses, filato.expenses),
-    profit: makeKPIValue(ifp.profit, filato.profit),
-    margin: makeKPIValue(ifp.margin, filato.margin, true),
-    stockValue: makeKPIValue(ifp.stockValue, filato.stockValue),
-    cashPosition: makeKPIValue(ifp.cashPosition, filato.cashPosition),
+    revenue: makeKPIValue(ifp.revenue, filato.revenue, "revenue"),
+    expenses: makeKPIValue(ifp.expenses, filato.expenses, "expenses"),
+    profit: makeKPIValue(ifp.profit, filato.profit, "profit"),
+    margin: makeKPIValue(ifp.margin, filato.margin, "margin", true),
+    stockValue: makeKPIValue(ifp.stockValue, filato.stockValue, "stockValue"),
+    cashPosition: makeKPIValue(
+      ifp.cashPosition,
+      filato.cashPosition,
+      "cashPosition"
+    ),
   };
 }
 

@@ -7,6 +7,15 @@ import { useCompanyStore } from "@/stores/company-store";
 import { useDataStore } from "@/stores/data-store";
 import { COMPANY_VIEW_COLORS } from "@/types/company";
 import type { KPIKey, KPIValue, RAGStatus } from "@/types/kpi";
+
+const POSITIVE_IS_GOOD: Record<KPIKey, boolean> = {
+  revenue: true,
+  profit: true,
+  margin: true,
+  cashPosition: true,
+  stockValue: true,
+  expenses: false,
+};
 import type { NormalizedBalantaRow } from "@/types/balanta";
 import { useTranslation } from "react-i18next";
 import { formatPercent, getLocaleCode } from "@/lib/utils/format";
@@ -107,6 +116,35 @@ export function KPICard({ kpiKey, value, isPercentage }: KPICardProps) {
               <Money amount={displayAmount} />
             )}
           </div>
+
+          {/* Year-over-year change badge */}
+          {(() => {
+            const change =
+              activeView === "combined"
+                ? value.changePercent
+                : value.perCompanyChange[
+                    activeView === "ifp" ? "ifp" : "filato"
+                  ];
+            return (
+              change !== null && (
+                <div
+                  className="mt-1.5 text-[11px] font-medium"
+                  style={{
+                    color:
+                      (change >= 0) === POSITIVE_IS_GOOD[kpiKey]
+                        ? "#10b981"
+                        : "#ef4444",
+                  }}
+                >
+                  {change >= 0 ? "▲" : "▼"}{" "}
+                  {Math.abs(change).toFixed(1)}%
+                  <span className="text-muted-foreground font-normal ml-1">
+                    vs 2024
+                  </span>
+                </div>
+              )
+            );
+          })()}
 
           {/* Hover summary */}
           <AnimatePresence>

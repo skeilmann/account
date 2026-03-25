@@ -51,6 +51,7 @@ export default function DashboardPage() {
             <CurrencyToggle />
             <span className="text-xs text-muted-foreground bg-secondary/50 px-3 py-1.5 rounded-md">
               {t("period.full_year", { year: "2025" })}
+              <span className="text-muted-foreground/60 ml-1">vs 2024</span>
             </span>
           </div>
         </div>

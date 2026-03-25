@@ -12,9 +12,11 @@ import type {
 } from "@/types/balanta-detaliata";
 import preloadedData from "@/data/preloaded.json";
 import preloadedDetaliata from "@/data/preloaded-detaliata.json";
+import preloaded2024 from "@/data/preloaded-2024.json";
 
 interface DataState {
   balanta: Record<CompanyId, ParsedBalanta | null>;
+  priorBalanta: Record<CompanyId, ParsedBalanta | null>;
   balantaDetaliata: Record<CompanyId, ParsedBalantaDetaliata | null>;
   stock: Record<CompanyId, ParsedStock | null>;
   kpiSet: KPISet | null;
@@ -34,6 +36,7 @@ interface DataState {
 
 function recompute(state: {
   balanta: Record<CompanyId, ParsedBalanta | null>;
+  priorBalanta: Record<CompanyId, ParsedBalanta | null>;
 }): { kpiSet: KPISet | null; expenseGroups: ExpenseGroupValue[] } {
   const ifpRows = (state.balanta.ifp?.rows ?? []) as NormalizedBalantaRow[];
   const filatoRows = (state.balanta.filato?.rows ??
@@ -43,7 +46,17 @@ function recompute(state: {
     return { kpiSet: null, expenseGroups: [] };
   }
 
-  const kpiSet = calcKPISet(ifpRows, filatoRows);
+  const priorIfpRows = (state.priorBalanta.ifp?.rows ??
+    []) as NormalizedBalantaRow[];
+  const priorFilatoRows = (state.priorBalanta.filato?.rows ??
+    []) as NormalizedBalantaRow[];
+
+  const kpiSet = calcKPISet(
+    ifpRows,
+    filatoRows,
+    priorIfpRows.length > 0 ? priorIfpRows : undefined,
+    priorFilatoRows.length > 0 ? priorFilatoRows : undefined
+  );
   const expenseGroups = calcCombinedExpenseGroups(
     ifpRows,
     filatoRows,
@@ -59,11 +72,18 @@ const initialBalanta = {
   ifp: preloadedData.balanta.ifp as unknown as ParsedBalanta,
   filato: preloadedData.balanta.filato as unknown as ParsedBalanta,
 };
+const initialPriorBalanta = {
+  ifp: preloaded2024.balanta.ifp as unknown as ParsedBalanta,
+  filato: preloaded2024.balanta.filato as unknown as ParsedBalanta,
+};
 const initialStock = {
   ifp: preloadedData.stock.ifp as unknown as ParsedStock,
   filato: preloadedData.stock.filato as unknown as ParsedStock,
 };
-const initialComputed = recompute({ balanta: initialBalanta });
+const initialComputed = recompute({
+  balanta: initialBalanta,
+  priorBalanta: initialPriorBalanta,
+});
 const initialDetaliata = {
   ifp: preloadedDetaliata.ifp as unknown as ParsedBalantaDetaliata,
   filato: preloadedDetaliata.filato as unknown as ParsedBalantaDetaliata | null,
@@ -71,6 +91,7 @@ const initialDetaliata = {
 
 export const useDataStore = create<DataState>((set, get) => ({
   balanta: initialBalanta,
+  priorBalanta: initialPriorBalanta,
   balantaDetaliata: initialDetaliata,
   stock: initialStock,
   kpiSet: initialComputed.kpiSet,
@@ -78,7 +99,10 @@ export const useDataStore = create<DataState>((set, get) => ({
 
   setBalanta: (companyId, data) => {
     const newBalanta = { ...get().balanta, [companyId]: data };
-    const computed = recompute({ balanta: newBalanta });
+    const computed = recompute({
+      balanta: newBalanta,
+      priorBalanta: get().priorBalanta,
+    });
     set({ balanta: newBalanta, ...computed });
   },
 

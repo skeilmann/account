@@ -7,6 +7,8 @@ export interface KPIValue {
   perCompany: Record<CompanyId, number>;
   /** Change vs previous period (null if no comparison data) */
   changePercent: number | null;
+  /** Per-company change vs previous period */
+  perCompanyChange: Record<CompanyId, number | null>;
 }
 
 export interface KPISet {
