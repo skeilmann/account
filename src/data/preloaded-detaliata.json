@@ -8,6 +8,19 @@
       {
         "cont": "214.1",
         "parentCont": "214",
+        "denumire": "SMARTPHONE Z FOLD4 512GB",
+        "sumePrecedenteD": 7174.03,
+        "sumePrecedenteC": 0,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 7174.03,
+        "sumeTotaleC": 0,
+        "soldFinalD": 7174.03,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "214.2",
+        "parentCont": "214",
         "denumire": "LAPTOP SURFACE PRO 9",
         "sumePrecedenteD": 8938.29,
         "sumePrecedenteC": 0,
@@ -19,7 +32,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "214.2",
+        "cont": "214.3",
         "parentCont": "214",
         "denumire": "RAFTURI METALICE",
         "sumePrecedenteD": 37325.25,
@@ -32,7 +45,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "214.3",
+        "cont": "214.4",
         "parentCont": "214",
         "denumire": "RAFTURI METALICE",
         "sumePrecedenteD": 3483.69,
@@ -45,7 +58,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "214.4",
+        "cont": "214.5",
         "parentCont": "214",
         "denumire": "SMARTPHONE FOLD 7 512 BLK SAMSUNG",
         "sumePrecedenteD": 9649.32,
@@ -58,7 +71,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "214.5",
+        "cont": "214.6",
         "parentCont": "214",
         "denumire": "TEL. SAMSUNG S25",
         "sumePrecedenteD": 2639.67,
@@ -71,20 +84,20 @@
         "soldFinalC": 0
       },
       {
-        "cont": "214.6",
-        "parentCont": "214",
-        "denumire": "AMORT. INSTALATIILOR, MIJ. DE TRANSPORT",
+        "cont": "2813.1",
+        "parentCont": "2813",
+        "denumire": "AMORTIZARE VOLVO",
         "sumePrecedenteD": 56389.96,
-        "sumePrecedenteC": 58002.51,
+        "sumePrecedenteC": 56389.96,
         "rulajePerioadaD": 0,
-        "rulajePerioadaC": 322.51,
+        "rulajePerioadaC": 0,
         "sumeTotaleD": 56389.96,
-        "sumeTotaleC": 58325.02,
+        "sumeTotaleC": 56389.96,
         "soldFinalD": 0,
-        "soldFinalC": 1935.06
+        "soldFinalC": 0
       },
       {
-        "cont": "2813.1",
+        "cont": "2813.2",
         "parentCont": "2813",
         "denumire": "AMORTIZ. ECHIP.TEHNOLOGICE",
         "sumePrecedenteD": 0,
@@ -97,20 +110,20 @@
         "soldFinalC": 1935.06
       },
       {
-        "cont": "2813.2",
-        "parentCont": "2813",
-        "denumire": "AMORT. ALTOR IMOBILIZARI CORPORALE",
+        "cont": "2814.1",
+        "parentCont": "2814",
+        "denumire": "AMORTIZARE SMARTPHONE",
         "sumePrecedenteD": 0,
-        "sumePrecedenteC": 17213.62,
+        "sumePrecedenteC": 4782.72,
         "rulajePerioadaD": 0,
-        "rulajePerioadaC": 1849.17,
+        "rulajePerioadaC": 199.28,
         "sumeTotaleD": 0,
-        "sumeTotaleC": 19062.79,
+        "sumeTotaleC": 4982,
         "soldFinalD": 0,
-        "soldFinalC": 19062.79
+        "soldFinalC": 4982
       },
       {
-        "cont": "2814.1",
+        "cont": "2814.2",
         "parentCont": "2814",
         "denumire": "AMORTIZARE LAPTOP",
         "sumePrecedenteD": 0,
@@ -123,7 +136,7 @@
         "soldFinalC": 6207.25
       },
       {
-        "cont": "2814.2",
+        "cont": "2814.3",
         "parentCont": "2814",
         "denumire": "AMORTIZ. RAFTURI METALICE",
         "sumePrecedenteD": 0,
@@ -136,7 +149,7 @@
         "soldFinalC": 6220.86
       },
       {
-        "cont": "2814.3",
+        "cont": "2814.4",
         "parentCont": "2814",
         "denumire": "AMORTIZ. RAFTURI METALICE",
         "sumePrecedenteD": 0,
@@ -149,7 +162,7 @@
         "soldFinalC": 580.56
       },
       {
-        "cont": "2814.4",
+        "cont": "2814.5",
         "parentCont": "2814",
         "denumire": "AMORTIZ. TEL.SAMSUNG",
         "sumePrecedenteD": 0,
@@ -162,7 +175,46 @@
         "soldFinalC": 1072.12
       },
       {
+        "cont": "303.1",
+        "parentCont": "303",
+        "denumire": "COSURI PT FIRE",
+        "sumePrecedenteD": 1119.76,
+        "sumePrecedenteC": 1119.76,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 1119.76,
+        "sumeTotaleC": 1119.76,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "303.2",
+        "parentCont": "303",
+        "denumire": "CARUCIOARE PT. COSURI",
+        "sumePrecedenteD": 373.25,
+        "sumePrecedenteC": 373.25,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 373.25,
+        "sumeTotaleC": 373.25,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
         "cont": "401.00001",
+        "parentCont": "401",
+        "denumire": "CAZACU A. GHEORGHE PERSOANA FIZICA AUTORIZATA",
+        "sumePrecedenteD": 77125,
+        "sumePrecedenteC": 77125,
+        "rulajePerioadaD": 6050,
+        "rulajePerioadaC": 6050,
+        "sumeTotaleD": 83175,
+        "sumeTotaleC": 83175,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00002",
         "parentCont": "401",
         "denumire": "ELMOREX SRL",
         "sumePrecedenteD": 48732.9,
@@ -175,7 +227,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00002",
+        "cont": "401.00003",
         "parentCont": "401",
         "denumire": "2M SERVICES",
         "sumePrecedenteD": 24870.5,
@@ -188,7 +240,7 @@
         "soldFinalC": 24870.5
       },
       {
-        "cont": "401.00003",
+        "cont": "401.00004",
         "parentCont": "401",
         "denumire": "FEDEX EXPRESS ROMANIA TRANSPORTATION S.R.L.",
         "sumePrecedenteD": 16581.03,
@@ -201,7 +253,7 @@
         "soldFinalC": 128.8
       },
       {
-        "cont": "401.00004",
+        "cont": "401.00005",
         "parentCont": "401",
         "denumire": "LOGITRANS SRL",
         "sumePrecedenteD": 70190.15,
@@ -214,7 +266,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00005",
+        "cont": "401.00006",
         "parentCont": "401",
         "denumire": "ECO SECURITY S.R.L.",
         "sumePrecedenteD": 1857,
@@ -227,7 +279,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00006",
+        "cont": "401.00007",
         "parentCont": "401",
         "denumire": "ROSANU TANIUSA - AUDITOR FINANCIAR",
         "sumePrecedenteD": 24350,
@@ -240,7 +292,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00007",
+        "cont": "401.00008",
         "parentCont": "401",
         "denumire": "LEUSPEDITION S.R.L.",
         "sumePrecedenteD": 26004.92,
@@ -253,7 +305,7 @@
         "soldFinalC": 6620.69
       },
       {
-        "cont": "401.00008",
+        "cont": "401.00009",
         "parentCont": "401",
         "denumire": "DYNAMIC PARCEL DISTRIBUTION SA",
         "sumePrecedenteD": 43857.48,
@@ -266,7 +318,7 @@
         "soldFinalC": 2372.33
       },
       {
-        "cont": "401.00009",
+        "cont": "401.00010",
         "parentCont": "401",
         "denumire": "WIZZ  AIR MALTA",
         "sumePrecedenteD": 3298.9,
@@ -279,7 +331,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00010",
+        "cont": "401.00011",
         "parentCont": "401",
         "denumire": "PRECIOUS YARN S.R.L.",
         "sumePrecedenteD": 112039,
@@ -294,6 +346,19 @@
       {
         "cont": "401.00012",
         "parentCont": "401",
+        "denumire": "DC FOLIE SRL",
+        "sumePrecedenteD": 559.8,
+        "sumePrecedenteC": 559.8,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 559.8,
+        "sumeTotaleC": 559.8,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00013",
+        "parentCont": "401",
         "denumire": "VODAFONE ROMANIA SA",
         "sumePrecedenteD": 1137.56,
         "sumePrecedenteC": 1256.55,
@@ -305,7 +370,7 @@
         "soldFinalC": 121.16
       },
       {
-        "cont": "401.00013",
+        "cont": "401.00014",
         "parentCont": "401",
         "denumire": "VEGA CARBURANTI",
         "sumePrecedenteD": 6246.85,
@@ -318,7 +383,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00014",
+        "cont": "401.00015",
         "parentCont": "401",
         "denumire": "IN CO SPA",
         "sumePrecedenteD": 71871.3,
@@ -331,7 +396,7 @@
         "soldFinalC": -3285.81
       },
       {
-        "cont": "401.00015",
+        "cont": "401.00016",
         "parentCont": "401",
         "denumire": "ALBANO MARKETING",
         "sumePrecedenteD": 42296.85,
@@ -344,7 +409,46 @@
         "soldFinalC": 0
       },
       {
+        "cont": "401.00018",
+        "parentCont": "401",
+        "denumire": "AZ HOLDING",
+        "sumePrecedenteD": 522.56,
+        "sumePrecedenteC": 522.56,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 522.56,
+        "sumeTotaleC": 522.56,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00019",
+        "parentCont": "401",
+        "denumire": "KLASS-WAGEN SRL",
+        "sumePrecedenteD": 904.57,
+        "sumePrecedenteC": 904.57,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 904.57,
+        "sumeTotaleC": 904.57,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
         "cont": "401.00020",
+        "parentCont": "401",
+        "denumire": "DEDEMAN SRL",
+        "sumePrecedenteD": 689.14,
+        "sumePrecedenteC": 689.14,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 689.14,
+        "sumeTotaleC": 689.14,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00021",
         "parentCont": "401",
         "denumire": "ZORDAN ALESSANDRO",
         "sumePrecedenteD": 3742.48,
@@ -357,7 +461,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00021",
+        "cont": "401.00022",
         "parentCont": "401",
         "denumire": "HIRCUS FILATI DI FREDERICO SCATIZZI",
         "sumePrecedenteD": 80696.4,
@@ -370,7 +474,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00022",
+        "cont": "401.00023",
         "parentCont": "401",
         "denumire": "OROFIL DI BARLOCCO VALTER",
         "sumePrecedenteD": 10700.98,
@@ -383,7 +487,33 @@
         "soldFinalC": 0
       },
       {
+        "cont": "401.00024",
+        "parentCont": "401",
+        "denumire": "INTELLIGENT IT SRL",
+        "sumePrecedenteD": 921.63,
+        "sumePrecedenteC": 921.63,
+        "rulajePerioadaD": 1630.16,
+        "rulajePerioadaC": 1630.16,
+        "sumeTotaleD": 2551.79,
+        "sumeTotaleC": 2551.79,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
         "cont": "401.00025",
+        "parentCont": "401",
+        "denumire": "MOL ROMANIA PETROLEUM PRODUCTS SRL",
+        "sumePrecedenteD": 227.62,
+        "sumePrecedenteC": 227.62,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 227.62,
+        "sumeTotaleC": 227.62,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00026",
         "parentCont": "401",
         "denumire": "HADAMS",
         "sumePrecedenteD": 17521.28,
@@ -396,7 +526,33 @@
         "soldFinalC": 0
       },
       {
+        "cont": "401.00027",
+        "parentCont": "401",
+        "denumire": "ARUBA IT",
+        "sumePrecedenteD": 347.81,
+        "sumePrecedenteC": 347.81,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 347.81,
+        "sumeTotaleC": 347.81,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
         "cont": "401.00028",
+        "parentCont": "401",
+        "denumire": "EDENRED ROMANIA SRL",
+        "sumePrecedenteD": 5804.16,
+        "sumePrecedenteC": 5804.16,
+        "rulajePerioadaD": 1092.35,
+        "rulajePerioadaC": 1092.35,
+        "sumeTotaleD": 6896.51,
+        "sumeTotaleC": 6896.51,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00029",
         "parentCont": "401",
         "denumire": "AMURO RENT S.R.L.",
         "sumePrecedenteD": 1008,
@@ -409,7 +565,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00029",
+        "cont": "401.00030",
         "parentCont": "401",
         "denumire": "SALGARI",
         "sumePrecedenteD": 18451.72,
@@ -422,7 +578,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00030",
+        "cont": "401.00031",
         "parentCont": "401",
         "denumire": "VIOCARS RENTAL SRL",
         "sumePrecedenteD": 1594.74,
@@ -435,7 +591,46 @@
         "soldFinalC": 0
       },
       {
+        "cont": "401.00032",
+        "parentCont": "401",
+        "denumire": "VP OIL SELF",
+        "sumePrecedenteD": 494.49,
+        "sumePrecedenteC": 494.49,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 494.49,
+        "sumeTotaleC": 494.49,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00033",
+        "parentCont": "401",
+        "denumire": "MICROSOFT",
+        "sumePrecedenteD": 492.67,
+        "sumePrecedenteC": 492.67,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 492.67,
+        "sumeTotaleC": 492.67,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
         "cont": "401.00034",
+        "parentCont": "401",
+        "denumire": "TRANS OIL MOTORS SRL",
+        "sumePrecedenteD": 169.71,
+        "sumePrecedenteC": 169.71,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 169.71,
+        "sumeTotaleC": 169.71,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00035",
         "parentCont": "401",
         "denumire": "GOMME LOW COST SHOP",
         "sumePrecedenteD": 1990.96,
@@ -448,7 +643,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00035",
+        "cont": "401.00036",
         "parentCont": "401",
         "denumire": "PARAPINI MAURIZIO",
         "sumePrecedenteD": 3070.43,
@@ -461,7 +656,46 @@
         "soldFinalC": 0
       },
       {
+        "cont": "401.00037",
+        "parentCont": "401",
+        "denumire": "STAZIONE ENI REGGIO NELL E IT",
+        "sumePrecedenteD": 109.5,
+        "sumePrecedenteC": 109.5,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 109.5,
+        "sumeTotaleC": 109.5,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00038",
+        "parentCont": "401",
+        "denumire": "RUBIERA-VIALE",
+        "sumePrecedenteD": 426.07,
+        "sumePrecedenteC": 426.07,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 426.07,
+        "sumeTotaleC": 426.07,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
         "cont": "401.00039",
+        "parentCont": "401",
+        "denumire": "DISTRIBUTORE EGO DITTA",
+        "sumePrecedenteD": 514.12,
+        "sumePrecedenteC": 514.12,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 514.12,
+        "sumeTotaleC": 514.12,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00040",
         "parentCont": "401",
         "denumire": "TOP YARN DI BARLOCCO",
         "sumePrecedenteD": 121221.21,
@@ -474,7 +708,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00040",
+        "cont": "401.00041",
         "parentCont": "401",
         "denumire": "MARA LOGISTICS QUALITY S.R.L.",
         "sumePrecedenteD": 4623.39,
@@ -487,7 +721,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00041",
+        "cont": "401.00042",
         "parentCont": "401",
         "denumire": "FAN COURIER EXPRESS SRL",
         "sumePrecedenteD": 3032.58,
@@ -500,7 +734,33 @@
         "soldFinalC": 0
       },
       {
+        "cont": "401.00043",
+        "parentCont": "401",
+        "denumire": "BORG DESIGN SRL",
+        "sumePrecedenteD": 512.92,
+        "sumePrecedenteC": 512.92,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 512.92,
+        "sumeTotaleC": 512.92,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
         "cont": "401.00044",
+        "parentCont": "401",
+        "denumire": "OCTANO DOWNSTREAM SRL",
+        "sumePrecedenteD": 111.09,
+        "sumePrecedenteC": 111.09,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 111.09,
+        "sumeTotaleC": 111.09,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00045",
         "parentCont": "401",
         "denumire": "ZEGNA BARUFFA",
         "sumePrecedenteD": 199208.48,
@@ -515,6 +775,19 @@
       {
         "cont": "401.00046",
         "parentCont": "401",
+        "denumire": "PARKING SA",
+        "sumePrecedenteD": 350,
+        "sumePrecedenteC": 350,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 350,
+        "sumeTotaleC": 350,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00047",
+        "parentCont": "401",
         "denumire": "MANIFATTURA SESIA",
         "sumePrecedenteD": 98341.5,
         "sumePrecedenteC": 98341.5,
@@ -526,7 +799,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00047",
+        "cont": "401.00048",
         "parentCont": "401",
         "denumire": "MAGIRUS COM S.R.L.",
         "sumePrecedenteD": 83.7,
@@ -539,7 +812,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00048",
+        "cont": "401.00049",
         "parentCont": "401",
         "denumire": "BSG INVEST OIL SRL",
         "sumePrecedenteD": 97.34,
@@ -552,7 +825,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00049",
+        "cont": "401.00050",
         "parentCont": "401",
         "denumire": "MASER STEFANO",
         "sumePrecedenteD": 3329.24,
@@ -565,7 +838,46 @@
         "soldFinalC": 0
       },
       {
+        "cont": "401.00051",
+        "parentCont": "401",
+        "denumire": "MOTORSCLUB",
+        "sumePrecedenteD": 791.04,
+        "sumePrecedenteC": 791.04,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 791.04,
+        "sumeTotaleC": 791.04,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00052",
+        "parentCont": "401",
+        "denumire": "VALI PETROLI",
+        "sumePrecedenteD": 101.55,
+        "sumePrecedenteC": 101.55,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 101.55,
+        "sumeTotaleC": 101.55,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
         "cont": "401.00053",
+        "parentCont": "401",
+        "denumire": "STAZIONE DI SERVIZIO",
+        "sumePrecedenteD": 508.1,
+        "sumePrecedenteC": 508.1,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 508.1,
+        "sumeTotaleC": 508.1,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00054",
         "parentCont": "401",
         "denumire": "ALTEX ROMANIA SRL",
         "sumePrecedenteD": 3293.99,
@@ -578,7 +890,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00054",
+        "cont": "401.00055",
         "parentCont": "401",
         "denumire": "DML SPA",
         "sumePrecedenteD": 9649.32,
@@ -591,7 +903,85 @@
         "soldFinalC": 0
       },
       {
+        "cont": "401.00056",
+        "parentCont": "401",
+        "denumire": "OMV PETROM MARKETING SRL",
+        "sumePrecedenteD": 142.16,
+        "sumePrecedenteC": 142.16,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 142.16,
+        "sumeTotaleC": 142.16,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00057",
+        "parentCont": "401",
+        "denumire": "REGISTER SPA",
+        "sumePrecedenteD": 279.47,
+        "sumePrecedenteC": 279.47,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 279.47,
+        "sumeTotaleC": 279.47,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00058",
+        "parentCont": "401",
+        "denumire": "ROMPETROL DOWNSTREAM SRL",
+        "sumePrecedenteD": 811.11,
+        "sumePrecedenteC": 811.11,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 811.11,
+        "sumeTotaleC": 811.11,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00059",
+        "parentCont": "401",
+        "denumire": "FRANZ WOLF",
+        "sumePrecedenteD": 563.62,
+        "sumePrecedenteC": 563.62,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 563.62,
+        "sumeTotaleC": 563.62,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00060",
+        "parentCont": "401",
+        "denumire": "ARAL CENTER",
+        "sumePrecedenteD": 960.96,
+        "sumePrecedenteC": 960.96,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 960.96,
+        "sumeTotaleC": 960.96,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
         "cont": "401.00061",
+        "parentCont": "401",
+        "denumire": "ZUGEL SOHN OHG",
+        "sumePrecedenteD": 352.75,
+        "sumePrecedenteC": 352.75,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 352.75,
+        "sumeTotaleC": 352.75,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00062",
         "parentCont": "401",
         "denumire": "CYBERNET AUTOCENTER SRL",
         "sumePrecedenteD": 2561.35,
@@ -606,6 +996,19 @@
       {
         "cont": "401.00063",
         "parentCont": "401",
+        "denumire": "HOSTINGER",
+        "sumePrecedenteD": 959.91,
+        "sumePrecedenteC": 959.91,
+        "rulajePerioadaD": 71.21,
+        "rulajePerioadaC": 71.21,
+        "sumeTotaleD": 1031.12,
+        "sumeTotaleC": 1031.12,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00064",
+        "parentCont": "401",
         "denumire": "NITA G. ELENA-LAURA - BIROU INDIVIDUAL NOTARIAL",
         "sumePrecedenteD": 60.5,
         "sumePrecedenteC": 60.5,
@@ -619,6 +1022,19 @@
       {
         "cont": "401.00065",
         "parentCont": "401",
+        "denumire": "PETROL BS CATEZ",
+        "sumePrecedenteD": 418.8,
+        "sumePrecedenteC": 418.8,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 418.8,
+        "sumeTotaleC": 418.8,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00066",
+        "parentCont": "401",
         "denumire": "SC.WOOL MERINOS SRL",
         "sumePrecedenteD": 38120.32,
         "sumePrecedenteC": 38120.32,
@@ -630,7 +1046,33 @@
         "soldFinalC": 0
       },
       {
+        "cont": "401.00067",
+        "parentCont": "401",
+        "denumire": "SC ROMOLD COMISIONAR SRL",
+        "sumePrecedenteD": 300,
+        "sumePrecedenteC": 300,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 300,
+        "sumeTotaleC": 300,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
         "cont": "401.00068",
+        "parentCont": "401",
+        "denumire": "SC SERVICII GENERALE SRL",
+        "sumePrecedenteD": 550,
+        "sumePrecedenteC": 550,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 550,
+        "sumeTotaleC": 550,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00069",
         "parentCont": "401",
         "denumire": "PASTICCERIA MATEO",
         "sumePrecedenteD": 1804.11,
@@ -643,7 +1085,7 @@
         "soldFinalC": 180.41
       },
       {
-        "cont": "401.00069",
+        "cont": "401.00070",
         "parentCont": "401",
         "denumire": "MORIAN SRL",
         "sumePrecedenteD": 126665.21,
@@ -656,7 +1098,59 @@
         "soldFinalC": 0
       },
       {
+        "cont": "401.00071",
+        "parentCont": "401",
+        "denumire": "LUKOIL ROMANIA SRL",
+        "sumePrecedenteD": 118.22,
+        "sumePrecedenteC": 118.22,
+        "rulajePerioadaD": 149.22,
+        "rulajePerioadaC": 149.22,
+        "sumeTotaleD": 267.44,
+        "sumeTotaleC": 267.44,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00072",
+        "parentCont": "401",
+        "denumire": "COOPARK",
+        "sumePrecedenteD": 137.09,
+        "sumePrecedenteC": 137.09,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 137.09,
+        "sumeTotaleC": 137.09,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "401.00073",
+        "parentCont": "401",
+        "denumire": "UMSA",
+        "sumePrecedenteD": 127.03,
+        "sumePrecedenteC": 127.03,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 127.03,
+        "sumeTotaleC": 127.03,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
         "cont": "401.00074",
+        "parentCont": "401",
+        "denumire": "LEULOGISTIC SRL",
+        "sumePrecedenteD": 300,
+        "sumePrecedenteC": 0,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 300,
+        "sumeTotaleC": 0,
+        "soldFinalD": 0,
+        "soldFinalC": -300
+      },
+      {
+        "cont": "401.00075",
         "parentCont": "401",
         "denumire": "MAGLIERIA GZ",
         "sumePrecedenteD": 27460.24,
@@ -669,7 +1163,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00075",
+        "cont": "401.00076",
         "parentCont": "401",
         "denumire": "MUSETTI",
         "sumePrecedenteD": 14825.63,
@@ -682,7 +1176,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00076",
+        "cont": "401.00077",
         "parentCont": "401",
         "denumire": "BALLINTEX WOOL SRL",
         "sumePrecedenteD": 0,
@@ -695,7 +1189,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00077",
+        "cont": "401.00079",
         "parentCont": "401",
         "denumire": "KNITALY",
         "sumePrecedenteD": 0,
@@ -708,7 +1202,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00079",
+        "cont": "401.00080",
         "parentCont": "401",
         "denumire": "EVERGREEN F.G",
         "sumePrecedenteD": 0,
@@ -721,7 +1215,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "401.00080",
+        "cont": "401.00081",
         "parentCont": "401",
         "denumire": "INDUSTRIA FILATI BUZAU SRL",
         "sumePrecedenteD": 0,
@@ -734,20 +1228,20 @@
         "soldFinalC": -83730.71
       },
       {
-        "cont": "401.00081",
-        "parentCont": "401",
-        "denumire": "ELMOREX GARANTIE CHIRIE",
-        "sumePrecedenteD": 2926.94,
-        "sumePrecedenteC": 0,
+        "cont": "4111.00001",
+        "parentCont": "4111",
+        "denumire": "RYBACOVA ELENA",
+        "sumePrecedenteD": 335746.3,
+        "sumePrecedenteC": 247415.92,
         "rulajePerioadaD": 0,
-        "rulajePerioadaC": 0,
-        "sumeTotaleD": 2926.94,
-        "sumeTotaleC": 0,
-        "soldFinalD": 2926.94,
+        "rulajePerioadaC": 20839.89,
+        "sumeTotaleD": 335746.3,
+        "sumeTotaleC": 268255.81,
+        "soldFinalD": 67490.49,
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00001",
+        "cont": "4111.00002",
         "parentCont": "4111",
         "denumire": "CRAZY CORTINA DI MARCO DE BONI",
         "sumePrecedenteD": 64016.03,
@@ -760,7 +1254,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00002",
+        "cont": "4111.00003",
         "parentCont": "4111",
         "denumire": "MAGLIERIA GALVAN",
         "sumePrecedenteD": 23658.38,
@@ -773,7 +1267,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00003",
+        "cont": "4111.00004",
         "parentCont": "4111",
         "denumire": "IRMA BAGDONAVICIENE",
         "sumePrecedenteD": 111258.26,
@@ -786,7 +1280,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00004",
+        "cont": "4111.00005",
         "parentCont": "4111",
         "denumire": "CONFEZIONI DEBORA DICARRARO",
         "sumePrecedenteD": 2374.98,
@@ -799,7 +1293,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00005",
+        "cont": "4111.00006",
         "parentCont": "4111",
         "denumire": "IEVA BROKANE KUZMANE",
         "sumePrecedenteD": 3250.17,
@@ -812,7 +1306,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00006",
+        "cont": "4111.00007",
         "parentCont": "4111",
         "denumire": "LANA FAMILY STYLE S.R.L.",
         "sumePrecedenteD": 7480.62,
@@ -825,7 +1319,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00007",
+        "cont": "4111.00008",
         "parentCont": "4111",
         "denumire": "ALENA LESHYK",
         "sumePrecedenteD": 127609.17,
@@ -840,6 +1334,19 @@
       {
         "cont": "4111.00009",
         "parentCont": "4111",
+        "denumire": "ELLOIZA SCHMITZ",
+        "sumePrecedenteD": 1570.98,
+        "sumePrecedenteC": 1570.98,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 1570.98,
+        "sumeTotaleC": 1570.98,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "4111.00010",
+        "parentCont": "4111",
         "denumire": "KONSTANTIN SOROKIN",
         "sumePrecedenteD": 4031.05,
         "sumePrecedenteC": 4031.05,
@@ -851,7 +1358,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00010",
+        "cont": "4111.00011",
         "parentCont": "4111",
         "denumire": "BG7DAY",
         "sumePrecedenteD": 20391.85,
@@ -864,7 +1371,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00011",
+        "cont": "4111.00012",
         "parentCont": "4111",
         "denumire": "UAB AIDAS IR KO",
         "sumePrecedenteD": 22257.82,
@@ -877,7 +1384,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00012",
+        "cont": "4111.00013",
         "parentCont": "4111",
         "denumire": "MARINA PHILIPPOVA",
         "sumePrecedenteD": 2964.74,
@@ -890,7 +1397,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00013",
+        "cont": "4111.00014",
         "parentCont": "4111",
         "denumire": "MARCOPOLO",
         "sumePrecedenteD": 34664.9,
@@ -903,7 +1410,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00014",
+        "cont": "4111.00015",
         "parentCont": "4111",
         "denumire": "LLC GD CASHMERE",
         "sumePrecedenteD": 282041.87,
@@ -916,7 +1423,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00015",
+        "cont": "4111.00016",
         "parentCont": "4111",
         "denumire": "GOODKNIT",
         "sumePrecedenteD": 231345.92,
@@ -929,7 +1436,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00016",
+        "cont": "4111.00017",
         "parentCont": "4111",
         "denumire": "LAZUTCHYK IRYNA",
         "sumePrecedenteD": 31845.2,
@@ -942,7 +1449,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00017",
+        "cont": "4111.00018",
         "parentCont": "4111",
         "denumire": "KIELTAU OLGA",
         "sumePrecedenteD": 1219.08,
@@ -955,7 +1462,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00018",
+        "cont": "4111.00019",
         "parentCont": "4111",
         "denumire": "BERSCHAUER KAROLINA",
         "sumePrecedenteD": 19810.35,
@@ -968,7 +1475,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00019",
+        "cont": "4111.00020",
         "parentCont": "4111",
         "denumire": "MS-UNIVERSAL OY",
         "sumePrecedenteD": 8775.06,
@@ -981,7 +1488,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00020",
+        "cont": "4111.00021",
         "parentCont": "4111",
         "denumire": "KRYUKOVA IRINA",
         "sumePrecedenteD": 5483.39,
@@ -994,7 +1501,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00021",
+        "cont": "4111.00022",
         "parentCont": "4111",
         "denumire": "DERIPASKO SVITLANA",
         "sumePrecedenteD": 45886.78,
@@ -1007,7 +1514,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00022",
+        "cont": "4111.00023",
         "parentCont": "4111",
         "denumire": "BALBONI CARLOTTA",
         "sumePrecedenteD": 102342.92,
@@ -1020,7 +1527,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00023",
+        "cont": "4111.00024",
         "parentCont": "4111",
         "denumire": "SO NATURE SLLC",
         "sumePrecedenteD": 84678.82,
@@ -1033,7 +1540,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00024",
+        "cont": "4111.00025",
         "parentCont": "4111",
         "denumire": "UNGEFUG OLGA",
         "sumePrecedenteD": 4802.87,
@@ -1046,7 +1553,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00025",
+        "cont": "4111.00026",
         "parentCont": "4111",
         "denumire": "LANA PETERS",
         "sumePrecedenteD": 13513.61,
@@ -1059,7 +1566,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00026",
+        "cont": "4111.00027",
         "parentCont": "4111",
         "denumire": "UAB ASTRIDO",
         "sumePrecedenteD": 2854.92,
@@ -1072,7 +1579,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00027",
+        "cont": "4111.00028",
         "parentCont": "4111",
         "denumire": "POPOVA TATIANA",
         "sumePrecedenteD": 111266.73,
@@ -1085,7 +1592,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00028",
+        "cont": "4111.00029",
         "parentCont": "4111",
         "denumire": "TROUNTSOVA IRINA",
         "sumePrecedenteD": 1400.39,
@@ -1098,7 +1605,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00029",
+        "cont": "4111.00030",
         "parentCont": "4111",
         "denumire": "MESHKOV SERGEI",
         "sumePrecedenteD": 2265.31,
@@ -1111,7 +1618,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00030",
+        "cont": "4111.00031",
         "parentCont": "4111",
         "denumire": "RAIMONDA GALIUNIENE",
         "sumePrecedenteD": 14162.6,
@@ -1124,7 +1631,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00031",
+        "cont": "4111.00032",
         "parentCont": "4111",
         "denumire": "JIE LI",
         "sumePrecedenteD": 6667.59,
@@ -1137,7 +1644,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00032",
+        "cont": "4111.00033",
         "parentCont": "4111",
         "denumire": "OPIFICIO MARECHIARO SAS DI DARIO ESPOSITO",
         "sumePrecedenteD": 8641.21,
@@ -1150,7 +1657,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00033",
+        "cont": "4111.00034",
         "parentCont": "4111",
         "denumire": "KHANOVA TETIANA",
         "sumePrecedenteD": 8470.79,
@@ -1163,7 +1670,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00034",
+        "cont": "4111.00035",
         "parentCont": "4111",
         "denumire": "SAVENKO ANNA",
         "sumePrecedenteD": 37683.81,
@@ -1176,7 +1683,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00035",
+        "cont": "4111.00036",
         "parentCont": "4111",
         "denumire": "BD LIJIE",
         "sumePrecedenteD": 36903.57,
@@ -1189,7 +1696,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00036",
+        "cont": "4111.00037",
         "parentCont": "4111",
         "denumire": "AD STUDIO SAS DI ZHU LIHUA",
         "sumePrecedenteD": 16357.31,
@@ -1202,7 +1709,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00037",
+        "cont": "4111.00038",
         "parentCont": "4111",
         "denumire": "JULIA WINTER",
         "sumePrecedenteD": 17295.81,
@@ -1215,7 +1722,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00038",
+        "cont": "4111.00039",
         "parentCont": "4111",
         "denumire": "ADRIANOVA IRINA",
         "sumePrecedenteD": 1618.73,
@@ -1230,6 +1737,19 @@
       {
         "cont": "4111.00040",
         "parentCont": "4111",
+        "denumire": "ANASTASIA DIAS JOAQUIM",
+        "sumePrecedenteD": 18562.89,
+        "sumePrecedenteC": 18562.89,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 18562.89,
+        "sumeTotaleC": 18562.89,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "4111.00041",
+        "parentCont": "4111",
         "denumire": "PEGGY",
         "sumePrecedenteD": 57014.52,
         "sumePrecedenteC": 57014.52,
@@ -1241,7 +1761,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00041",
+        "cont": "4111.00042",
         "parentCont": "4111",
         "denumire": "KOMAROVA ANNA",
         "sumePrecedenteD": 21101.37,
@@ -1254,7 +1774,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00042",
+        "cont": "4111.00043",
         "parentCont": "4111",
         "denumire": "BRUNER OXANA",
         "sumePrecedenteD": 1164.45,
@@ -1267,7 +1787,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00043",
+        "cont": "4111.00044",
         "parentCont": "4111",
         "denumire": "RUDKOVSKAJA OLGA",
         "sumePrecedenteD": 14818.83,
@@ -1280,7 +1800,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00044",
+        "cont": "4111.00045",
         "parentCont": "4111",
         "denumire": "FILIPPOVA ALEXANDRA",
         "sumePrecedenteD": 21251.95,
@@ -1293,7 +1813,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00045",
+        "cont": "4111.00046",
         "parentCont": "4111",
         "denumire": "MERINO MARRONE",
         "sumePrecedenteD": 18107.8,
@@ -1306,7 +1826,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00046",
+        "cont": "4111.00047",
         "parentCont": "4111",
         "denumire": "UAB BE MAZGELIU",
         "sumePrecedenteD": 183172.04,
@@ -1319,7 +1839,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00047",
+        "cont": "4111.00048",
         "parentCont": "4111",
         "denumire": "MAG FATEEVA ELISAVETA",
         "sumePrecedenteD": 13584.92,
@@ -1332,7 +1852,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00048",
+        "cont": "4111.00049",
         "parentCont": "4111",
         "denumire": "UAB TTP ARENA",
         "sumePrecedenteD": 296233.97,
@@ -1345,7 +1865,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00049",
+        "cont": "4111.00050",
         "parentCont": "4111",
         "denumire": "STOIANOV IHOR",
         "sumePrecedenteD": 4418.59,
@@ -1358,7 +1878,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00050",
+        "cont": "4111.00051",
         "parentCont": "4111",
         "denumire": "STRELE OXANA",
         "sumePrecedenteD": 1460.77,
@@ -1371,7 +1891,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00051",
+        "cont": "4111.00052",
         "parentCont": "4111",
         "denumire": "FEDEX EXPRESS ROMANIA TRANSPORTATION S.R.L.",
         "sumePrecedenteD": 1069.08,
@@ -1384,7 +1904,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00052",
+        "cont": "4111.00053",
         "parentCont": "4111",
         "denumire": "MULLER IRINA",
         "sumePrecedenteD": 1384.78,
@@ -1397,7 +1917,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00053",
+        "cont": "4111.00054",
         "parentCont": "4111",
         "denumire": "STYLEMART",
         "sumePrecedenteD": 91501.36,
@@ -1410,7 +1930,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00054",
+        "cont": "4111.00055",
         "parentCont": "4111",
         "denumire": "KUZMANS JURIS",
         "sumePrecedenteD": 5639.73,
@@ -1423,7 +1943,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00055",
+        "cont": "4111.00056",
         "parentCont": "4111",
         "denumire": "HAMSTERSYARNS KSENIIA",
         "sumePrecedenteD": 10544.76,
@@ -1436,7 +1956,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00056",
+        "cont": "4111.00057",
         "parentCont": "4111",
         "denumire": "MAGLIA DESIGN",
         "sumePrecedenteD": 1656.85,
@@ -1449,7 +1969,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00057",
+        "cont": "4111.00058",
         "parentCont": "4111",
         "denumire": "PASHANOV TAMARA",
         "sumePrecedenteD": 24549.23,
@@ -1462,7 +1982,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00058",
+        "cont": "4111.00059",
         "parentCont": "4111",
         "denumire": "SETEPAI",
         "sumePrecedenteD": 30310.91,
@@ -1475,7 +1995,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00059",
+        "cont": "4111.00060",
         "parentCont": "4111",
         "denumire": "WEBER TATIANA",
         "sumePrecedenteD": 2892.68,
@@ -1488,7 +2008,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00060",
+        "cont": "4111.00061",
         "parentCont": "4111",
         "denumire": "LENAS WOLLSHOP",
         "sumePrecedenteD": 47218.8,
@@ -1501,7 +2021,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00061",
+        "cont": "4111.00062",
         "parentCont": "4111",
         "denumire": "SAVENCO TATIANA",
         "sumePrecedenteD": 28446.57,
@@ -1514,7 +2034,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00062",
+        "cont": "4111.00063",
         "parentCont": "4111",
         "denumire": "MAGLIFICIO G.A. EMME",
         "sumePrecedenteD": 3357.33,
@@ -1527,7 +2047,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00063",
+        "cont": "4111.00064",
         "parentCont": "4111",
         "denumire": "CAZACU GHEORGHE",
         "sumePrecedenteD": 1486.85,
@@ -1540,7 +2060,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00064",
+        "cont": "4111.00065",
         "parentCont": "4111",
         "denumire": "BUDEANU BOGDAN",
         "sumePrecedenteD": 177996,
@@ -1553,7 +2073,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00065",
+        "cont": "4111.00066",
         "parentCont": "4111",
         "denumire": "PETRUS IOANA - CARMEN P.F.A.",
         "sumePrecedenteD": 11528.39,
@@ -1566,7 +2086,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00066",
+        "cont": "4111.00067",
         "parentCont": "4111",
         "denumire": "MELNIC GRIGORE",
         "sumePrecedenteD": 4402.13,
@@ -1579,7 +2099,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00067",
+        "cont": "4111.00068",
         "parentCont": "4111",
         "denumire": "REDA PORUTIENE",
         "sumePrecedenteD": 1499.89,
@@ -1592,7 +2112,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00068",
+        "cont": "4111.00069",
         "parentCont": "4111",
         "denumire": "GLOPINA VALERIU",
         "sumePrecedenteD": 0,
@@ -1605,7 +2125,7 @@
         "soldFinalC": 0
       },
       {
-        "cont": "4111.00069",
+        "cont": "4111.00070",
         "parentCont": "4111",
         "denumire": "LAI FABRIZIO",
         "sumePrecedenteD": 0,
@@ -1620,44 +2140,57 @@
       {
         "cont": "446.1",
         "parentCont": "446",
-        "denumire": "ACTIONARI/ASOCIATI - CONTURI CURENTE CASA",
-        "sumePrecedenteD": 0,
-        "sumePrecedenteC": 398534.39,
-        "rulajePerioadaD": 0,
-        "rulajePerioadaC": 0,
-        "sumeTotaleD": 0,
-        "sumeTotaleC": 398534.39,
+        "denumire": "IMPOZIT DIVIDENDE",
+        "sumePrecedenteD": 52305,
+        "sumePrecedenteC": 97207,
+        "rulajePerioadaD": 44902,
+        "rulajePerioadaC": 45262,
+        "sumeTotaleD": 97207,
+        "sumeTotaleC": 142469,
         "soldFinalD": 0,
-        "soldFinalC": 398534.39
+        "soldFinalC": 45262
       },
       {
         "cont": "4551.1",
         "parentCont": "4551",
-        "denumire": "DECONTARI CU ACTIONARI/ASOCIATI PRIVIND CAPITALUL",
-        "sumePrecedenteD": 449214.5,
-        "sumePrecedenteC": 449014.5,
-        "rulajePerioadaD": 452622,
-        "rulajePerioadaC": 452622,
-        "sumeTotaleD": 901836.5,
-        "sumeTotaleC": 901636.5,
-        "soldFinalD": 200,
-        "soldFinalC": 0
+        "denumire": "ASOCIATI CONTURI CURENTE",
+        "sumePrecedenteD": 0,
+        "sumePrecedenteC": 366009,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 0,
+        "sumeTotaleC": 366009,
+        "soldFinalD": 0,
+        "soldFinalC": 366009
       },
       {
         "cont": "456.1",
         "parentCont": "456",
-        "denumire": "DIVIDENDE DE PLATIT",
-        "sumePrecedenteD": 553400,
-        "sumePrecedenteC": 553400,
-        "rulajePerioadaD": 0,
-        "rulajePerioadaC": 0,
-        "sumeTotaleD": 553400,
-        "sumeTotaleC": 553400,
+        "denumire": "DIVIDENDE INTERIMARE",
+        "sumePrecedenteD": 449014.5,
+        "sumePrecedenteC": 449014.5,
+        "rulajePerioadaD": 452622,
+        "rulajePerioadaC": 452622,
+        "sumeTotaleD": 901636.5,
+        "sumeTotaleC": 901636.5,
         "soldFinalD": 0,
         "soldFinalC": 0
       },
       {
         "cont": "462.1",
+        "parentCont": "462",
+        "denumire": "IANNICIELLO FILIPPO",
+        "sumePrecedenteD": 0,
+        "sumePrecedenteC": 23774.5,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 0,
+        "sumeTotaleC": 23774.5,
+        "soldFinalD": 0,
+        "soldFinalC": 23774.5
+      },
+      {
+        "cont": "462.10",
         "parentCont": "462",
         "denumire": "CTR.14 IANNICIELLO FILIPPO",
         "sumePrecedenteD": 0,
@@ -1670,7 +2203,7 @@
         "soldFinalC": 200000
       },
       {
-        "cont": "462.10",
+        "cont": "462.11",
         "parentCont": "462",
         "denumire": "CTR.15 IANNICIELLO FILIPPO",
         "sumePrecedenteD": 0,
@@ -1683,7 +2216,7 @@
         "soldFinalC": 298584
       },
       {
-        "cont": "462.11",
+        "cont": "462.12",
         "parentCont": "462",
         "denumire": "CTR.16 IANNICIELLO FILIPPO",
         "sumePrecedenteD": 0,
@@ -1696,7 +2229,7 @@
         "soldFinalC": 248849.84
       },
       {
-        "cont": "462.12",
+        "cont": "462.13",
         "parentCont": "462",
         "denumire": "CTR.17 IANNICIELLO FILIPPO",
         "sumePrecedenteD": 0,
@@ -1709,33 +2242,33 @@
         "soldFinalC": 540000
       },
       {
-        "cont": "462.13",
-        "parentCont": "462",
-        "denumire": "IMPRUMUT CONTR.18/.2025",
-        "sumePrecedenteD": 3.04,
-        "sumePrecedenteC": 0,
-        "rulajePerioadaD": 150000,
-        "rulajePerioadaC": 0,
-        "sumeTotaleD": 0,
-        "sumeTotaleC": 0,
-        "soldFinalD": 150000,
-        "soldFinalC": 0
-      },
-      {
         "cont": "462.14",
         "parentCont": "462",
-        "denumire": "CONTR.19/.2025",
-        "sumePrecedenteD": 23.12,
-        "sumePrecedenteC": 0,
+        "denumire": "",
+        "sumePrecedenteD": 0,
+        "sumePrecedenteC": 150000,
         "rulajePerioadaD": 0,
         "rulajePerioadaC": 0,
-        "sumeTotaleD": 457929,
-        "sumeTotaleC": 0,
-        "soldFinalD": 457929,
-        "soldFinalC": 0
+        "sumeTotaleD": 0,
+        "sumeTotaleC": 150000,
+        "soldFinalD": 0,
+        "soldFinalC": 150000
       },
       {
         "cont": "462.15",
+        "parentCont": "462",
+        "denumire": "",
+        "sumePrecedenteD": 0,
+        "sumePrecedenteC": 0,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 457929,
+        "sumeTotaleD": 0,
+        "sumeTotaleC": 457929,
+        "soldFinalD": 0,
+        "soldFinalC": 457929
+      },
+      {
+        "cont": "462.2",
         "parentCont": "462",
         "denumire": "CTR.6 IANNICIELLO FOLIPPO",
         "sumePrecedenteD": 0,
@@ -1748,7 +2281,7 @@
         "soldFinalC": 247795
       },
       {
-        "cont": "462.2",
+        "cont": "462.3",
         "parentCont": "462",
         "denumire": "CTR.7 IANNICIELLO FILIPPO",
         "sumePrecedenteD": 0,
@@ -1761,7 +2294,7 @@
         "soldFinalC": 497040
       },
       {
-        "cont": "462.3",
+        "cont": "462.4",
         "parentCont": "462",
         "denumire": "CTR.8 IANNICIELLO FILIPPO",
         "sumePrecedenteD": 0,
@@ -1776,6 +2309,19 @@
       {
         "cont": "462.5",
         "parentCont": "462",
+        "denumire": "CTR.9 IANNICIELLO FILIPPO",
+        "sumePrecedenteD": 0,
+        "sumePrecedenteC": 400000,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 0,
+        "sumeTotaleD": 0,
+        "sumeTotaleC": 400000,
+        "soldFinalD": 0,
+        "soldFinalC": 400000
+      },
+      {
+        "cont": "462.6",
+        "parentCont": "462",
         "denumire": "CTR.11 IANNICIELLO FILIPPO",
         "sumePrecedenteD": 0,
         "sumePrecedenteC": 596640,
@@ -1787,7 +2333,7 @@
         "soldFinalC": 596640
       },
       {
-        "cont": "462.6",
+        "cont": "462.7",
         "parentCont": "462",
         "denumire": "CTR.10IANICIELLO FILIPPO",
         "sumePrecedenteD": 0,
@@ -1800,7 +2346,7 @@
         "soldFinalC": 100000
       },
       {
-        "cont": "462.7",
+        "cont": "462.8",
         "parentCont": "462",
         "denumire": "CTR.12 IANNICIELLO FILIPPO",
         "sumePrecedenteD": 0,
@@ -1813,7 +2359,7 @@
         "soldFinalC": 150000
       },
       {
-        "cont": "462.8",
+        "cont": "462.9",
         "parentCont": "462",
         "denumire": "CTR.13 IANNICIELLO FILIPPO",
         "sumePrecedenteD": 0,
@@ -1826,20 +2372,20 @@
         "soldFinalC": 198760
       },
       {
-        "cont": "462.9",
-        "parentCont": "462",
-        "denumire": "CREANTE REPREZ. DIVIDENDE REPARTIZATE IN CURSUL EXERCITIULUI",
-        "sumePrecedenteD": 965477,
-        "sumePrecedenteC": 516462,
-        "rulajePerioadaD": 452622,
-        "rulajePerioadaC": 0,
-        "sumeTotaleD": 1418099,
-        "sumeTotaleC": 516462,
-        "soldFinalD": 901637,
+        "cont": "471.1",
+        "parentCont": "471",
+        "denumire": "CH.AVANS PRECIOUS",
+        "sumePrecedenteD": 48933,
+        "sumePrecedenteC": 48450.16,
+        "rulajePerioadaD": 0,
+        "rulajePerioadaC": 482.84,
+        "sumeTotaleD": 48933,
+        "sumeTotaleC": 48933,
+        "soldFinalD": 0,
         "soldFinalC": 0
       },
       {
-        "cont": "471.1",
+        "cont": "471.2",
         "parentCont": "471",
         "denumire": "CH.INREGISTRATE IN AVANS",
         "sumePrecedenteD": 3921.68,
@@ -1852,33 +2398,46 @@
         "soldFinalC": 0
       },
       {
-        "cont": "471.2",
-        "parentCont": "471",
-        "denumire": "DECONTARI DIN OPERATIUNI IN CURS DE CLARIFICARE",
-        "sumePrecedenteD": 4338.95,
-        "sumePrecedenteC": 4338.95,
+        "cont": "473.1",
+        "parentCont": "473",
+        "denumire": "ACQUARDO DOLCIUMI VERRONE",
+        "sumePrecedenteD": 1268.7,
+        "sumePrecedenteC": 1268.7,
         "rulajePerioadaD": 0,
         "rulajePerioadaC": 0,
-        "sumeTotaleD": 4338.95,
-        "sumeTotaleC": 4338.95,
+        "sumeTotaleD": 1268.7,
+        "sumeTotaleC": 1268.7,
         "soldFinalD": 0,
         "soldFinalC": 0
       },
       {
         "cont": "5121.1",
         "parentCont": "5121",
-        "denumire": "CONTURI LA BANCA IN VALUTA",
-        "sumePrecedenteD": 2380656.63,
-        "sumePrecedenteC": 1764944.36,
-        "rulajePerioadaD": 576845.89,
-        "rulajePerioadaC": 771399.76,
-        "sumeTotaleD": 2957502.52,
-        "sumeTotaleC": 2536344.12,
-        "soldFinalD": 421158.4,
+        "denumire": "B.TRANSILVANIA",
+        "sumePrecedenteD": 850012.19,
+        "sumePrecedenteC": 666481.81,
+        "rulajePerioadaD": 85070.19,
+        "rulajePerioadaC": 263915.34,
+        "sumeTotaleD": 935082.38,
+        "sumeTotaleC": 930397.15,
+        "soldFinalD": 4685.23,
         "soldFinalC": 0
       },
       {
         "cont": "5124.1",
+        "parentCont": "5124",
+        "denumire": "B.TRANSILVANIA",
+        "sumePrecedenteD": 2376470.4,
+        "sumePrecedenteC": 1760758.13,
+        "rulajePerioadaD": 576845.89,
+        "rulajePerioadaC": 771399.76,
+        "sumeTotaleD": 2953316.29,
+        "sumeTotaleC": 2532157.89,
+        "soldFinalD": 421158.4,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "5124.2",
         "parentCont": "5124",
         "denumire": "CONT BT RO62 PLN",
         "sumePrecedenteD": 4186.23,
@@ -1893,6 +2452,19 @@
       {
         "cont": "542.1",
         "parentCont": "542",
+        "denumire": "AROSCULESEI AURELIAN",
+        "sumePrecedenteD": 7364.79,
+        "sumePrecedenteC": 7364.79,
+        "rulajePerioadaD": 630,
+        "rulajePerioadaC": 630,
+        "sumeTotaleD": 7994.79,
+        "sumeTotaleC": 7994.79,
+        "soldFinalD": 0,
+        "soldFinalC": 0
+      },
+      {
+        "cont": "542.2",
+        "parentCont": "542",
         "denumire": "ANDREEV TATIANA",
         "sumePrecedenteD": 1000,
         "sumePrecedenteC": 1000,
@@ -1902,25 +2474,25 @@
         "sumeTotaleC": 1500,
         "soldFinalD": 0,
         "soldFinalC": 0
-      },
-      {
-        "cont": "542.2",
-        "parentCont": "542",
-        "denumire": "VIRAMENTE INTERNE",
-        "sumePrecedenteD": 4033.13,
-        "sumePrecedenteC": 4033.13,
-        "rulajePerioadaD": 0,
-        "rulajePerioadaC": 0,
-        "sumeTotaleD": 4033.13,
-        "sumeTotaleC": 4033.13,
-        "soldFinalD": 0,
-        "soldFinalC": 0
       }
     ],
     "byParent": {
       "214": [
         {
           "cont": "214.1",
+          "parentCont": "214",
+          "denumire": "SMARTPHONE Z FOLD4 512GB",
+          "sumePrecedenteD": 7174.03,
+          "sumePrecedenteC": 0,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 7174.03,
+          "sumeTotaleC": 0,
+          "soldFinalD": 7174.03,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "214.2",
           "parentCont": "214",
           "denumire": "LAPTOP SURFACE PRO 9",
           "sumePrecedenteD": 8938.29,
@@ -1933,7 +2505,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "214.2",
+          "cont": "214.3",
           "parentCont": "214",
           "denumire": "RAFTURI METALICE",
           "sumePrecedenteD": 37325.25,
@@ -1946,7 +2518,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "214.3",
+          "cont": "214.4",
           "parentCont": "214",
           "denumire": "RAFTURI METALICE",
           "sumePrecedenteD": 3483.69,
@@ -1959,7 +2531,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "214.4",
+          "cont": "214.5",
           "parentCont": "214",
           "denumire": "SMARTPHONE FOLD 7 512 BLK SAMSUNG",
           "sumePrecedenteD": 9649.32,
@@ -1972,7 +2544,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "214.5",
+          "cont": "214.6",
           "parentCont": "214",
           "denumire": "TEL. SAMSUNG S25",
           "sumePrecedenteD": 2639.67,
@@ -1983,24 +2555,52 @@
           "sumeTotaleC": 0,
           "soldFinalD": 2639.67,
           "soldFinalC": 0
+        }
+      ],
+      "303": [
+        {
+          "cont": "303.1",
+          "parentCont": "303",
+          "denumire": "COSURI PT FIRE",
+          "sumePrecedenteD": 1119.76,
+          "sumePrecedenteC": 1119.76,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 1119.76,
+          "sumeTotaleC": 1119.76,
+          "soldFinalD": 0,
+          "soldFinalC": 0
         },
         {
-          "cont": "214.6",
-          "parentCont": "214",
-          "denumire": "AMORT. INSTALATIILOR, MIJ. DE TRANSPORT",
-          "sumePrecedenteD": 56389.96,
-          "sumePrecedenteC": 58002.51,
+          "cont": "303.2",
+          "parentCont": "303",
+          "denumire": "CARUCIOARE PT. COSURI",
+          "sumePrecedenteD": 373.25,
+          "sumePrecedenteC": 373.25,
           "rulajePerioadaD": 0,
-          "rulajePerioadaC": 322.51,
-          "sumeTotaleD": 56389.96,
-          "sumeTotaleC": 58325.02,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 373.25,
+          "sumeTotaleC": 373.25,
           "soldFinalD": 0,
-          "soldFinalC": 1935.06
+          "soldFinalC": 0
         }
       ],
       "401": [
         {
           "cont": "401.00001",
+          "parentCont": "401",
+          "denumire": "CAZACU A. GHEORGHE PERSOANA FIZICA AUTORIZATA",
+          "sumePrecedenteD": 77125,
+          "sumePrecedenteC": 77125,
+          "rulajePerioadaD": 6050,
+          "rulajePerioadaC": 6050,
+          "sumeTotaleD": 83175,
+          "sumeTotaleC": 83175,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00002",
           "parentCont": "401",
           "denumire": "ELMOREX SRL",
           "sumePrecedenteD": 48732.9,
@@ -2013,7 +2613,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00002",
+          "cont": "401.00003",
           "parentCont": "401",
           "denumire": "2M SERVICES",
           "sumePrecedenteD": 24870.5,
@@ -2026,7 +2626,7 @@
           "soldFinalC": 24870.5
         },
         {
-          "cont": "401.00003",
+          "cont": "401.00004",
           "parentCont": "401",
           "denumire": "FEDEX EXPRESS ROMANIA TRANSPORTATION S.R.L.",
           "sumePrecedenteD": 16581.03,
@@ -2039,7 +2639,7 @@
           "soldFinalC": 128.8
         },
         {
-          "cont": "401.00004",
+          "cont": "401.00005",
           "parentCont": "401",
           "denumire": "LOGITRANS SRL",
           "sumePrecedenteD": 70190.15,
@@ -2052,7 +2652,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00005",
+          "cont": "401.00006",
           "parentCont": "401",
           "denumire": "ECO SECURITY S.R.L.",
           "sumePrecedenteD": 1857,
@@ -2065,7 +2665,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00006",
+          "cont": "401.00007",
           "parentCont": "401",
           "denumire": "ROSANU TANIUSA - AUDITOR FINANCIAR",
           "sumePrecedenteD": 24350,
@@ -2078,7 +2678,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00007",
+          "cont": "401.00008",
           "parentCont": "401",
           "denumire": "LEUSPEDITION S.R.L.",
           "sumePrecedenteD": 26004.92,
@@ -2091,7 +2691,7 @@
           "soldFinalC": 6620.69
         },
         {
-          "cont": "401.00008",
+          "cont": "401.00009",
           "parentCont": "401",
           "denumire": "DYNAMIC PARCEL DISTRIBUTION SA",
           "sumePrecedenteD": 43857.48,
@@ -2104,7 +2704,7 @@
           "soldFinalC": 2372.33
         },
         {
-          "cont": "401.00009",
+          "cont": "401.00010",
           "parentCont": "401",
           "denumire": "WIZZ  AIR MALTA",
           "sumePrecedenteD": 3298.9,
@@ -2117,7 +2717,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00010",
+          "cont": "401.00011",
           "parentCont": "401",
           "denumire": "PRECIOUS YARN S.R.L.",
           "sumePrecedenteD": 112039,
@@ -2132,6 +2732,19 @@
         {
           "cont": "401.00012",
           "parentCont": "401",
+          "denumire": "DC FOLIE SRL",
+          "sumePrecedenteD": 559.8,
+          "sumePrecedenteC": 559.8,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 559.8,
+          "sumeTotaleC": 559.8,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00013",
+          "parentCont": "401",
           "denumire": "VODAFONE ROMANIA SA",
           "sumePrecedenteD": 1137.56,
           "sumePrecedenteC": 1256.55,
@@ -2143,7 +2756,7 @@
           "soldFinalC": 121.16
         },
         {
-          "cont": "401.00013",
+          "cont": "401.00014",
           "parentCont": "401",
           "denumire": "VEGA CARBURANTI",
           "sumePrecedenteD": 6246.85,
@@ -2156,7 +2769,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00014",
+          "cont": "401.00015",
           "parentCont": "401",
           "denumire": "IN CO SPA",
           "sumePrecedenteD": 71871.3,
@@ -2169,7 +2782,7 @@
           "soldFinalC": -3285.81
         },
         {
-          "cont": "401.00015",
+          "cont": "401.00016",
           "parentCont": "401",
           "denumire": "ALBANO MARKETING",
           "sumePrecedenteD": 42296.85,
@@ -2182,7 +2795,46 @@
           "soldFinalC": 0
         },
         {
+          "cont": "401.00018",
+          "parentCont": "401",
+          "denumire": "AZ HOLDING",
+          "sumePrecedenteD": 522.56,
+          "sumePrecedenteC": 522.56,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 522.56,
+          "sumeTotaleC": 522.56,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00019",
+          "parentCont": "401",
+          "denumire": "KLASS-WAGEN SRL",
+          "sumePrecedenteD": 904.57,
+          "sumePrecedenteC": 904.57,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 904.57,
+          "sumeTotaleC": 904.57,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
           "cont": "401.00020",
+          "parentCont": "401",
+          "denumire": "DEDEMAN SRL",
+          "sumePrecedenteD": 689.14,
+          "sumePrecedenteC": 689.14,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 689.14,
+          "sumeTotaleC": 689.14,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00021",
           "parentCont": "401",
           "denumire": "ZORDAN ALESSANDRO",
           "sumePrecedenteD": 3742.48,
@@ -2195,7 +2847,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00021",
+          "cont": "401.00022",
           "parentCont": "401",
           "denumire": "HIRCUS FILATI DI FREDERICO SCATIZZI",
           "sumePrecedenteD": 80696.4,
@@ -2208,7 +2860,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00022",
+          "cont": "401.00023",
           "parentCont": "401",
           "denumire": "OROFIL DI BARLOCCO VALTER",
           "sumePrecedenteD": 10700.98,
@@ -2221,7 +2873,33 @@
           "soldFinalC": 0
         },
         {
+          "cont": "401.00024",
+          "parentCont": "401",
+          "denumire": "INTELLIGENT IT SRL",
+          "sumePrecedenteD": 921.63,
+          "sumePrecedenteC": 921.63,
+          "rulajePerioadaD": 1630.16,
+          "rulajePerioadaC": 1630.16,
+          "sumeTotaleD": 2551.79,
+          "sumeTotaleC": 2551.79,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
           "cont": "401.00025",
+          "parentCont": "401",
+          "denumire": "MOL ROMANIA PETROLEUM PRODUCTS SRL",
+          "sumePrecedenteD": 227.62,
+          "sumePrecedenteC": 227.62,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 227.62,
+          "sumeTotaleC": 227.62,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00026",
           "parentCont": "401",
           "denumire": "HADAMS",
           "sumePrecedenteD": 17521.28,
@@ -2234,7 +2912,33 @@
           "soldFinalC": 0
         },
         {
+          "cont": "401.00027",
+          "parentCont": "401",
+          "denumire": "ARUBA IT",
+          "sumePrecedenteD": 347.81,
+          "sumePrecedenteC": 347.81,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 347.81,
+          "sumeTotaleC": 347.81,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
           "cont": "401.00028",
+          "parentCont": "401",
+          "denumire": "EDENRED ROMANIA SRL",
+          "sumePrecedenteD": 5804.16,
+          "sumePrecedenteC": 5804.16,
+          "rulajePerioadaD": 1092.35,
+          "rulajePerioadaC": 1092.35,
+          "sumeTotaleD": 6896.51,
+          "sumeTotaleC": 6896.51,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00029",
           "parentCont": "401",
           "denumire": "AMURO RENT S.R.L.",
           "sumePrecedenteD": 1008,
@@ -2247,7 +2951,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00029",
+          "cont": "401.00030",
           "parentCont": "401",
           "denumire": "SALGARI",
           "sumePrecedenteD": 18451.72,
@@ -2260,7 +2964,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00030",
+          "cont": "401.00031",
           "parentCont": "401",
           "denumire": "VIOCARS RENTAL SRL",
           "sumePrecedenteD": 1594.74,
@@ -2273,7 +2977,46 @@
           "soldFinalC": 0
         },
         {
+          "cont": "401.00032",
+          "parentCont": "401",
+          "denumire": "VP OIL SELF",
+          "sumePrecedenteD": 494.49,
+          "sumePrecedenteC": 494.49,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 494.49,
+          "sumeTotaleC": 494.49,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00033",
+          "parentCont": "401",
+          "denumire": "MICROSOFT",
+          "sumePrecedenteD": 492.67,
+          "sumePrecedenteC": 492.67,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 492.67,
+          "sumeTotaleC": 492.67,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
           "cont": "401.00034",
+          "parentCont": "401",
+          "denumire": "TRANS OIL MOTORS SRL",
+          "sumePrecedenteD": 169.71,
+          "sumePrecedenteC": 169.71,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 169.71,
+          "sumeTotaleC": 169.71,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00035",
           "parentCont": "401",
           "denumire": "GOMME LOW COST SHOP",
           "sumePrecedenteD": 1990.96,
@@ -2286,7 +3029,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00035",
+          "cont": "401.00036",
           "parentCont": "401",
           "denumire": "PARAPINI MAURIZIO",
           "sumePrecedenteD": 3070.43,
@@ -2299,7 +3042,46 @@
           "soldFinalC": 0
         },
         {
+          "cont": "401.00037",
+          "parentCont": "401",
+          "denumire": "STAZIONE ENI REGGIO NELL E IT",
+          "sumePrecedenteD": 109.5,
+          "sumePrecedenteC": 109.5,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 109.5,
+          "sumeTotaleC": 109.5,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00038",
+          "parentCont": "401",
+          "denumire": "RUBIERA-VIALE",
+          "sumePrecedenteD": 426.07,
+          "sumePrecedenteC": 426.07,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 426.07,
+          "sumeTotaleC": 426.07,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
           "cont": "401.00039",
+          "parentCont": "401",
+          "denumire": "DISTRIBUTORE EGO DITTA",
+          "sumePrecedenteD": 514.12,
+          "sumePrecedenteC": 514.12,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 514.12,
+          "sumeTotaleC": 514.12,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00040",
           "parentCont": "401",
           "denumire": "TOP YARN DI BARLOCCO",
           "sumePrecedenteD": 121221.21,
@@ -2312,7 +3094,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00040",
+          "cont": "401.00041",
           "parentCont": "401",
           "denumire": "MARA LOGISTICS QUALITY S.R.L.",
           "sumePrecedenteD": 4623.39,
@@ -2325,7 +3107,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00041",
+          "cont": "401.00042",
           "parentCont": "401",
           "denumire": "FAN COURIER EXPRESS SRL",
           "sumePrecedenteD": 3032.58,
@@ -2338,7 +3120,33 @@
           "soldFinalC": 0
         },
         {
+          "cont": "401.00043",
+          "parentCont": "401",
+          "denumire": "BORG DESIGN SRL",
+          "sumePrecedenteD": 512.92,
+          "sumePrecedenteC": 512.92,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 512.92,
+          "sumeTotaleC": 512.92,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
           "cont": "401.00044",
+          "parentCont": "401",
+          "denumire": "OCTANO DOWNSTREAM SRL",
+          "sumePrecedenteD": 111.09,
+          "sumePrecedenteC": 111.09,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 111.09,
+          "sumeTotaleC": 111.09,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00045",
           "parentCont": "401",
           "denumire": "ZEGNA BARUFFA",
           "sumePrecedenteD": 199208.48,
@@ -2353,6 +3161,19 @@
         {
           "cont": "401.00046",
           "parentCont": "401",
+          "denumire": "PARKING SA",
+          "sumePrecedenteD": 350,
+          "sumePrecedenteC": 350,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 350,
+          "sumeTotaleC": 350,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00047",
+          "parentCont": "401",
           "denumire": "MANIFATTURA SESIA",
           "sumePrecedenteD": 98341.5,
           "sumePrecedenteC": 98341.5,
@@ -2364,7 +3185,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00047",
+          "cont": "401.00048",
           "parentCont": "401",
           "denumire": "MAGIRUS COM S.R.L.",
           "sumePrecedenteD": 83.7,
@@ -2377,7 +3198,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00048",
+          "cont": "401.00049",
           "parentCont": "401",
           "denumire": "BSG INVEST OIL SRL",
           "sumePrecedenteD": 97.34,
@@ -2390,7 +3211,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00049",
+          "cont": "401.00050",
           "parentCont": "401",
           "denumire": "MASER STEFANO",
           "sumePrecedenteD": 3329.24,
@@ -2403,7 +3224,46 @@
           "soldFinalC": 0
         },
         {
+          "cont": "401.00051",
+          "parentCont": "401",
+          "denumire": "MOTORSCLUB",
+          "sumePrecedenteD": 791.04,
+          "sumePrecedenteC": 791.04,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 791.04,
+          "sumeTotaleC": 791.04,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00052",
+          "parentCont": "401",
+          "denumire": "VALI PETROLI",
+          "sumePrecedenteD": 101.55,
+          "sumePrecedenteC": 101.55,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 101.55,
+          "sumeTotaleC": 101.55,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
           "cont": "401.00053",
+          "parentCont": "401",
+          "denumire": "STAZIONE DI SERVIZIO",
+          "sumePrecedenteD": 508.1,
+          "sumePrecedenteC": 508.1,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 508.1,
+          "sumeTotaleC": 508.1,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00054",
           "parentCont": "401",
           "denumire": "ALTEX ROMANIA SRL",
           "sumePrecedenteD": 3293.99,
@@ -2416,7 +3276,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00054",
+          "cont": "401.00055",
           "parentCont": "401",
           "denumire": "DML SPA",
           "sumePrecedenteD": 9649.32,
@@ -2429,7 +3289,85 @@
           "soldFinalC": 0
         },
         {
+          "cont": "401.00056",
+          "parentCont": "401",
+          "denumire": "OMV PETROM MARKETING SRL",
+          "sumePrecedenteD": 142.16,
+          "sumePrecedenteC": 142.16,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 142.16,
+          "sumeTotaleC": 142.16,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00057",
+          "parentCont": "401",
+          "denumire": "REGISTER SPA",
+          "sumePrecedenteD": 279.47,
+          "sumePrecedenteC": 279.47,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 279.47,
+          "sumeTotaleC": 279.47,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00058",
+          "parentCont": "401",
+          "denumire": "ROMPETROL DOWNSTREAM SRL",
+          "sumePrecedenteD": 811.11,
+          "sumePrecedenteC": 811.11,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 811.11,
+          "sumeTotaleC": 811.11,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00059",
+          "parentCont": "401",
+          "denumire": "FRANZ WOLF",
+          "sumePrecedenteD": 563.62,
+          "sumePrecedenteC": 563.62,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 563.62,
+          "sumeTotaleC": 563.62,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00060",
+          "parentCont": "401",
+          "denumire": "ARAL CENTER",
+          "sumePrecedenteD": 960.96,
+          "sumePrecedenteC": 960.96,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 960.96,
+          "sumeTotaleC": 960.96,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
           "cont": "401.00061",
+          "parentCont": "401",
+          "denumire": "ZUGEL SOHN OHG",
+          "sumePrecedenteD": 352.75,
+          "sumePrecedenteC": 352.75,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 352.75,
+          "sumeTotaleC": 352.75,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00062",
           "parentCont": "401",
           "denumire": "CYBERNET AUTOCENTER SRL",
           "sumePrecedenteD": 2561.35,
@@ -2444,6 +3382,19 @@
         {
           "cont": "401.00063",
           "parentCont": "401",
+          "denumire": "HOSTINGER",
+          "sumePrecedenteD": 959.91,
+          "sumePrecedenteC": 959.91,
+          "rulajePerioadaD": 71.21,
+          "rulajePerioadaC": 71.21,
+          "sumeTotaleD": 1031.12,
+          "sumeTotaleC": 1031.12,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00064",
+          "parentCont": "401",
           "denumire": "NITA G. ELENA-LAURA - BIROU INDIVIDUAL NOTARIAL",
           "sumePrecedenteD": 60.5,
           "sumePrecedenteC": 60.5,
@@ -2457,6 +3408,19 @@
         {
           "cont": "401.00065",
           "parentCont": "401",
+          "denumire": "PETROL BS CATEZ",
+          "sumePrecedenteD": 418.8,
+          "sumePrecedenteC": 418.8,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 418.8,
+          "sumeTotaleC": 418.8,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00066",
+          "parentCont": "401",
           "denumire": "SC.WOOL MERINOS SRL",
           "sumePrecedenteD": 38120.32,
           "sumePrecedenteC": 38120.32,
@@ -2468,7 +3432,33 @@
           "soldFinalC": 0
         },
         {
+          "cont": "401.00067",
+          "parentCont": "401",
+          "denumire": "SC ROMOLD COMISIONAR SRL",
+          "sumePrecedenteD": 300,
+          "sumePrecedenteC": 300,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 300,
+          "sumeTotaleC": 300,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
           "cont": "401.00068",
+          "parentCont": "401",
+          "denumire": "SC SERVICII GENERALE SRL",
+          "sumePrecedenteD": 550,
+          "sumePrecedenteC": 550,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 550,
+          "sumeTotaleC": 550,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00069",
           "parentCont": "401",
           "denumire": "PASTICCERIA MATEO",
           "sumePrecedenteD": 1804.11,
@@ -2481,7 +3471,7 @@
           "soldFinalC": 180.41
         },
         {
-          "cont": "401.00069",
+          "cont": "401.00070",
           "parentCont": "401",
           "denumire": "MORIAN SRL",
           "sumePrecedenteD": 126665.21,
@@ -2494,7 +3484,59 @@
           "soldFinalC": 0
         },
         {
+          "cont": "401.00071",
+          "parentCont": "401",
+          "denumire": "LUKOIL ROMANIA SRL",
+          "sumePrecedenteD": 118.22,
+          "sumePrecedenteC": 118.22,
+          "rulajePerioadaD": 149.22,
+          "rulajePerioadaC": 149.22,
+          "sumeTotaleD": 267.44,
+          "sumeTotaleC": 267.44,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00072",
+          "parentCont": "401",
+          "denumire": "COOPARK",
+          "sumePrecedenteD": 137.09,
+          "sumePrecedenteC": 137.09,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 137.09,
+          "sumeTotaleC": 137.09,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "401.00073",
+          "parentCont": "401",
+          "denumire": "UMSA",
+          "sumePrecedenteD": 127.03,
+          "sumePrecedenteC": 127.03,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 127.03,
+          "sumeTotaleC": 127.03,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
           "cont": "401.00074",
+          "parentCont": "401",
+          "denumire": "LEULOGISTIC SRL",
+          "sumePrecedenteD": 300,
+          "sumePrecedenteC": 0,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 300,
+          "sumeTotaleC": 0,
+          "soldFinalD": 0,
+          "soldFinalC": -300
+        },
+        {
+          "cont": "401.00075",
           "parentCont": "401",
           "denumire": "MAGLIERIA GZ",
           "sumePrecedenteD": 27460.24,
@@ -2507,7 +3549,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00075",
+          "cont": "401.00076",
           "parentCont": "401",
           "denumire": "MUSETTI",
           "sumePrecedenteD": 14825.63,
@@ -2520,7 +3562,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00076",
+          "cont": "401.00077",
           "parentCont": "401",
           "denumire": "BALLINTEX WOOL SRL",
           "sumePrecedenteD": 0,
@@ -2533,7 +3575,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00077",
+          "cont": "401.00079",
           "parentCont": "401",
           "denumire": "KNITALY",
           "sumePrecedenteD": 0,
@@ -2546,7 +3588,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00079",
+          "cont": "401.00080",
           "parentCont": "401",
           "denumire": "EVERGREEN F.G",
           "sumePrecedenteD": 0,
@@ -2559,7 +3601,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "401.00080",
+          "cont": "401.00081",
           "parentCont": "401",
           "denumire": "INDUSTRIA FILATI BUZAU SRL",
           "sumePrecedenteD": 0,
@@ -2570,47 +3612,34 @@
           "sumeTotaleC": 0,
           "soldFinalD": 0,
           "soldFinalC": -83730.71
-        },
-        {
-          "cont": "401.00081",
-          "parentCont": "401",
-          "denumire": "ELMOREX GARANTIE CHIRIE",
-          "sumePrecedenteD": 2926.94,
-          "sumePrecedenteC": 0,
-          "rulajePerioadaD": 0,
-          "rulajePerioadaC": 0,
-          "sumeTotaleD": 2926.94,
-          "sumeTotaleC": 0,
-          "soldFinalD": 2926.94,
-          "soldFinalC": 0
         }
       ],
       "446": [
         {
           "cont": "446.1",
           "parentCont": "446",
-          "denumire": "ACTIONARI/ASOCIATI - CONTURI CURENTE CASA",
-          "sumePrecedenteD": 0,
-          "sumePrecedenteC": 398534.39,
-          "rulajePerioadaD": 0,
-          "rulajePerioadaC": 0,
-          "sumeTotaleD": 0,
-          "sumeTotaleC": 398534.39,
+          "denumire": "IMPOZIT DIVIDENDE",
+          "sumePrecedenteD": 52305,
+          "sumePrecedenteC": 97207,
+          "rulajePerioadaD": 44902,
+          "rulajePerioadaC": 45262,
+          "sumeTotaleD": 97207,
+          "sumeTotaleC": 142469,
           "soldFinalD": 0,
-          "soldFinalC": 398534.39
+          "soldFinalC": 45262
         }
       ],
       "456": [
         {
           "cont": "456.1",
           "parentCont": "456",
-          "denumire": "DIVIDENDE DE PLATIT",
-          "sumePrecedenteD": 553400,
-          "sumePrecedenteC": 553400,
-          "rulajePerioadaD": 0,
-          "rulajePerioadaC": 0,
-          "sumeTotaleD": 553400,
-          "sumeTotaleC": 553400,
+          "denumire": "DIVIDENDE INTERIMARE",
+          "sumePrecedenteD": 449014.5,
+          "sumePrecedenteC": 449014.5,
+          "rulajePerioadaD": 452622,
+          "rulajePerioadaC": 452622,
+          "sumeTotaleD": 901636.5,
+          "sumeTotaleC": 901636.5,
           "soldFinalD": 0,
           "soldFinalC": 0
         }
@@ -2618,6 +3647,19 @@
       "462": [
         {
           "cont": "462.1",
+          "parentCont": "462",
+          "denumire": "IANNICIELLO FILIPPO",
+          "sumePrecedenteD": 0,
+          "sumePrecedenteC": 23774.5,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 0,
+          "sumeTotaleC": 23774.5,
+          "soldFinalD": 0,
+          "soldFinalC": 23774.5
+        },
+        {
+          "cont": "462.10",
           "parentCont": "462",
           "denumire": "CTR.14 IANNICIELLO FILIPPO",
           "sumePrecedenteD": 0,
@@ -2630,7 +3672,7 @@
           "soldFinalC": 200000
         },
         {
-          "cont": "462.10",
+          "cont": "462.11",
           "parentCont": "462",
           "denumire": "CTR.15 IANNICIELLO FILIPPO",
           "sumePrecedenteD": 0,
@@ -2643,7 +3685,7 @@
           "soldFinalC": 298584
         },
         {
-          "cont": "462.11",
+          "cont": "462.12",
           "parentCont": "462",
           "denumire": "CTR.16 IANNICIELLO FILIPPO",
           "sumePrecedenteD": 0,
@@ -2656,7 +3698,7 @@
           "soldFinalC": 248849.84
         },
         {
-          "cont": "462.12",
+          "cont": "462.13",
           "parentCont": "462",
           "denumire": "CTR.17 IANNICIELLO FILIPPO",
           "sumePrecedenteD": 0,
@@ -2669,33 +3711,33 @@
           "soldFinalC": 540000
         },
         {
-          "cont": "462.13",
-          "parentCont": "462",
-          "denumire": "IMPRUMUT CONTR.18/.2025",
-          "sumePrecedenteD": 3.04,
-          "sumePrecedenteC": 0,
-          "rulajePerioadaD": 150000,
-          "rulajePerioadaC": 0,
-          "sumeTotaleD": 0,
-          "sumeTotaleC": 0,
-          "soldFinalD": 150000,
-          "soldFinalC": 0
-        },
-        {
           "cont": "462.14",
           "parentCont": "462",
-          "denumire": "CONTR.19/.2025",
-          "sumePrecedenteD": 23.12,
-          "sumePrecedenteC": 0,
+          "denumire": "",
+          "sumePrecedenteD": 0,
+          "sumePrecedenteC": 150000,
           "rulajePerioadaD": 0,
           "rulajePerioadaC": 0,
-          "sumeTotaleD": 457929,
-          "sumeTotaleC": 0,
-          "soldFinalD": 457929,
-          "soldFinalC": 0
+          "sumeTotaleD": 0,
+          "sumeTotaleC": 150000,
+          "soldFinalD": 0,
+          "soldFinalC": 150000
         },
         {
           "cont": "462.15",
+          "parentCont": "462",
+          "denumire": "",
+          "sumePrecedenteD": 0,
+          "sumePrecedenteC": 0,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 457929,
+          "sumeTotaleD": 0,
+          "sumeTotaleC": 457929,
+          "soldFinalD": 0,
+          "soldFinalC": 457929
+        },
+        {
+          "cont": "462.2",
           "parentCont": "462",
           "denumire": "CTR.6 IANNICIELLO FOLIPPO",
           "sumePrecedenteD": 0,
@@ -2708,7 +3750,7 @@
           "soldFinalC": 247795
         },
         {
-          "cont": "462.2",
+          "cont": "462.3",
           "parentCont": "462",
           "denumire": "CTR.7 IANNICIELLO FILIPPO",
           "sumePrecedenteD": 0,
@@ -2721,7 +3763,7 @@
           "soldFinalC": 497040
         },
         {
-          "cont": "462.3",
+          "cont": "462.4",
           "parentCont": "462",
           "denumire": "CTR.8 IANNICIELLO FILIPPO",
           "sumePrecedenteD": 0,
@@ -2736,6 +3778,19 @@
         {
           "cont": "462.5",
           "parentCont": "462",
+          "denumire": "CTR.9 IANNICIELLO FILIPPO",
+          "sumePrecedenteD": 0,
+          "sumePrecedenteC": 400000,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 0,
+          "sumeTotaleC": 400000,
+          "soldFinalD": 0,
+          "soldFinalC": 400000
+        },
+        {
+          "cont": "462.6",
+          "parentCont": "462",
           "denumire": "CTR.11 IANNICIELLO FILIPPO",
           "sumePrecedenteD": 0,
           "sumePrecedenteC": 596640,
@@ -2747,7 +3802,7 @@
           "soldFinalC": 596640
         },
         {
-          "cont": "462.6",
+          "cont": "462.7",
           "parentCont": "462",
           "denumire": "CTR.10IANICIELLO FILIPPO",
           "sumePrecedenteD": 0,
@@ -2760,7 +3815,7 @@
           "soldFinalC": 100000
         },
         {
-          "cont": "462.7",
+          "cont": "462.8",
           "parentCont": "462",
           "denumire": "CTR.12 IANNICIELLO FILIPPO",
           "sumePrecedenteD": 0,
@@ -2773,7 +3828,7 @@
           "soldFinalC": 150000
         },
         {
-          "cont": "462.8",
+          "cont": "462.9",
           "parentCont": "462",
           "denumire": "CTR.13 IANNICIELLO FILIPPO",
           "sumePrecedenteD": 0,
@@ -2784,24 +3839,24 @@
           "sumeTotaleC": 198760,
           "soldFinalD": 0,
           "soldFinalC": 198760
-        },
-        {
-          "cont": "462.9",
-          "parentCont": "462",
-          "denumire": "CREANTE REPREZ. DIVIDENDE REPARTIZATE IN CURSUL EXERCITIULUI",
-          "sumePrecedenteD": 965477,
-          "sumePrecedenteC": 516462,
-          "rulajePerioadaD": 452622,
-          "rulajePerioadaC": 0,
-          "sumeTotaleD": 1418099,
-          "sumeTotaleC": 516462,
-          "soldFinalD": 901637,
-          "soldFinalC": 0
         }
       ],
       "471": [
         {
           "cont": "471.1",
+          "parentCont": "471",
+          "denumire": "CH.AVANS PRECIOUS",
+          "sumePrecedenteD": 48933,
+          "sumePrecedenteC": 48450.16,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 482.84,
+          "sumeTotaleD": 48933,
+          "sumeTotaleC": 48933,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "471.2",
           "parentCont": "471",
           "denumire": "CH.INREGISTRATE IN AVANS",
           "sumePrecedenteD": 3921.68,
@@ -2812,17 +3867,19 @@
           "sumeTotaleC": 3921.68,
           "soldFinalD": 0,
           "soldFinalC": 0
-        },
+        }
+      ],
+      "473": [
         {
-          "cont": "471.2",
-          "parentCont": "471",
-          "denumire": "DECONTARI DIN OPERATIUNI IN CURS DE CLARIFICARE",
-          "sumePrecedenteD": 4338.95,
-          "sumePrecedenteC": 4338.95,
+          "cont": "473.1",
+          "parentCont": "473",
+          "denumire": "ACQUARDO DOLCIUMI VERRONE",
+          "sumePrecedenteD": 1268.7,
+          "sumePrecedenteC": 1268.7,
           "rulajePerioadaD": 0,
           "rulajePerioadaC": 0,
-          "sumeTotaleD": 4338.95,
-          "sumeTotaleC": 4338.95,
+          "sumeTotaleD": 1268.7,
+          "sumeTotaleC": 1268.7,
           "soldFinalD": 0,
           "soldFinalC": 0
         }
@@ -2830,6 +3887,19 @@
       "542": [
         {
           "cont": "542.1",
+          "parentCont": "542",
+          "denumire": "AROSCULESEI AURELIAN",
+          "sumePrecedenteD": 7364.79,
+          "sumePrecedenteC": 7364.79,
+          "rulajePerioadaD": 630,
+          "rulajePerioadaC": 630,
+          "sumeTotaleD": 7994.79,
+          "sumeTotaleC": 7994.79,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "542.2",
           "parentCont": "542",
           "denumire": "ANDREEV TATIANA",
           "sumePrecedenteD": 1000,
@@ -2840,24 +3910,24 @@
           "sumeTotaleC": 1500,
           "soldFinalD": 0,
           "soldFinalC": 0
-        },
-        {
-          "cont": "542.2",
-          "parentCont": "542",
-          "denumire": "VIRAMENTE INTERNE",
-          "sumePrecedenteD": 4033.13,
-          "sumePrecedenteC": 4033.13,
-          "rulajePerioadaD": 0,
-          "rulajePerioadaC": 0,
-          "sumeTotaleD": 4033.13,
-          "sumeTotaleC": 4033.13,
-          "soldFinalD": 0,
-          "soldFinalC": 0
         }
       ],
       "2813": [
         {
           "cont": "2813.1",
+          "parentCont": "2813",
+          "denumire": "AMORTIZARE VOLVO",
+          "sumePrecedenteD": 56389.96,
+          "sumePrecedenteC": 56389.96,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 56389.96,
+          "sumeTotaleC": 56389.96,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "2813.2",
           "parentCont": "2813",
           "denumire": "AMORTIZ. ECHIP.TEHNOLOGICE",
           "sumePrecedenteD": 0,
@@ -2868,24 +3938,24 @@
           "sumeTotaleC": 1935.06,
           "soldFinalD": 0,
           "soldFinalC": 1935.06
-        },
-        {
-          "cont": "2813.2",
-          "parentCont": "2813",
-          "denumire": "AMORT. ALTOR IMOBILIZARI CORPORALE",
-          "sumePrecedenteD": 0,
-          "sumePrecedenteC": 17213.62,
-          "rulajePerioadaD": 0,
-          "rulajePerioadaC": 1849.17,
-          "sumeTotaleD": 0,
-          "sumeTotaleC": 19062.79,
-          "soldFinalD": 0,
-          "soldFinalC": 19062.79
         }
       ],
       "2814": [
         {
           "cont": "2814.1",
+          "parentCont": "2814",
+          "denumire": "AMORTIZARE SMARTPHONE",
+          "sumePrecedenteD": 0,
+          "sumePrecedenteC": 4782.72,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 199.28,
+          "sumeTotaleD": 0,
+          "sumeTotaleC": 4982,
+          "soldFinalD": 0,
+          "soldFinalC": 4982
+        },
+        {
+          "cont": "2814.2",
           "parentCont": "2814",
           "denumire": "AMORTIZARE LAPTOP",
           "sumePrecedenteD": 0,
@@ -2898,7 +3968,7 @@
           "soldFinalC": 6207.25
         },
         {
-          "cont": "2814.2",
+          "cont": "2814.3",
           "parentCont": "2814",
           "denumire": "AMORTIZ. RAFTURI METALICE",
           "sumePrecedenteD": 0,
@@ -2911,7 +3981,7 @@
           "soldFinalC": 6220.86
         },
         {
-          "cont": "2814.3",
+          "cont": "2814.4",
           "parentCont": "2814",
           "denumire": "AMORTIZ. RAFTURI METALICE",
           "sumePrecedenteD": 0,
@@ -2924,7 +3994,7 @@
           "soldFinalC": 580.56
         },
         {
-          "cont": "2814.4",
+          "cont": "2814.5",
           "parentCont": "2814",
           "denumire": "AMORTIZ. TEL.SAMSUNG",
           "sumePrecedenteD": 0,
@@ -2941,6 +4011,19 @@
         {
           "cont": "4111.00001",
           "parentCont": "4111",
+          "denumire": "RYBACOVA ELENA",
+          "sumePrecedenteD": 335746.3,
+          "sumePrecedenteC": 247415.92,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 20839.89,
+          "sumeTotaleD": 335746.3,
+          "sumeTotaleC": 268255.81,
+          "soldFinalD": 67490.49,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "4111.00002",
+          "parentCont": "4111",
           "denumire": "CRAZY CORTINA DI MARCO DE BONI",
           "sumePrecedenteD": 64016.03,
           "sumePrecedenteC": 64016.03,
@@ -2952,7 +4035,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00002",
+          "cont": "4111.00003",
           "parentCont": "4111",
           "denumire": "MAGLIERIA GALVAN",
           "sumePrecedenteD": 23658.38,
@@ -2965,7 +4048,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00003",
+          "cont": "4111.00004",
           "parentCont": "4111",
           "denumire": "IRMA BAGDONAVICIENE",
           "sumePrecedenteD": 111258.26,
@@ -2978,7 +4061,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00004",
+          "cont": "4111.00005",
           "parentCont": "4111",
           "denumire": "CONFEZIONI DEBORA DICARRARO",
           "sumePrecedenteD": 2374.98,
@@ -2991,7 +4074,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00005",
+          "cont": "4111.00006",
           "parentCont": "4111",
           "denumire": "IEVA BROKANE KUZMANE",
           "sumePrecedenteD": 3250.17,
@@ -3004,7 +4087,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00006",
+          "cont": "4111.00007",
           "parentCont": "4111",
           "denumire": "LANA FAMILY STYLE S.R.L.",
           "sumePrecedenteD": 7480.62,
@@ -3017,7 +4100,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00007",
+          "cont": "4111.00008",
           "parentCont": "4111",
           "denumire": "ALENA LESHYK",
           "sumePrecedenteD": 127609.17,
@@ -3032,6 +4115,19 @@
         {
           "cont": "4111.00009",
           "parentCont": "4111",
+          "denumire": "ELLOIZA SCHMITZ",
+          "sumePrecedenteD": 1570.98,
+          "sumePrecedenteC": 1570.98,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 1570.98,
+          "sumeTotaleC": 1570.98,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "4111.00010",
+          "parentCont": "4111",
           "denumire": "KONSTANTIN SOROKIN",
           "sumePrecedenteD": 4031.05,
           "sumePrecedenteC": 4031.05,
@@ -3043,7 +4139,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00010",
+          "cont": "4111.00011",
           "parentCont": "4111",
           "denumire": "BG7DAY",
           "sumePrecedenteD": 20391.85,
@@ -3056,7 +4152,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00011",
+          "cont": "4111.00012",
           "parentCont": "4111",
           "denumire": "UAB AIDAS IR KO",
           "sumePrecedenteD": 22257.82,
@@ -3069,7 +4165,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00012",
+          "cont": "4111.00013",
           "parentCont": "4111",
           "denumire": "MARINA PHILIPPOVA",
           "sumePrecedenteD": 2964.74,
@@ -3082,7 +4178,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00013",
+          "cont": "4111.00014",
           "parentCont": "4111",
           "denumire": "MARCOPOLO",
           "sumePrecedenteD": 34664.9,
@@ -3095,7 +4191,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00014",
+          "cont": "4111.00015",
           "parentCont": "4111",
           "denumire": "LLC GD CASHMERE",
           "sumePrecedenteD": 282041.87,
@@ -3108,7 +4204,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00015",
+          "cont": "4111.00016",
           "parentCont": "4111",
           "denumire": "GOODKNIT",
           "sumePrecedenteD": 231345.92,
@@ -3121,7 +4217,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00016",
+          "cont": "4111.00017",
           "parentCont": "4111",
           "denumire": "LAZUTCHYK IRYNA",
           "sumePrecedenteD": 31845.2,
@@ -3134,7 +4230,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00017",
+          "cont": "4111.00018",
           "parentCont": "4111",
           "denumire": "KIELTAU OLGA",
           "sumePrecedenteD": 1219.08,
@@ -3147,7 +4243,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00018",
+          "cont": "4111.00019",
           "parentCont": "4111",
           "denumire": "BERSCHAUER KAROLINA",
           "sumePrecedenteD": 19810.35,
@@ -3160,7 +4256,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00019",
+          "cont": "4111.00020",
           "parentCont": "4111",
           "denumire": "MS-UNIVERSAL OY",
           "sumePrecedenteD": 8775.06,
@@ -3173,7 +4269,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00020",
+          "cont": "4111.00021",
           "parentCont": "4111",
           "denumire": "KRYUKOVA IRINA",
           "sumePrecedenteD": 5483.39,
@@ -3186,7 +4282,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00021",
+          "cont": "4111.00022",
           "parentCont": "4111",
           "denumire": "DERIPASKO SVITLANA",
           "sumePrecedenteD": 45886.78,
@@ -3199,7 +4295,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00022",
+          "cont": "4111.00023",
           "parentCont": "4111",
           "denumire": "BALBONI CARLOTTA",
           "sumePrecedenteD": 102342.92,
@@ -3212,7 +4308,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00023",
+          "cont": "4111.00024",
           "parentCont": "4111",
           "denumire": "SO NATURE SLLC",
           "sumePrecedenteD": 84678.82,
@@ -3225,7 +4321,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00024",
+          "cont": "4111.00025",
           "parentCont": "4111",
           "denumire": "UNGEFUG OLGA",
           "sumePrecedenteD": 4802.87,
@@ -3238,7 +4334,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00025",
+          "cont": "4111.00026",
           "parentCont": "4111",
           "denumire": "LANA PETERS",
           "sumePrecedenteD": 13513.61,
@@ -3251,7 +4347,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00026",
+          "cont": "4111.00027",
           "parentCont": "4111",
           "denumire": "UAB ASTRIDO",
           "sumePrecedenteD": 2854.92,
@@ -3264,7 +4360,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00027",
+          "cont": "4111.00028",
           "parentCont": "4111",
           "denumire": "POPOVA TATIANA",
           "sumePrecedenteD": 111266.73,
@@ -3277,7 +4373,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00028",
+          "cont": "4111.00029",
           "parentCont": "4111",
           "denumire": "TROUNTSOVA IRINA",
           "sumePrecedenteD": 1400.39,
@@ -3290,7 +4386,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00029",
+          "cont": "4111.00030",
           "parentCont": "4111",
           "denumire": "MESHKOV SERGEI",
           "sumePrecedenteD": 2265.31,
@@ -3303,7 +4399,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00030",
+          "cont": "4111.00031",
           "parentCont": "4111",
           "denumire": "RAIMONDA GALIUNIENE",
           "sumePrecedenteD": 14162.6,
@@ -3316,7 +4412,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00031",
+          "cont": "4111.00032",
           "parentCont": "4111",
           "denumire": "JIE LI",
           "sumePrecedenteD": 6667.59,
@@ -3329,7 +4425,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00032",
+          "cont": "4111.00033",
           "parentCont": "4111",
           "denumire": "OPIFICIO MARECHIARO SAS DI DARIO ESPOSITO",
           "sumePrecedenteD": 8641.21,
@@ -3342,7 +4438,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00033",
+          "cont": "4111.00034",
           "parentCont": "4111",
           "denumire": "KHANOVA TETIANA",
           "sumePrecedenteD": 8470.79,
@@ -3355,7 +4451,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00034",
+          "cont": "4111.00035",
           "parentCont": "4111",
           "denumire": "SAVENKO ANNA",
           "sumePrecedenteD": 37683.81,
@@ -3368,7 +4464,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00035",
+          "cont": "4111.00036",
           "parentCont": "4111",
           "denumire": "BD LIJIE",
           "sumePrecedenteD": 36903.57,
@@ -3381,7 +4477,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00036",
+          "cont": "4111.00037",
           "parentCont": "4111",
           "denumire": "AD STUDIO SAS DI ZHU LIHUA",
           "sumePrecedenteD": 16357.31,
@@ -3394,7 +4490,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00037",
+          "cont": "4111.00038",
           "parentCont": "4111",
           "denumire": "JULIA WINTER",
           "sumePrecedenteD": 17295.81,
@@ -3407,7 +4503,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00038",
+          "cont": "4111.00039",
           "parentCont": "4111",
           "denumire": "ADRIANOVA IRINA",
           "sumePrecedenteD": 1618.73,
@@ -3422,6 +4518,19 @@
         {
           "cont": "4111.00040",
           "parentCont": "4111",
+          "denumire": "ANASTASIA DIAS JOAQUIM",
+          "sumePrecedenteD": 18562.89,
+          "sumePrecedenteC": 18562.89,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 18562.89,
+          "sumeTotaleC": 18562.89,
+          "soldFinalD": 0,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "4111.00041",
+          "parentCont": "4111",
           "denumire": "PEGGY",
           "sumePrecedenteD": 57014.52,
           "sumePrecedenteC": 57014.52,
@@ -3433,7 +4542,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00041",
+          "cont": "4111.00042",
           "parentCont": "4111",
           "denumire": "KOMAROVA ANNA",
           "sumePrecedenteD": 21101.37,
@@ -3446,7 +4555,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00042",
+          "cont": "4111.00043",
           "parentCont": "4111",
           "denumire": "BRUNER OXANA",
           "sumePrecedenteD": 1164.45,
@@ -3459,7 +4568,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00043",
+          "cont": "4111.00044",
           "parentCont": "4111",
           "denumire": "RUDKOVSKAJA OLGA",
           "sumePrecedenteD": 14818.83,
@@ -3472,7 +4581,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00044",
+          "cont": "4111.00045",
           "parentCont": "4111",
           "denumire": "FILIPPOVA ALEXANDRA",
           "sumePrecedenteD": 21251.95,
@@ -3485,7 +4594,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00045",
+          "cont": "4111.00046",
           "parentCont": "4111",
           "denumire": "MERINO MARRONE",
           "sumePrecedenteD": 18107.8,
@@ -3498,7 +4607,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00046",
+          "cont": "4111.00047",
           "parentCont": "4111",
           "denumire": "UAB BE MAZGELIU",
           "sumePrecedenteD": 183172.04,
@@ -3511,7 +4620,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00047",
+          "cont": "4111.00048",
           "parentCont": "4111",
           "denumire": "MAG FATEEVA ELISAVETA",
           "sumePrecedenteD": 13584.92,
@@ -3524,7 +4633,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00048",
+          "cont": "4111.00049",
           "parentCont": "4111",
           "denumire": "UAB TTP ARENA",
           "sumePrecedenteD": 296233.97,
@@ -3537,7 +4646,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00049",
+          "cont": "4111.00050",
           "parentCont": "4111",
           "denumire": "STOIANOV IHOR",
           "sumePrecedenteD": 4418.59,
@@ -3550,7 +4659,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00050",
+          "cont": "4111.00051",
           "parentCont": "4111",
           "denumire": "STRELE OXANA",
           "sumePrecedenteD": 1460.77,
@@ -3563,7 +4672,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00051",
+          "cont": "4111.00052",
           "parentCont": "4111",
           "denumire": "FEDEX EXPRESS ROMANIA TRANSPORTATION S.R.L.",
           "sumePrecedenteD": 1069.08,
@@ -3576,7 +4685,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00052",
+          "cont": "4111.00053",
           "parentCont": "4111",
           "denumire": "MULLER IRINA",
           "sumePrecedenteD": 1384.78,
@@ -3589,7 +4698,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00053",
+          "cont": "4111.00054",
           "parentCont": "4111",
           "denumire": "STYLEMART",
           "sumePrecedenteD": 91501.36,
@@ -3602,7 +4711,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00054",
+          "cont": "4111.00055",
           "parentCont": "4111",
           "denumire": "KUZMANS JURIS",
           "sumePrecedenteD": 5639.73,
@@ -3615,7 +4724,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00055",
+          "cont": "4111.00056",
           "parentCont": "4111",
           "denumire": "HAMSTERSYARNS KSENIIA",
           "sumePrecedenteD": 10544.76,
@@ -3628,7 +4737,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00056",
+          "cont": "4111.00057",
           "parentCont": "4111",
           "denumire": "MAGLIA DESIGN",
           "sumePrecedenteD": 1656.85,
@@ -3641,7 +4750,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00057",
+          "cont": "4111.00058",
           "parentCont": "4111",
           "denumire": "PASHANOV TAMARA",
           "sumePrecedenteD": 24549.23,
@@ -3654,7 +4763,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00058",
+          "cont": "4111.00059",
           "parentCont": "4111",
           "denumire": "SETEPAI",
           "sumePrecedenteD": 30310.91,
@@ -3667,7 +4776,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00059",
+          "cont": "4111.00060",
           "parentCont": "4111",
           "denumire": "WEBER TATIANA",
           "sumePrecedenteD": 2892.68,
@@ -3680,7 +4789,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00060",
+          "cont": "4111.00061",
           "parentCont": "4111",
           "denumire": "LENAS WOLLSHOP",
           "sumePrecedenteD": 47218.8,
@@ -3693,7 +4802,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00061",
+          "cont": "4111.00062",
           "parentCont": "4111",
           "denumire": "SAVENCO TATIANA",
           "sumePrecedenteD": 28446.57,
@@ -3706,7 +4815,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00062",
+          "cont": "4111.00063",
           "parentCont": "4111",
           "denumire": "MAGLIFICIO G.A. EMME",
           "sumePrecedenteD": 3357.33,
@@ -3719,7 +4828,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00063",
+          "cont": "4111.00064",
           "parentCont": "4111",
           "denumire": "CAZACU GHEORGHE",
           "sumePrecedenteD": 1486.85,
@@ -3732,7 +4841,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00064",
+          "cont": "4111.00065",
           "parentCont": "4111",
           "denumire": "BUDEANU BOGDAN",
           "sumePrecedenteD": 177996,
@@ -3745,7 +4854,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00065",
+          "cont": "4111.00066",
           "parentCont": "4111",
           "denumire": "PETRUS IOANA - CARMEN P.F.A.",
           "sumePrecedenteD": 11528.39,
@@ -3758,7 +4867,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00066",
+          "cont": "4111.00067",
           "parentCont": "4111",
           "denumire": "MELNIC GRIGORE",
           "sumePrecedenteD": 4402.13,
@@ -3771,7 +4880,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00067",
+          "cont": "4111.00068",
           "parentCont": "4111",
           "denumire": "REDA PORUTIENE",
           "sumePrecedenteD": 1499.89,
@@ -3784,7 +4893,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00068",
+          "cont": "4111.00069",
           "parentCont": "4111",
           "denumire": "GLOPINA VALERIU",
           "sumePrecedenteD": 0,
@@ -3797,7 +4906,7 @@
           "soldFinalC": 0
         },
         {
-          "cont": "4111.00069",
+          "cont": "4111.00070",
           "parentCont": "4111",
           "denumire": "LAI FABRIZIO",
           "sumePrecedenteD": 0,
@@ -3814,35 +4923,48 @@
         {
           "cont": "4551.1",
           "parentCont": "4551",
-          "denumire": "DECONTARI CU ACTIONARI/ASOCIATI PRIVIND CAPITALUL",
-          "sumePrecedenteD": 449214.5,
-          "sumePrecedenteC": 449014.5,
-          "rulajePerioadaD": 452622,
-          "rulajePerioadaC": 452622,
-          "sumeTotaleD": 901836.5,
-          "sumeTotaleC": 901636.5,
-          "soldFinalD": 200,
-          "soldFinalC": 0
+          "denumire": "ASOCIATI CONTURI CURENTE",
+          "sumePrecedenteD": 0,
+          "sumePrecedenteC": 366009,
+          "rulajePerioadaD": 0,
+          "rulajePerioadaC": 0,
+          "sumeTotaleD": 0,
+          "sumeTotaleC": 366009,
+          "soldFinalD": 0,
+          "soldFinalC": 366009
         }
       ],
       "5121": [
         {
           "cont": "5121.1",
           "parentCont": "5121",
-          "denumire": "CONTURI LA BANCA IN VALUTA",
-          "sumePrecedenteD": 2380656.63,
-          "sumePrecedenteC": 1764944.36,
-          "rulajePerioadaD": 576845.89,
-          "rulajePerioadaC": 771399.76,
-          "sumeTotaleD": 2957502.52,
-          "sumeTotaleC": 2536344.12,
-          "soldFinalD": 421158.4,
+          "denumire": "B.TRANSILVANIA",
+          "sumePrecedenteD": 850012.19,
+          "sumePrecedenteC": 666481.81,
+          "rulajePerioadaD": 85070.19,
+          "rulajePerioadaC": 263915.34,
+          "sumeTotaleD": 935082.38,
+          "sumeTotaleC": 930397.15,
+          "soldFinalD": 4685.23,
           "soldFinalC": 0
         }
       ],
       "5124": [
         {
           "cont": "5124.1",
+          "parentCont": "5124",
+          "denumire": "B.TRANSILVANIA",
+          "sumePrecedenteD": 2376470.4,
+          "sumePrecedenteC": 1760758.13,
+          "rulajePerioadaD": 576845.89,
+          "rulajePerioadaC": 771399.76,
+          "sumeTotaleD": 2953316.29,
+          "sumeTotaleC": 2532157.89,
+          "soldFinalD": 421158.4,
+          "soldFinalC": 0
+        },
+        {
+          "cont": "5124.2",
           "parentCont": "5124",
           "denumire": "CONT BT RO62 PLN",
           "sumePrecedenteD": 4186.23,

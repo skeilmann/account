@@ -10,6 +10,7 @@ import type { NormalizedBalantaRow } from "@/types/balanta";
 import type { ExpenseGroupValue } from "@/types/expense-group";
 import { useTranslation } from "react-i18next";
 import { formatPercent, getLocaleCode } from "@/lib/utils/format";
+import { SubAccountDialog } from "@/components/molecules/sub-account-dialog";
 
 export function ExpenseBreakdown() {
   const expenseGroups = useDataStore((s) => s.expenseGroups);
@@ -249,6 +250,30 @@ export function ExpenseBreakdown() {
                           </div>
                         );
                       })}
+
+                      {/* Related balance account detail dialogs */}
+                      {group.definition.relatedBalanceAccounts?.map(
+                        (relCont) => (
+                          <SubAccountDialog
+                            key={relCont}
+                            parentCont={relCont}
+                            parentName={`${t(
+                              `expense_groups.${group.definition.id}`,
+                              group.definition.id
+                            )} — ${relCont}`}
+                            side="D"
+                          >
+                            <div className="flex items-center gap-1.5 text-[10px] text-primary/70 hover:text-primary cursor-pointer mt-1 transition-colors">
+                              <span>📋</span>
+                              <span>
+                                {locale === "ro"
+                                  ? `Detalii cont ${relCont}`
+                                  : `Account ${relCont} details`}
+                              </span>
+                            </div>
+                          </SubAccountDialog>
+                        )
+                      )}
                     </div>
                   </motion.div>
                 )}

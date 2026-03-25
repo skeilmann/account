@@ -35,21 +35,21 @@ export function CompanyComparison() {
   }
 
   const rows: ComparisonRow[] = [
-    { labelRo: "Venituri din v\u00E2nz\u0103ri", labelEn: "Sales revenue", ifpValue: ifp.revenue, filatoValue: filato.revenue, highlight: true },
+    { labelRo: "Venituri din vânzări", labelEn: "Sales revenue", ifpValue: ifp.revenue, filatoValue: filato.revenue, highlight: true },
     { labelRo: "Cheltuieli cu marfa", labelEn: "Cost of goods", ifpValue: getAcc(ifpRows, "607", "sumeTotaleD"), filatoValue: getAcc(filatoRows, "607", "sumeTotaleD") },
-    { labelRo: "Marj\u0103 brut\u0103", labelEn: "Gross margin", ifpValue: ifp.revenue > 0 ? ((ifp.revenue - getAcc(ifpRows, "607", "sumeTotaleD")) / ifp.revenue) * 100 : 0, filatoValue: filato.revenue > 0 ? ((filato.revenue - getAcc(filatoRows, "607", "sumeTotaleD")) / filato.revenue) * 100 : 0, isPercentage: true },
+    { labelRo: "Marjă brută", labelEn: "Gross margin", ifpValue: ifp.revenue > 0 ? ((ifp.revenue - getAcc(ifpRows, "607", "sumeTotaleD")) / ifp.revenue) * 100 : 0, filatoValue: filato.revenue > 0 ? ((filato.revenue - getAcc(filatoRows, "607", "sumeTotaleD")) / filato.revenue) * 100 : 0, isPercentage: true },
     { labelRo: "Transport", labelEn: "Transport", ifpValue: getAcc(ifpRows, "624", "sumeTotaleD"), filatoValue: getAcc(filatoRows, "624", "sumeTotaleD") },
-    { labelRo: "Salarii + contribu\u021Bii", labelEn: "Salaries + contributions", ifpValue: getAcc(ifpRows, "641", "sumeTotaleD") + getAcc(ifpRows, "6461", "sumeTotaleD") + getAcc(ifpRows, "6422", "sumeTotaleD"), filatoValue: getAcc(filatoRows, "641", "sumeTotaleD") + getAcc(filatoRows, "6461", "sumeTotaleD") + getAcc(filatoRows, "6422", "sumeTotaleD") },
+    { labelRo: "Salarii + contribuții", labelEn: "Salaries + contributions", ifpValue: getAcc(ifpRows, "641", "sumeTotaleD") + getAcc(ifpRows, "6461", "sumeTotaleD") + getAcc(ifpRows, "6422", "sumeTotaleD"), filatoValue: getAcc(filatoRows, "641", "sumeTotaleD") + getAcc(filatoRows, "6461", "sumeTotaleD") + getAcc(filatoRows, "6422", "sumeTotaleD") },
     { labelRo: "Servicii externe", labelEn: "External services", ifpValue: getAcc(ifpRows, "628", "sumeTotaleD"), filatoValue: getAcc(filatoRows, "628", "sumeTotaleD") },
     { labelRo: "Chirii", labelEn: "Rent", ifpValue: getAcc(ifpRows, "6123", "sumeTotaleD"), filatoValue: getAcc(filatoRows, "6123", "sumeTotaleD") },
     { labelRo: "Total cheltuieli", labelEn: "Total expenses", ifpValue: ifp.expenses, filatoValue: filato.expenses, highlight: true },
     { labelRo: "Profit net", labelEn: "Net profit", ifpValue: ifp.profit, filatoValue: filato.profit, highlight: true },
-    { labelRo: "Marj\u0103 de profit", labelEn: "Profit margin", ifpValue: ifp.margin, filatoValue: filato.margin, isPercentage: true },
+    { labelRo: "Marjă de profit", labelEn: "Profit margin", ifpValue: ifp.margin, filatoValue: filato.margin, isPercentage: true },
     { labelRo: "Valoare stocuri", labelEn: "Stock value", ifpValue: ifp.stockValue, filatoValue: filato.stockValue },
-    { labelRo: "Nr. produse \u00EEn stoc", labelEn: "Products in stock", ifpValue: stock.ifp?.rows.length ?? 0, filatoValue: stock.filato?.rows.length ?? 0 },
+    { labelRo: "Nr. produse în stoc", labelEn: "Products in stock", ifpValue: stock.ifp?.rows.length ?? 0, filatoValue: stock.filato?.rows.length ?? 0 },
     { labelRo: "Numerar", labelEn: "Cash", ifpValue: ifp.cashPosition, filatoValue: filato.cashPosition },
-    { labelRo: "Clien\u021Bi (de \u00EEncasat)", labelEn: "Receivables", ifpValue: getAcc(ifpRows, "4111", "soldFinalD"), filatoValue: getAcc(filatoRows, "4111", "soldFinalD") },
-    { labelRo: "Furnizori (de pl\u0103tit)", labelEn: "Payables", ifpValue: getAcc(ifpRows, "401", "soldFinalC"), filatoValue: getAcc(filatoRows, "401", "soldFinalC") },
+    { labelRo: "Clienți (de încasat)", labelEn: "Receivables", ifpValue: getAcc(ifpRows, "4111", "soldFinalD"), filatoValue: getAcc(filatoRows, "4111", "soldFinalD") },
+    { labelRo: "Furnizori (de plătit)", labelEn: "Payables", ifpValue: getAcc(ifpRows, "401", "soldFinalC"), filatoValue: getAcc(filatoRows, "401", "soldFinalC") },
   ];
 
   function winner(ifpVal: number, filatoVal: number, lowerIsBetter = false): "ifp" | "filato" | "tie" {
@@ -62,7 +62,7 @@ export function CompanyComparison() {
     <div className="rounded-xl bg-card border border-border overflow-hidden">
       <div className="px-5 py-4 border-b border-border">
         <h3 className="text-sm font-semibold">
-          {lang === "en" ? "Company Comparison" : "Compara\u021Bie firme"}
+          {lang === "en" ? "Company Comparison" : "Comparație firme"}
         </h3>
       </div>
       <div className="overflow-x-auto">

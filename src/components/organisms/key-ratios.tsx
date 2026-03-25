@@ -28,9 +28,9 @@ function sumClass(rows: NormalizedBalantaRow[], cls: number, field: keyof Normal
 
 const RATIOS: Ratio[] = [
   {
-    labelRo: "Marj\u0103 brut\u0103",
+    labelRo: "Marjă brută",
     labelEn: "Gross margin",
-    tipRo: "C\u00E2t r\u0103m\u00E2ne din venituri dup\u0103 sc\u0103derea costului m\u0103rfii v\u00E2ndute. Peste 40% = excelent pentru comer\u021B.",
+    tipRo: "Cât rămâne din venituri după scăderea costului mărfii vândute. Peste 40% = excelent pentru comerț.",
     tipEn: "What remains from revenue after deducting cost of goods sold. Above 40% = excellent for trading.",
     compute: (rows) => {
       const revenue = sumClass(rows, 7, "sumeTotaleC");
@@ -42,7 +42,7 @@ const RATIOS: Ratio[] = [
   {
     labelRo: "Rata cheltuielilor salariale",
     labelEn: "Salary expense ratio",
-    tipRo: "Ce procent din venituri merge pe salarii. Sub 15% = eficient, peste 30% = greu de sus\u021Binut.",
+    tipRo: "Ce procent din venituri merge pe salarii. Sub 15% = eficient, peste 30% = greu de susținut.",
     tipEn: "What percentage of revenue goes to salaries. Under 15% = efficient, over 30% = hard to sustain.",
     compute: (rows) => {
       const revenue = sumClass(rows, 7, "sumeTotaleC");
@@ -52,9 +52,9 @@ const RATIOS: Ratio[] = [
     },
   },
   {
-    labelRo: "Rata de \u00EEndatorare",
+    labelRo: "Rata de îndatorare",
     labelEn: "Debt ratio",
-    tipRo: "C\u00E2t din activele firmei sunt finan\u021Bate prin datorii. Sub 30% = solid, peste 60% = risc.",
+    tipRo: "Cât din activele firmei sunt finanțate prin datorii. Sub 30% = solid, peste 60% = risc.",
     tipEn: "How much of company assets are financed by debt. Under 30% = solid, over 60% = risky.",
     compute: (rows) => {
       const furnizori = getAcc(rows, "401", "soldFinalC");
@@ -67,9 +67,9 @@ const RATIOS: Ratio[] = [
     },
   },
   {
-    labelRo: "Rota\u021Bie stoc (zile)",
+    labelRo: "Rotație stoc (zile)",
     labelEn: "Inventory turnover (days)",
-    tipRo: "\u00CEn c\u00E2te zile se vinde stocul mediu. Sub 90 = rapid, peste 180 = bani blocai \u00EEn marf\u0103.",
+    tipRo: "În câte zile se vinde stocul mediu. Sub 90 = rapid, peste 180 = bani blocai în marfă.",
     tipEn: "How many days to sell average inventory. Under 90 = fast, over 180 = cash tied up in goods.",
     compute: (rows) => {
       const stock = getAcc(rows, "371", "soldFinalD");
@@ -79,9 +79,9 @@ const RATIOS: Ratio[] = [
     },
   },
   {
-    labelRo: "Rota\u021Bie clien\u021Bi (zile)",
+    labelRo: "Rotație clienți (zile)",
     labelEn: "Receivables turnover (days)",
-    tipRo: "\u00CEn c\u00E2te zile \u00EEncaseaz\u0103 firma de la clien\u021Bi. Sub 30 = bine, peste 60 = problematic.",
+    tipRo: "În câte zile încasează firma de la clienți. Sub 30 = bine, peste 60 = problematic.",
     tipEn: "How many days until clients pay. Under 30 = good, over 60 = problematic.",
     compute: (rows) => {
       const clienti = getAcc(rows, "4111", "soldFinalD");

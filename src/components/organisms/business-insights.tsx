@@ -33,7 +33,7 @@ export function BusinessInsights() {
     if (combinedMargin > 30) {
       results.push({
         icon: "\uD83D\uDCC8",
-        textRo: `Profitabilitate excelent\u0103: marja combinat\u0103 de ${combinedMargin.toFixed(1)}% este peste media industriei textile.`,
+        textRo: `Profitabilitate excelentă: marja combinată de ${combinedMargin.toFixed(1)}% este peste media industriei textile.`,
         textEn: `Excellent profitability: combined margin of ${combinedMargin.toFixed(1)}% is above textile industry average.`,
         sentiment: "positive",
       });
@@ -44,7 +44,7 @@ export function BusinessInsights() {
       const ratio = ((filato.profit / ifp.profit - 1) * 100).toFixed(0);
       results.push({
         icon: "\uD83C\uDFC6",
-        textRo: `FILATO genereaz\u0103 cu ${ratio}% mai mult profit dec\u00E2t IFP, de\u0219i IFP are stocuri de ${(ifp.stockValue / filato.stockValue).toFixed(1)}x mai mari.`,
+        textRo: `FILATO generează cu ${ratio}% mai mult profit decât IFP, deși IFP are stocuri de ${(ifp.stockValue / filato.stockValue).toFixed(1)}x mai mari.`,
         textEn: `FILATO generates ${ratio}% more profit than IFP, despite IFP holding ${(ifp.stockValue / filato.stockValue).toFixed(1)}x more inventory.`,
         sentiment: "neutral",
       });
@@ -57,7 +57,7 @@ export function BusinessInsights() {
     if (stockToRevenue > 50) {
       results.push({
         icon: "\uD83D\uDCE6",
-        textRo: `Stocurile reprezint\u0103 ${stockToRevenue.toFixed(0)}% din venituri. IFP de\u021Bine ${((ifp.stockValue / (ifp.stockValue + filato.stockValue)) * 100).toFixed(0)}% din stocul total.`,
+        textRo: `Stocurile reprezintă ${stockToRevenue.toFixed(0)}% din venituri. IFP deține ${((ifp.stockValue / (ifp.stockValue + filato.stockValue)) * 100).toFixed(0)}% din stocul total.`,
         textEn: `Inventory is ${stockToRevenue.toFixed(0)}% of revenue. IFP holds ${((ifp.stockValue / (ifp.stockValue + filato.stockValue)) * 100).toFixed(0)}% of total stock.`,
         sentiment: "negative",
       });
@@ -70,14 +70,14 @@ export function BusinessInsights() {
     if (cashMonths < 1) {
       results.push({
         icon: "\u26A0\uFE0F",
-        textRo: `Lichiditatea acoper\u0103 doar ${cashMonths.toFixed(1)} luni de cheltuieli. Consider\u0103 optimizarea \u00EEncas\u0103rilor.`,
+        textRo: `Lichiditatea acoperă doar ${cashMonths.toFixed(1)} luni de cheltuieli. Consideră optimizarea încasărilor.`,
         textEn: `Cash covers only ${cashMonths.toFixed(1)} months of expenses. Consider optimizing collections.`,
         sentiment: "negative",
       });
     } else {
       results.push({
         icon: "\uD83D\uDCB0",
-        textRo: `Lichiditatea acoper\u0103 ${cashMonths.toFixed(1)} luni de cheltuieli.`,
+        textRo: `Lichiditatea acoperă ${cashMonths.toFixed(1)} luni de cheltuieli.`,
         textEn: `Cash position covers ${cashMonths.toFixed(1)} months of expenses.`,
         sentiment: cashMonths > 3 ? "positive" : "neutral",
       });
@@ -97,7 +97,7 @@ export function BusinessInsights() {
     if (transportPct > 3) {
       results.push({
         icon: "\uD83D\uDE9A",
-        textRo: `Transportul reprezint\u0103 ${transportPct.toFixed(1)}% din venituri (${totalTransport.toLocaleString("ro-RO")} RON). IFP pl\u0103te\u0219te de 3x mai mult transport dec\u00E2t FILATO.`,
+        textRo: `Transportul reprezintă ${transportPct.toFixed(1)}% din venituri (${totalTransport.toLocaleString("ro-RO")} RON). IFP plătește de 3x mai mult transport decât FILATO.`,
         textEn: `Transport costs are ${transportPct.toFixed(1)}% of revenue (${totalTransport.toLocaleString("en-US")} RON). IFP pays 3x more for transport than FILATO.`,
         sentiment: "neutral",
       });
@@ -108,7 +108,7 @@ export function BusinessInsights() {
     if (totalServices > 100000) {
       results.push({
         icon: "\uD83D\uDCBC",
-        textRo: `Servicii externe (contabilitate, IT, juridic): ${totalServices.toLocaleString("ro-RO")} RON. IFP cheltuie\u0219te semnificativ mai mult pe servicii dec\u00E2t FILATO.`,
+        textRo: `Servicii externe (contabilitate, IT, juridic): ${totalServices.toLocaleString("ro-RO")} RON. IFP cheltuiește semnificativ mai mult pe servicii decât FILATO.`,
         textEn: `External services (accounting, IT, legal): ${totalServices.toLocaleString("en-US")} RON. IFP spends significantly more on services than FILATO.`,
         sentiment: "neutral",
       });

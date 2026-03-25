@@ -71,7 +71,7 @@ export function AlertsPanel() {
       >
         <div className="flex items-center gap-2">
           <h3 className="text-sm font-semibold">
-            {lang === "en" ? "Alerts & Checks" : "Alerte \u0219i verific\u0103ri"}
+            {lang === "en" ? "Alerts & Checks" : "Alerte și verificări"}
           </h3>
           <div className="flex items-center gap-1">
             {errors.length > 0 && (

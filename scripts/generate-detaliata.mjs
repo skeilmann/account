@@ -25,8 +25,7 @@ function extractNumbers(line) {
   return matches.map(parseRomanianNumber);
 }
 
-const SUB_ACCOUNT_REGEX = /^(\d{3,4})\.(\d+)/;
-const PARENT_ACCOUNT_REGEX = /^(\d{3,4})([A-Z]|$)/;
+const SUB_ACCOUNT_LINE_REGEX = /^(\d{3,4})\.(\d+)$/;
 
 function isNoiseLine(line) {
   return (
@@ -48,53 +47,51 @@ function isNoiseLine(line) {
   );
 }
 
-function parseDetailed(text) {
+/**
+ * Parse detailed entries using FILATO-style layout:
+ *   NAME (text, may span lines)
+ *   NUMBERS (8 values on one line)
+ *   CODE (dotted sub-account code on its own line, e.g., "401.00001")
+ */
+function parseDetailedEntries(text) {
   const entries = [];
   const lines = text.split("\n").map((l) => l.trim()).filter(Boolean);
 
   let i = 0;
+  let pendingName = "";
+
   while (i < lines.length) {
     const line = lines[i];
 
-    if (isNoiseLine(line) || line.startsWith("Total sume clasa") || line.includes("Totaluri:")) {
+    if (isNoiseLine(line)) { i++; continue; }
+    if (line.startsWith("Total sume clasa") || line.includes("Totaluri:")) {
+      pendingName = "";
       i++;
       continue;
     }
 
-    const subMatch = line.match(SUB_ACCOUNT_REGEX);
-    if (subMatch) {
-      const fullCode = subMatch[0];
-      const parentCont = subMatch[1];
-      const restOfLine = line.slice(fullCode.length);
+    // Skip standalone dotted codes (already consumed by look-ahead)
+    if (SUB_ACCOUNT_LINE_REGEX.test(line)) { i++; continue; }
 
-      let numbers = extractNumbers(restOfLine);
-      let nameText = restOfLine.replace(/-?(?:\d[\d\s]*\d|\d)\.\d{2}/g, "").trim();
+    // Skip standalone parent codes
+    if (/^\d{3,4}$/.test(line) && !/^\d{2}\.\d{2}/.test(line)) {
+      pendingName = "";
+      i++;
+      continue;
+    }
 
-      while (numbers.length < 8 && i + 1 < lines.length) {
-        i++;
-        const nextLine = lines[i];
-        if (
-          nextLine.match(SUB_ACCOUNT_REGEX) ||
-          nextLine.match(PARENT_ACCOUNT_REGEX) ||
-          nextLine.startsWith("Total") ||
-          nextLine.includes("Totaluri:") ||
-          isNoiseLine(nextLine)
-        ) {
-          i--;
-          break;
-        }
-        numbers = numbers.concat(extractNumbers(nextLine));
-        const moreText = nextLine.replace(/-?(?:\d[\d\s]*\d|\d)\.\d{2}/g, "").trim();
-        if (moreText && !/^[\s,.-]*$/.test(moreText)) {
-          nameText += " " + moreText;
-        }
-      }
+    const numbers = extractNumbers(line);
+    if (numbers.length >= 8) {
+      // Look ahead for dotted sub-account code
+      if (i + 1 < lines.length && SUB_ACCOUNT_LINE_REGEX.test(lines[i + 1].trim())) {
+        const codeLine = lines[i + 1].trim();
+        const codeMatch = codeLine.match(SUB_ACCOUNT_LINE_REGEX);
+        const parentCont = codeMatch[1];
 
-      if (numbers.length >= 8) {
         entries.push({
-          cont: fullCode,
+          cont: codeLine,
           parentCont,
-          denumire: nameText.trim(),
+          denumire: pendingName.trim(),
           sumePrecedenteD: numbers[0] ?? 0,
           sumePrecedenteC: numbers[1] ?? 0,
           rulajePerioadaD: numbers[2] ?? 0,
@@ -104,10 +101,21 @@ function parseDetailed(text) {
           soldFinalD: numbers[6] ?? 0,
           soldFinalC: numbers[7] ?? 0,
         });
+
+        i += 2;
+        pendingName = "";
+        continue;
       }
 
+      // Parent account number line, skip
+      pendingName = "";
       i++;
       continue;
+    }
+
+    // Text line — accumulate as name
+    if (numbers.length === 0 && line.length > 0) {
+      pendingName = pendingName ? pendingName + " " + line : line;
     }
 
     i++;
@@ -119,9 +127,7 @@ function parseDetailed(text) {
 function groupByParent(entries) {
   const map = {};
   for (const entry of entries) {
-    if (!map[entry.parentCont]) {
-      map[entry.parentCont] = [];
-    }
+    if (!map[entry.parentCont]) map[entry.parentCont] = [];
     map[entry.parentCont].push(entry);
   }
   return map;
@@ -150,12 +156,10 @@ async function main() {
   const ifpData = await pdfParse(ifpBuffer);
   const ifpText = ifpData.text;
   const ifpPeriod = extractPeriod(ifpText);
-  const ifpEntries = parseDetailed(ifpText);
+  const ifpEntries = parseDetailedEntries(ifpText);
+  const ifpByParent = groupByParent(ifpEntries);
 
   console.log(`IFP: parsed ${ifpEntries.length} sub-account entries`);
-
-  // Show parent grouping stats
-  const ifpByParent = groupByParent(ifpEntries);
   for (const [parent, children] of Object.entries(ifpByParent)) {
     console.log(`  ${parent}: ${children.length} sub-accounts`);
   }
@@ -165,7 +169,7 @@ async function main() {
   const filatoBuffer = readFileSync(filatoPath);
   const filatoData = await pdfParse(filatoBuffer);
   const filatoText = filatoData.text;
-  const filatoEntries = parseDetailed(filatoText);
+  const filatoEntries = parseDetailedEntries(filatoText);
 
   console.log(`FILATO: parsed ${filatoEntries.length} sub-account entries`);
 

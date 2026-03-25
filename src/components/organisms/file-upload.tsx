@@ -8,6 +8,7 @@ export function FileUpload() {
   const [uploading, setUploading] = useState(false);
   const [results, setResults] = useState<string[]>([]);
   const setBalanta = useDataStore((s) => s.setBalanta);
+  const setBalantaDetaliata = useDataStore((s) => s.setBalantaDetaliata);
   const setStock = useDataStore((s) => s.setStock);
   const { t } = useTranslation("common");
 
@@ -36,10 +37,17 @@ export function FileUpload() {
             });
             const json = await res.json();
             if (json.success) {
-              setBalanta(json.data.companyId, json.data);
-              newResults.push(
-                `\u2705 ${file.name}: ${json.summary.company} — ${json.summary.totalAccounts} conturi`
-              );
+              if (json.type === "detailed") {
+                setBalantaDetaliata(json.data.companyId, json.data);
+                newResults.push(
+                  `\u2705 ${file.name}: ${json.summary.company} — ${json.summary.totalEntries} sub-conturi (detaliat)`
+                );
+              } else {
+                setBalanta(json.data.companyId, json.data);
+                newResults.push(
+                  `\u2705 ${file.name}: ${json.summary.company} — ${json.summary.totalAccounts} conturi`
+                );
+              }
             } else {
               newResults.push(`\u274C ${file.name}: ${json.error}`);
             }
@@ -72,7 +80,7 @@ export function FileUpload() {
       setResults(newResults);
       setUploading(false);
     },
-    [setBalanta, setStock]
+    [setBalanta, setBalantaDetaliata, setStock]
   );
 
   return (
@@ -94,11 +102,11 @@ export function FileUpload() {
         </div>
         <p className="text-sm text-muted-foreground">
           {uploading
-            ? "Se proceseaz\u0103..."
+            ? "Se procesează..."
             : t("status.upload_prompt")}
         </p>
         <p className="text-xs text-muted-foreground/60">
-          Balan\u021Ba de verificare (PDF) + Balan\u021Ba stocului (XLS)
+          Balanța de verificare (PDF) + Balanța stocului (XLS)
         </p>
       </label>
 

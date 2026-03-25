@@ -82,14 +82,14 @@ export function LegislationPanel() {
           ? "Legislation Reference 2026"
           : lang === "it"
             ? "Riferimenti legislativi 2026"
-            : "Legisla\u021Bie de referin\u021B\u0103 2026"}
+            : "Legislație de referință 2026"}
       </h3>
       <p className="text-[10px] text-muted-foreground mb-4">
         {lang === "en"
           ? "Verified from Monitorul Oficial, ANAF, and Legea 141/2025 / OUG 8/2026"
           : lang === "it"
             ? "Verificato da Monitorul Oficial, ANAF e Legge 141/2025 / OUG 8/2026"
-            : "Verificat din Monitorul Oficial, ANAF \u0219i Legea 141/2025 / OUG 8/2026"}
+            : "Verificat din Monitorul Oficial, ANAF și Legea 141/2025 / OUG 8/2026"}
       </p>
 
       <div className="space-y-2">
@@ -156,7 +156,7 @@ export function LegislationPanel() {
           {[
             { label: "ANAF", url: "https://www.anaf.ro" },
             { label: "Monitorul Oficial", url: "https://monitoruloficial.ro" },
-            { label: "MFinan\u021Be", url: "https://mfinante.gov.ro" },
+            { label: "MFinanțe", url: "https://mfinante.gov.ro" },
             { label: "CECCAR", url: "https://ceccar.ro" },
           ].map((src) => (
             <a

@@ -6,18 +6,23 @@ import { Money } from "@/components/atoms/money";
 import { useDataStore } from "@/stores/data-store";
 import { useCompanyStore } from "@/stores/company-store";
 import type { NormalizedBalantaRow } from "@/types/balanta";
+import type { DetailedAccountEntry } from "@/types/balanta-detaliata";
 import { useTranslation } from "react-i18next";
 
 interface CustomField {
   id: string;
   label: string;
-  type: "account" | "manual";
+  type: "account" | "manual" | "partner";
   /** For account type: account code(s) comma-separated */
   accountCodes?: string;
   /** For account type: which value to pull */
   valueField?: "sumeTotaleD" | "sumeTotaleC" | "soldFinalD" | "soldFinalC";
   /** For manual type: fixed RON amount */
   manualValue?: number;
+  /** For partner type: sub-account code (e.g. "401.00003") */
+  partnerCont?: string;
+  /** For partner type: parent account (e.g. "401") */
+  partnerParent?: string;
 }
 
 interface CustomCard {
@@ -45,22 +50,22 @@ function saveCards(cards: CustomCard[]) {
 
 /** Preset account suggestions */
 const PRESETS = [
-  { label: "Marf\u0103 cump\u0103rat\u0103 (607)", codes: "607", field: "sumeTotaleD" as const },
+  { label: "Marfă cumpărată (607)", codes: "607", field: "sumeTotaleD" as const },
   { label: "Salarii (641)", codes: "641", field: "sumeTotaleD" as const },
   { label: "Transport (624)", codes: "624", field: "sumeTotaleD" as const },
   { label: "Servicii externe (628)", codes: "628", field: "sumeTotaleD" as const },
   { label: "Chirii (6123)", codes: "6123", field: "sumeTotaleD" as const },
   { label: "Combustibil (6022)", codes: "6022", field: "sumeTotaleD" as const },
-  { label: "Amortiz\u0103ri (6811)", codes: "6811", field: "sumeTotaleD" as const },
-  { label: "Venituri v\u00E2nz\u0103ri (707)", codes: "707", field: "sumeTotaleC" as const },
+  { label: "Amortizări (6811)", codes: "6811", field: "sumeTotaleD" as const },
+  { label: "Venituri vânzări (707)", codes: "707", field: "sumeTotaleC" as const },
   { label: "Venituri servicii (704)", codes: "704", field: "sumeTotaleC" as const },
   { label: "Valoare stoc (371)", codes: "371", field: "soldFinalD" as const },
-  { label: "Clien\u021Bi (4111)", codes: "4111", field: "soldFinalD" as const },
+  { label: "Clienți (4111)", codes: "4111", field: "soldFinalD" as const },
   { label: "Furnizori (401)", codes: "401", field: "soldFinalC" as const },
-  { label: "Asigur\u0103ri (613)", codes: "613", field: "sumeTotaleD" as const },
-  { label: "Tichete mas\u0103 (6422)", codes: "6422", field: "sumeTotaleD" as const },
+  { label: "Asigurări (613)", codes: "613", field: "sumeTotaleD" as const },
+  { label: "Tichete masă (6422)", codes: "6422", field: "sumeTotaleD" as const },
   { label: "Impozit profit (691)", codes: "691", field: "sumeTotaleD" as const },
-  { label: "Telecomunica\u021Bii (626)", codes: "626", field: "sumeTotaleD" as const },
+  { label: "Telecomunicații (626)", codes: "626", field: "sumeTotaleD" as const },
 ];
 
 function getFieldValue(
@@ -124,7 +129,7 @@ export function CustomCards() {
           onClick={() => { setShowBuilder(!showBuilder); setEditingCard(null); }}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20 text-primary text-xs font-medium hover:bg-primary/20 transition-colors"
         >
-          {showBuilder ? "\u2715 Anuleaz\u0103" : "+ Card personalizat"}
+          {showBuilder ? "\u2715 Anulează" : "+ Card personalizat"}
         </button>
         {cards.length > 0 && (
           <span className="text-[10px] text-muted-foreground">
@@ -182,6 +187,10 @@ function CardBuilder({
   const [title, setTitle] = useState(initialCard?.title ?? "");
   const [fields, setFields] = useState<CustomField[]>(initialCard?.fields ?? []);
   const [showPresets, setShowPresets] = useState(false);
+  const [showPartners, setShowPartners] = useState(false);
+  const [partnerSearch, setPartnerSearch] = useState("");
+  const [partnerParentFilter, setPartnerParentFilter] = useState("401");
+  const getSubAccounts = useDataStore((s) => s.getSubAccounts);
 
   function addPreset(preset: (typeof PRESETS)[0]) {
     setFields([
@@ -222,6 +231,20 @@ function CardBuilder({
     ]);
   }
 
+  function addPartner(entry: DetailedAccountEntry) {
+    setFields([
+      ...fields,
+      {
+        id: crypto.randomUUID(),
+        label: entry.denumire,
+        type: "partner",
+        partnerCont: entry.cont,
+        partnerParent: entry.parentCont,
+        valueField: entry.parentCont === "4111" ? "sumeTotaleD" : "sumeTotaleD",
+      },
+    ]);
+  }
+
   function updateField(id: string, updates: Partial<CustomField>) {
     setFields(fields.map((f) => (f.id === id ? { ...f, ...updates } : f)));
   }
@@ -246,7 +269,7 @@ function CardBuilder({
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Titlu card (ex: Costuri totale opera\u021Bionale)"
+        placeholder="Titlu card (ex: Costuri totale operaționale)"
         className="w-full bg-secondary border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
       />
 
@@ -257,13 +280,13 @@ function CardBuilder({
             key={field.id}
             className="flex items-center gap-2 bg-secondary/30 rounded-lg p-2"
           >
-            {field.type === "account" ? (
+            {field.type === "account" && (
               <>
                 <input
                   type="text"
                   value={field.label}
                   onChange={(e) => updateField(field.id, { label: e.target.value })}
-                  placeholder="Etichet\u0103"
+                  placeholder="Etichetă"
                   className="flex-1 bg-secondary border border-border rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary"
                 />
                 <input
@@ -288,13 +311,14 @@ function CardBuilder({
                   <option value="soldFinalC">Sold C</option>
                 </select>
               </>
-            ) : (
+            )}
+            {field.type === "manual" && (
               <>
                 <input
                   type="text"
                   value={field.label}
                   onChange={(e) => updateField(field.id, { label: e.target.value })}
-                  placeholder="Etichet\u0103"
+                  placeholder="Etichetă"
                   className="flex-1 bg-secondary border border-border rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary"
                 />
                 <input
@@ -306,6 +330,33 @@ function CardBuilder({
                   placeholder="Valoare RON"
                   className="w-28 bg-secondary border border-border rounded px-2 py-1 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-primary"
                 />
+              </>
+            )}
+            {field.type === "partner" && (
+              <>
+                <span className="text-[10px] text-emerald-400 shrink-0">👤</span>
+                <input
+                  type="text"
+                  value={field.label}
+                  onChange={(e) => updateField(field.id, { label: e.target.value })}
+                  placeholder="Nume partener"
+                  className="flex-1 bg-secondary border border-border rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary"
+                />
+                <span className="text-[9px] text-muted-foreground font-mono shrink-0">{field.partnerCont}</span>
+                <select
+                  value={field.valueField || "sumeTotaleD"}
+                  onChange={(e) =>
+                    updateField(field.id, {
+                      valueField: e.target.value as CustomField["valueField"],
+                    })
+                  }
+                  className="bg-secondary border border-border rounded px-1 py-1 text-[10px]"
+                >
+                  <option value="sumeTotaleD">Total Debit</option>
+                  <option value="sumeTotaleC">Total Credit</option>
+                  <option value="soldFinalD">Sold D</option>
+                  <option value="soldFinalC">Sold C</option>
+                </select>
               </>
             )}
             <button
@@ -336,9 +387,83 @@ function CardBuilder({
           onClick={addManualField}
           className="px-2.5 py-1 rounded bg-secondary text-xs text-muted-foreground hover:text-foreground transition-colors"
         >
-          + Valoare fix\u0103
+          + Valoare fixă
+        </button>
+        <button
+          onClick={() => { setShowPartners(!showPartners); setShowPresets(false); setPartnerSearch(""); }}
+          className="px-2.5 py-1 rounded bg-secondary text-xs text-muted-foreground hover:text-foreground transition-colors"
+        >
+          + Partener (furnizor/client)
         </button>
       </div>
+
+      {/* Partner picker */}
+      <AnimatePresence>
+        {showPartners && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="bg-secondary/30 rounded-lg p-3 space-y-2">
+              <div className="flex gap-2">
+                {[
+                  { code: "401", label: "Furnizori" },
+                  { code: "4111", label: "Clienți" },
+                  { code: "462", label: "Creditori" },
+                  { code: "461", label: "Debitori" },
+                ].map((opt) => (
+                  <button
+                    key={opt.code}
+                    onClick={() => setPartnerParentFilter(opt.code)}
+                    className={`px-2 py-0.5 rounded text-[10px] font-medium transition-colors ${
+                      partnerParentFilter === opt.code
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-secondary text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {opt.label} ({opt.code})
+                  </button>
+                ))}
+              </div>
+              <input
+                type="text"
+                value={partnerSearch}
+                onChange={(e) => setPartnerSearch(e.target.value)}
+                placeholder="Caută partener..."
+                className="w-full bg-secondary border border-border rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary"
+                autoFocus
+              />
+              <div className="max-h-40 overflow-y-auto space-y-0.5">
+                {getSubAccounts(partnerParentFilter, "combined")
+                  .filter((e) =>
+                    !partnerSearch ||
+                    e.denumire.toLowerCase().includes(partnerSearch.toLowerCase()) ||
+                    e.cont.includes(partnerSearch)
+                  )
+                  .sort((a, b) => b.sumeTotaleD - a.sumeTotaleD)
+                  .slice(0, 30)
+                  .map((entry) => (
+                    <button
+                      key={entry.cont}
+                      onClick={() => { addPartner(entry); setShowPartners(false); }}
+                      className="w-full flex items-center justify-between px-2 py-1.5 rounded hover:bg-secondary/80 text-left transition-colors"
+                    >
+                      <div className="min-w-0">
+                        <p className="text-[11px] truncate">{entry.denumire}</p>
+                        <p className="text-[9px] text-muted-foreground font-mono">{entry.cont}</p>
+                      </div>
+                      <span className="text-[10px] font-mono text-muted-foreground shrink-0 ml-2">
+                        {entry.sumeTotaleD.toLocaleString("ro-RO", { maximumFractionDigits: 0 })} RON
+                      </span>
+                    </button>
+                  ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Presets dropdown */}
       <AnimatePresence>
@@ -371,13 +496,13 @@ function CardBuilder({
           disabled={!title.trim() || fields.length === 0}
           className="px-4 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-medium hover:brightness-110 transition disabled:opacity-30 disabled:cursor-not-allowed"
         >
-          {initialCard ? "Salveaz\u0103 modific\u0103rile" : "Salveaz\u0103 card"}
+          {initialCard ? "Salvează modificările" : "Salvează card"}
         </button>
         <button
           onClick={onCancel}
           className="px-4 py-1.5 rounded-lg bg-secondary text-xs text-muted-foreground hover:text-foreground transition"
         >
-          Anuleaz\u0103
+          Anulează
         </button>
       </div>
     </div>
@@ -394,6 +519,7 @@ function CustomCardView({
   onEdit: () => void;
 }) {
   const balanta = useDataStore((s) => s.balanta);
+  const getSubAccounts = useDataStore((s) => s.getSubAccounts);
   const { activeView } = useCompanyStore();
 
   const ifpRows = (balanta.ifp?.rows ?? []) as NormalizedBalantaRow[];
@@ -401,6 +527,13 @@ function CustomCardView({
 
   function getValueForField(field: CustomField): number {
     if (field.type === "manual") return field.manualValue ?? 0;
+
+    if (field.type === "partner" && field.partnerCont && field.partnerParent) {
+      const vf = field.valueField ?? "sumeTotaleD";
+      const entries = getSubAccounts(field.partnerParent, activeView === "combined" ? "combined" : activeView);
+      const match = entries.filter((e) => e.cont === field.partnerCont);
+      return match.reduce((sum, e) => sum + ((e as unknown as Record<string, number>)[vf] ?? 0), 0);
+    }
 
     const codes = field.accountCodes ?? "";
     const vf = field.valueField ?? "sumeTotaleD";
@@ -431,14 +564,14 @@ function CustomCardView({
         <button
           onClick={onEdit}
           className="w-7 h-7 rounded-md bg-secondary/80 hover:bg-primary/20 text-muted-foreground hover:text-primary text-base flex items-center justify-center transition-colors"
-          title="Editeaz\u0103"
+          title="Editează"
         >
           {"\u270E"}
         </button>
         <button
           onClick={onRemove}
           className="w-7 h-7 rounded-md bg-secondary/80 hover:bg-red-500/20 text-muted-foreground hover:text-red-400 text-base flex items-center justify-center transition-colors"
-          title="\u0218terge"
+          title="Șterge"
         >
           {"\u2715"}
         </button>
@@ -464,6 +597,9 @@ function CustomCardView({
               )}
               {field.type === "manual" && (
                 <span className="text-amber-500/60 text-[9px]">manual</span>
+              )}
+              {field.type === "partner" && (
+                <span className="text-emerald-500/60 text-[9px]">👤 {field.partnerCont}</span>
               )}
               {field.label}
             </span>

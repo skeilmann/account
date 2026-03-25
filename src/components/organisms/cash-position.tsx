@@ -7,12 +7,13 @@ import { COMPANY_VIEW_COLORS } from "@/types/company";
 import type { NormalizedBalantaRow } from "@/types/balanta";
 import { useTranslation } from "react-i18next";
 import { InfoIcon } from "@/components/atoms/info-tooltip";
+import { SubAccountDialog } from "@/components/molecules/sub-account-dialog";
 
 const CASH_ACCOUNTS = [
-  { cont: "5121", labelKey: "5121", tipRo: "Soldul conturilor bancare \u00EEn lei la sf\u00E2r\u0219itul anului.", tipEn: "RON bank account balance at year end." },
-  { cont: "5124", labelKey: "5124", tipRo: "Soldul conturilor bancare \u00EEn valut\u0103 (EUR, USD etc.) exprimat \u00EEn RON.", tipEn: "Foreign currency bank balance (EUR, USD, etc.) expressed in RON." },
-  { cont: "5311", labelKey: "5311", tipRo: "Numerar fizic \u00EEn casa firmei.", tipEn: "Physical cash in the company register." },
-  { cont: "542", labelKey: "542", tipRo: "Avansuri de trezorerie date angaja\u021Bilor pentru deplas\u0103ri sau achizi\u021Bii.", tipEn: "Treasury advances given to employees for trips or purchases." },
+  { cont: "5121", labelKey: "5121", tipRo: "Soldul conturilor bancare în lei la sfârșitul anului.", tipEn: "RON bank account balance at year end." },
+  { cont: "5124", labelKey: "5124", tipRo: "Soldul conturilor bancare în valută (EUR, USD etc.) exprimat în RON.", tipEn: "Foreign currency bank balance (EUR, USD, etc.) expressed in RON." },
+  { cont: "5311", labelKey: "5311", tipRo: "Numerar fizic în casa firmei.", tipEn: "Physical cash in the company register." },
+  { cont: "542", labelKey: "542", tipRo: "Avansuri de trezorerie date angajaților pentru deplasări sau achiziții.", tipEn: "Treasury advances given to employees for trips or purchases." },
 ];
 
 export function CashPosition() {
@@ -62,41 +63,45 @@ export function CashPosition() {
         {cashItems.map((item) => {
           if (!item) return null;
           return (
-            <div
+            <SubAccountDialog
               key={item.cont}
-              className="flex items-center justify-between py-2 border-b border-border/50 last:border-0"
+              parentCont={item.cont}
+              parentName={t(`accounts:${item.cont}`, item.cont)}
+              side="D"
             >
-              <div>
-                <p className="text-sm">
-                  {t(`accounts:${item.cont}`, item.cont)}
-                  <InfoIcon text={lang === "en" ? item.tipEn : item.tipRo} position="bottom" />
-                </p>
-                <p className="text-[10px] text-muted-foreground">
-                  {item.cont}
-                </p>
+              <div className="flex items-center justify-between py-2 border-b border-border/50 last:border-0">
+                <div>
+                  <p className="text-sm">
+                    {t(`accounts:${item.cont}`, item.cont)}
+                    <InfoIcon text={lang === "en" ? item.tipEn : item.tipRo} position="bottom" />
+                  </p>
+                  <p className="text-[10px] text-muted-foreground">
+                    {item.cont}
+                  </p>
+                </div>
+                <div className="text-right">
+                  <Money amount={item.displayVal} className="text-sm font-semibold" />
+                  {activeView === "combined" && (
+                    <div className="flex gap-2 mt-0.5 text-[10px] text-muted-foreground">
+                      <span>
+                        <span
+                          className="inline-block w-1.5 h-1.5 rounded-full mr-0.5"
+                          style={{ backgroundColor: COMPANY_VIEW_COLORS.ifp }}
+                        />
+                        <Money amount={item.ifpVal} compact className="text-[10px]" />
+                      </span>
+                      <span>
+                        <span
+                          className="inline-block w-1.5 h-1.5 rounded-full mr-0.5"
+                          style={{ backgroundColor: COMPANY_VIEW_COLORS.filato }}
+                        />
+                        <Money amount={item.filatoVal} compact className="text-[10px]" />
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="text-right">
-                <Money amount={item.displayVal} className="text-sm font-semibold" />
-                {activeView === "combined" && (
-                  <div className="flex gap-2 mt-0.5 text-[10px] text-muted-foreground">
-                    <span>
-                      <span
-                        className="inline-block w-1.5 h-1.5 rounded-full mr-0.5"
-                        style={{ backgroundColor: COMPANY_VIEW_COLORS.ifp }}
-                      />
-                      <Money amount={item.ifpVal} compact className="text-[10px]" />
-                    </span>
-                    <span>
-                      <span
-                        className="inline-block w-1.5 h-1.5 rounded-full mr-0.5"
-                        style={{ backgroundColor: COMPANY_VIEW_COLORS.filato }}
-                      />
-                      <Money amount={item.filatoVal} compact className="text-[10px]" />
-                    </span>
-                  </div>
-                )}
-              </div>
-            </div>
+            </SubAccountDialog>
           );
         })}
       </div>

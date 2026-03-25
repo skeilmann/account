@@ -67,11 +67,11 @@ export function ProfitWaterfall() {
     running -= val;
   }
 
-  add(lang === "en" ? "COGS" : "Cost marf\u0103", cogs);
+  add(lang === "en" ? "COGS" : "Cost marfă", cogs);
   add("Transport", transport);
   add(lang === "en" ? "Salaries" : "Salarii", salaries);
   add(lang === "en" ? "Services" : "Servicii", services);
-  add(lang === "en" ? "Depreciation" : "Amortiz\u0103ri", amortizari);
+  add(lang === "en" ? "Depreciation" : "Amortizări", amortizari);
   add(lang === "en" ? "Income tax" : "Impozit profit", taxProfit);
   add(lang === "en" ? "Other" : "Altele", Math.max(0, other));
 
@@ -95,7 +95,7 @@ export function ProfitWaterfall() {
   return (
     <div className="rounded-xl bg-card border border-border p-5">
       <h3 className="text-sm font-semibold mb-4">
-        {lang === "en" ? "Profit Waterfall" : "Cascad\u0103 profit"}
+        {lang === "en" ? "Profit Waterfall" : "Cascadă profit"}
       </h3>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={chartData} barSize={36}>

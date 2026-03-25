@@ -46,7 +46,7 @@ export function generateAlerts(
         alerts.push({
           id: `balanced-${companyId}`,
           severity: "success",
-          titleRo: "Balan\u021B\u0103 echilibrat\u0103",
+          titleRo: "Balanță echilibrată",
           titleEn: "Trial balance is balanced",
           messageRo: `${companyId.toUpperCase()}: Sold final D = C`,
           messageEn: `${companyId.toUpperCase()}: Final balance D = C`,
@@ -56,9 +56,9 @@ export function generateAlerts(
         alerts.push({
           id: `unbalanced-${companyId}`,
           severity: "error",
-          titleRo: "Balan\u021B\u0103 neechilibrat\u0103!",
+          titleRo: "Balanță neechilibrată!",
           titleEn: "Trial balance NOT balanced!",
-          messageRo: `${companyId.toUpperCase()}: Diferen\u021B\u0103 de ${diff.toFixed(2)} RON`,
+          messageRo: `${companyId.toUpperCase()}: Diferență de ${diff.toFixed(2)} RON`,
           messageEn: `${companyId.toUpperCase()}: Difference of ${diff.toFixed(2)} RON`,
           companyId,
           value: diff,
@@ -75,9 +75,9 @@ export function generateAlerts(
     alerts.push({
       id: "tva-plata-ifp",
       severity: "warning",
-      titleRo: "TVA de plat\u0103 \u2014 IFP",
+      titleRo: "TVA de plată \u2014 IFP",
       titleEn: "VAT payable \u2014 IFP",
-      messageRo: `IFP are TVA de plat\u0103: ${ifpTvaPlata.toLocaleString("ro-RO")} RON. Termen: 25 a lunii urm\u0103toare.`,
+      messageRo: `IFP are TVA de plată: ${ifpTvaPlata.toLocaleString("ro-RO")} RON. Termen: 25 a lunii următoare.`,
       messageEn: `IFP has VAT payable: ${ifpTvaPlata.toLocaleString("en-US")} RON. Deadline: 25th of following month.`,
       companyId: "ifp",
       value: ifpTvaPlata,
@@ -109,9 +109,9 @@ export function generateAlerts(
       alerts.push({
         id: `stock-mismatch-${companyId}`,
         severity: "warning",
-        titleRo: "Diferen\u021B\u0103 stoc vs cont 371",
+        titleRo: "Diferență stoc vs cont 371",
         titleEn: "Stock vs account 371 mismatch",
-        messageRo: `${companyId.toUpperCase()}: Stoc (${stock.totalValSoldFinal.toLocaleString("ro-RO")}) vs cont 371 (${cont371.toLocaleString("ro-RO")}). Diferen\u021B\u0103: ${diff.toFixed(2)} RON`,
+        messageRo: `${companyId.toUpperCase()}: Stoc (${stock.totalValSoldFinal.toLocaleString("ro-RO")}) vs cont 371 (${cont371.toLocaleString("ro-RO")}). Diferență: ${diff.toFixed(2)} RON`,
         messageEn: `${companyId.toUpperCase()}: Stock (${stock.totalValSoldFinal.toLocaleString("en-US")}) vs account 371 (${cont371.toLocaleString("en-US")}). Diff: ${diff.toFixed(2)} RON`,
         companyId,
         value: diff,
@@ -122,7 +122,7 @@ export function generateAlerts(
         severity: "success",
         titleRo: "Stoc reconciliat",
         titleEn: "Stock reconciled",
-        messageRo: `${companyId.toUpperCase()}: Balan\u021Ba stocului corespunde cu contul 371`,
+        messageRo: `${companyId.toUpperCase()}: Balanța stocului corespunde cu contul 371`,
         messageEn: `${companyId.toUpperCase()}: Stock balance matches account 371`,
         companyId,
       });
@@ -135,9 +135,9 @@ export function generateAlerts(
     alerts.push({
       id: "dividende-filato",
       severity: "info",
-      titleRo: "Dividende de pl\u0103tit \u2014 FILATO",
+      titleRo: "Dividende de plătit \u2014 FILATO",
       titleEn: "Dividends payable \u2014 FILATO",
-      messageRo: `FILATO are dividende nepl\u0103tite: ${filatoDividende.toLocaleString("ro-RO")} RON`,
+      messageRo: `FILATO are dividende neplătite: ${filatoDividende.toLocaleString("ro-RO")} RON`,
       messageEn: `FILATO has unpaid dividends: ${filatoDividende.toLocaleString("en-US")} RON`,
       companyId: "filato",
       value: filatoDividende,
@@ -156,7 +156,7 @@ export function generateAlerts(
         severity: "info",
         titleRo: `Sold mare cont 456 \u2014 ${companyId.toUpperCase()}`,
         titleEn: `Large balance account 456 \u2014 ${companyId.toUpperCase()}`,
-        messageRo: `Decontari cu ac\u021Bionari: ${cont456C.toLocaleString("ro-RO")} RON creditoare`,
+        messageRo: `Decontari cu acționari: ${cont456C.toLocaleString("ro-RO")} RON creditoare`,
         messageEn: `Shareholder settlements: ${cont456C.toLocaleString("en-US")} RON credit balance`,
         companyId,
         value: cont456C,
@@ -176,9 +176,9 @@ export function generateAlerts(
     alerts.push({
       id: "profit-gap",
       severity: "info",
-      titleRo: "Diferen\u021B\u0103 mare de profitabilitate",
+      titleRo: "Diferență mare de profitabilitate",
       titleEn: "Large profitability gap",
-      messageRo: `FILATO are profit de ${((filatoProfit / ifpProfit - 1) * 100).toFixed(0)}% mai mare dec\u00E2t IFP`,
+      messageRo: `FILATO are profit de ${((filatoProfit / ifpProfit - 1) * 100).toFixed(0)}% mai mare decât IFP`,
       messageEn: `FILATO profit is ${((filatoProfit / ifpProfit - 1) * 100).toFixed(0)}% higher than IFP`,
     });
   }

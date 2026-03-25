@@ -9,10 +9,10 @@ import { useTranslation } from "react-i18next";
 import { InfoIcon } from "@/components/atoms/info-tooltip";
 
 const TVA_ACCOUNTS = [
-  { cont: "4427", labelRo: "TVA colectat\u0103", labelEn: "Output VAT (collected)", field: "sumeTotaleC" as const, tipRo: "TVA pe care firma a \u00EEncasat-o de la clien\u021Bi la v\u00E2nzare. Se datoreaz\u0103 statului.", tipEn: "VAT collected from clients on sales. Owed to the state." },
-  { cont: "4426", labelRo: "TVA deductibil\u0103", labelEn: "Input VAT (deductible)", field: "sumeTotaleD" as const, tipRo: "TVA pl\u0103tit\u0103 la achizi\u021Bii. Se deduce din TVA colectat\u0103.", tipEn: "VAT paid on purchases. Deducted from output VAT." },
-  { cont: "4423", labelRo: "TVA de plat\u0103", labelEn: "VAT payable", field: "soldFinalC" as const, tipRo: "Suma TVA r\u0103mas\u0103 de plat\u0103 c\u0103tre stat (colectat\u0103 > deductibil\u0103). Termen: 25 a lunii urm\u0103toare.", tipEn: "Net VAT owed to the state (collected > deductible). Due: 25th of following month." },
-  { cont: "4424", labelRo: "TVA de recuperat", labelEn: "VAT receivable", field: "soldFinalD" as const, tipRo: "Suma TVA de recuperat de la stat (deductibil\u0103 > colectat\u0103). Se poate cere rambursare.", tipEn: "Net VAT to recover from the state (deductible > collected). Can request refund." },
+  { cont: "4427", labelRo: "TVA colectată", labelEn: "Output VAT (collected)", field: "sumeTotaleC" as const, tipRo: "TVA pe care firma a încasat-o de la clienți la vânzare. Se datorează statului.", tipEn: "VAT collected from clients on sales. Owed to the state." },
+  { cont: "4426", labelRo: "TVA deductibilă", labelEn: "Input VAT (deductible)", field: "sumeTotaleD" as const, tipRo: "TVA plătită la achiziții. Se deduce din TVA colectată.", tipEn: "VAT paid on purchases. Deducted from output VAT." },
+  { cont: "4423", labelRo: "TVA de plată", labelEn: "VAT payable", field: "soldFinalC" as const, tipRo: "Suma TVA rămasă de plată către stat (colectată > deductibilă). Termen: 25 a lunii următoare.", tipEn: "Net VAT owed to the state (collected > deductible). Due: 25th of following month." },
+  { cont: "4424", labelRo: "TVA de recuperat", labelEn: "VAT receivable", field: "soldFinalD" as const, tipRo: "Suma TVA de recuperat de la stat (deductibilă > colectată). Se poate cere rambursare.", tipEn: "Net VAT to recover from the state (deductible > collected). Can request refund." },
 ];
 
 export function TVASummary() {
@@ -34,7 +34,7 @@ export function TVASummary() {
   return (
     <div className="rounded-xl bg-card border border-border p-5">
       <h3 className="text-sm font-semibold mb-4">
-        {lang === "en" ? "VAT Summary" : "Situa\u021Bia TVA"}
+        {lang === "en" ? "VAT Summary" : "Situația TVA"}
       </h3>
       <div className="space-y-3">
         {TVA_ACCOUNTS.map(({ cont, labelRo, labelEn, field, tipRo, tipEn }) => {

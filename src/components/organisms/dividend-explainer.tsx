@@ -141,7 +141,7 @@ export function DividendExplainer() {
       {hasAnyDividends && (
         <div className="mb-5">
           <p className="text-xs font-medium text-amber-400 mb-2">
-            {lang === "en" ? "Unpaid dividends (cont 457)" : "Dividende nepl\u0103tite (cont 457)"}
+            {lang === "en" ? "Unpaid dividends (cont 457)" : "Dividende neplătite (cont 457)"}
           </p>
           <div className="space-y-3">
             {showFilato && data.filatoDividende > 0 && (
@@ -172,7 +172,7 @@ export function DividendExplainer() {
           <p className="text-xs font-medium text-foreground/70 mb-2">
             {lang === "en"
               ? "If full 2025 profit were distributed as dividends:"
-              : "Dac\u0103 tot profitul 2025 ar fi distribuit ca dividende:"}
+              : "Dacă tot profitul 2025 ar fi distribuit ca dividende:"}
           </p>
           <div className="space-y-3">
             {showIfp && data.ifpProfit > 0 && (
@@ -202,7 +202,7 @@ export function DividendExplainer() {
         <p className="text-[9px] text-muted-foreground">
           {lang === "en"
             ? "Sources: Legea 141/2025 (Art. 43 par. 1 Fiscal Code \u2014 16% rate), Art. 97 (withholding for individuals), Art. 170 (CASS on investment income)"
-            : "Surse: Legea 141/2025 (Art. 43 alin. 1 Cod Fiscal \u2014 cota 16%), Art. 97 (re\u021Binere la surs\u0103 PF), Art. 170 (CASS pe venituri din investi\u021Bii)"}
+            : "Surse: Legea 141/2025 (Art. 43 alin. 1 Cod Fiscal \u2014 cota 16%), Art. 97 (reținere la sursă PF), Art. 170 (CASS pe venituri din investiții)"}
         </p>
         <div className="flex flex-wrap gap-2">
           <a
@@ -273,11 +273,11 @@ function DividendRow({
           info={
             lang === "en"
               ? "16% withheld at source by the company (Art. 43 Fiscal Code, modified by Law 141/2025)"
-              : "16% re\u021Binut la surs\u0103 de firm\u0103 (Art. 43 Cod Fiscal, modificat prin Legea 141/2025)"
+              : "16% reținut la sursă de firmă (Art. 43 Cod Fiscal, modificat prin Legea 141/2025)"
           }
         />
         <Row
-          label={lang === "en" ? "Net after tax" : "Net dup\u0103 impozit"}
+          label={lang === "en" ? "Net after tax" : "Net după impozit"}
           value={<Money amount={calc.netAfterTax} className="text-[11px] font-semibold" />}
         />
 
@@ -294,7 +294,7 @@ function DividendRow({
               info={
                 lang === "en"
                   ? `Health insurance contribution (Art. 170 Fiscal Code). Applies because net dividend exceeds ${CASS_THRESHOLDS[0].amount.toLocaleString()} RON (6 minimum salaries). Max CASS: 9,720 RON/year.`
-                  : `Contribu\u021Bie de asigur\u0103ri de s\u0103n\u0103tate (Art. 170 Cod Fiscal). Se aplic\u0103 deoarece dividendul net dep\u0103\u0219e\u0219te ${CASS_THRESHOLDS[0].amount.toLocaleString("ro-RO")} RON (6 salarii minime). Max CASS: 9.720 RON/an.`
+                  : `Contribuție de asigurări de sănătate (Art. 170 Cod Fiscal). Se aplică deoarece dividendul net depășește ${CASS_THRESHOLDS[0].amount.toLocaleString("ro-RO")} RON (6 salarii minime). Max CASS: 9.720 RON/an.`
               }
             />
           </>
@@ -302,14 +302,14 @@ function DividendRow({
 
         <div className="border-t border-border/30 mt-1 pt-1">
           <Row
-            label={lang === "en" ? "Net received by shareholder" : "Net primit de ac\u021Bionar"}
+            label={lang === "en" ? "Net received by shareholder" : "Net primit de acționar"}
             value={
               <Money amount={calc.netFinal} className="text-[11px] font-bold text-emerald-400" />
             }
             bold
           />
           <Row
-            label={lang === "en" ? "Effective tax rate" : "Rat\u0103 efectiv\u0103 de impozitare"}
+            label={lang === "en" ? "Effective tax rate" : "Rată efectivă de impozitare"}
             value={
               <span className="font-mono font-tabular text-muted-foreground">
                 {formatPercent(calc.effectiveRate, locale)}

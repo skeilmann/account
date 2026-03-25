@@ -7,51 +7,52 @@ import { COMPANY_VIEW_COLORS } from "@/types/company";
 import type { NormalizedBalantaRow } from "@/types/balanta";
 import { useTranslation } from "react-i18next";
 import { InfoIcon } from "@/components/atoms/info-tooltip";
+import { SubAccountDialog } from "@/components/molecules/sub-account-dialog";
 
 const ITEMS = [
   {
-    labelRo: "Clien\u021Bi (de \u00EEncasat)",
+    labelRo: "Clienți (de încasat)",
     labelEn: "Clients (receivable)",
     cont: "4111",
     side: "D" as const,
     color: "#10b981",
-    tipRo: "Bani pe care clien\u021Bii \u00EE\u021Bi datoreaz\u0103 firmei pentru marf\u0103 livrat\u0103 dar nepl\u0103tit\u0103 \u00EEnc\u0103.",
+    tipRo: "Bani pe care clienții îți datorează firmei pentru marfă livrată dar neplătită încă.",
     tipEn: "Money clients owe the company for delivered but unpaid goods.",
   },
   {
-    labelRo: "Furnizori (de pl\u0103tit)",
+    labelRo: "Furnizori (de plătit)",
     labelEn: "Suppliers (payable)",
     cont: "401",
     side: "C" as const,
     color: "#ef4444",
-    tipRo: "Bani pe care firma \u00EEi datoreaz\u0103 furnizorilor pentru marf\u0103 primit\u0103 dar nepl\u0103tit\u0103.",
+    tipRo: "Bani pe care firma îi datorează furnizorilor pentru marfă primită dar neplătită.",
     tipEn: "Money the company owes to suppliers for received but unpaid goods.",
   },
   {
-    labelRo: "Debitori diver\u0219i",
+    labelRo: "Debitori diverși",
     labelEn: "Other debtors",
     cont: "461",
     side: "D" as const,
     color: "#3b82f6",
-    tipRo: "Alte sume de \u00EEncasat care nu sunt din activitatea principal\u0103 (garan\u021Bii, avansuri etc.).",
+    tipRo: "Alte sume de încasat care nu sunt din activitatea principală (garanții, avansuri etc.).",
     tipEn: "Other receivables not from main activity (deposits, advances, etc.).",
   },
   {
-    labelRo: "Creditori diver\u0219i",
+    labelRo: "Creditori diverși",
     labelEn: "Other creditors",
     cont: "462",
     side: "C" as const,
     color: "#f59e0b",
-    tipRo: "Alte sume de pl\u0103tit care nu sunt c\u0103tre furnizori (depozite primite, diverse obliga\u021Bii).",
+    tipRo: "Alte sume de plătit care nu sunt către furnizori (depozite primite, diverse obligații).",
     tipEn: "Other payables not to suppliers (deposits received, various obligations).",
   },
   {
-    labelRo: "Dividende de pl\u0103tit",
+    labelRo: "Dividende de plătit",
     labelEn: "Dividends payable",
     cont: "457",
     side: "C" as const,
     color: "#8b5cf6",
-    tipRo: "Profit distribuit ac\u021Bionarilor dar nepl\u0103tit \u00EEnc\u0103. Impozit 16% re\u021Binut la surs\u0103 (Legea 141/2025). CASS 10% peste 24.300 RON. La plat\u0103 se depune D100.",
+    tipRo: "Profit distribuit acționarilor dar neplătit încă. Impozit 16% reținut la sursă (Legea 141/2025). CASS 10% peste 24.300 RON. La plată se depune D100.",
     tipEn: "Profit distributed to shareholders but not yet paid. 16% tax withheld at source (Law 141/2025). 10% CASS above 24,300 RON. D100 filed upon payment.",
   },
 ];
@@ -96,11 +97,11 @@ export function ReceivablesPayables() {
   return (
     <div className="rounded-xl bg-card border border-border p-5">
       <h3 className="text-sm font-semibold mb-1">
-        {lang === "en" ? "Receivables & Payables" : "De \u00EEncasat & De pl\u0103tit"}
+        {lang === "en" ? "Receivables & Payables" : "De încasat & De plătit"}
       </h3>
       <div className="flex gap-4 mb-4 text-xs text-muted-foreground">
         <span>
-          {lang === "en" ? "Net position" : "Pozi\u021Bie net\u0103"}:{" "}
+          {lang === "en" ? "Net position" : "Poziție netă"}:{" "}
           <Money
             amount={totalReceivable - totalPayable}
             className={`text-xs font-semibold ${totalReceivable >= totalPayable ? "text-emerald-400" : "text-red-400"}`}
@@ -110,52 +111,56 @@ export function ReceivablesPayables() {
 
       <div className="space-y-3">
         {items.map((item) => (
-          <div
+          <SubAccountDialog
             key={item.cont}
-            className="flex items-center justify-between py-1.5 border-b border-border/30 last:border-0"
+            parentCont={item.cont}
+            parentName={lang === "en" ? item.labelEn : item.labelRo}
+            side={item.side}
           >
-            <div className="flex items-center gap-2 min-w-0">
-              <div
-                className="w-1 h-6 rounded-full shrink-0"
-                style={{ backgroundColor: item.color }}
-              />
-              <div className="min-w-0">
-                <p className="text-sm truncate">
-                  {lang === "en" ? item.labelEn : item.labelRo}
-                  <InfoIcon text={lang === "en" ? item.tipEn : item.tipRo} position="bottom" />
-                </p>
-                <p className="text-[10px] text-muted-foreground">{item.cont}</p>
+            <div className="flex items-center justify-between py-1.5 border-b border-border/30 last:border-0">
+              <div className="flex items-center gap-2 min-w-0">
+                <div
+                  className="w-1 h-6 rounded-full shrink-0"
+                  style={{ backgroundColor: item.color }}
+                />
+                <div className="min-w-0">
+                  <p className="text-sm truncate">
+                    {lang === "en" ? item.labelEn : item.labelRo}
+                    <InfoIcon text={lang === "en" ? item.tipEn : item.tipRo} position="bottom" />
+                  </p>
+                  <p className="text-[10px] text-muted-foreground">{item.cont}</p>
+                </div>
+              </div>
+              <div className="text-right shrink-0 ml-2">
+                <Money
+                  amount={item.displayVal}
+                  className={`text-sm font-semibold ${item.side === "D" ? "text-emerald-400" : "text-red-400"}`}
+                />
+                {activeView === "combined" && (
+                  <div className="flex gap-2 mt-0.5 text-[10px] text-muted-foreground justify-end">
+                    {item.ifpVal > 0 && (
+                      <span>
+                        <span
+                          className="inline-block w-1.5 h-1.5 rounded-full mr-0.5"
+                          style={{ backgroundColor: COMPANY_VIEW_COLORS.ifp }}
+                        />
+                        <Money amount={item.ifpVal} compact className="text-[10px]" />
+                      </span>
+                    )}
+                    {item.filatoVal > 0 && (
+                      <span>
+                        <span
+                          className="inline-block w-1.5 h-1.5 rounded-full mr-0.5"
+                          style={{ backgroundColor: COMPANY_VIEW_COLORS.filato }}
+                        />
+                        <Money amount={item.filatoVal} compact className="text-[10px]" />
+                      </span>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
-            <div className="text-right shrink-0 ml-2">
-              <Money
-                amount={item.displayVal}
-                className={`text-sm font-semibold ${item.side === "D" ? "text-emerald-400" : "text-red-400"}`}
-              />
-              {activeView === "combined" && (
-                <div className="flex gap-2 mt-0.5 text-[10px] text-muted-foreground justify-end">
-                  {item.ifpVal > 0 && (
-                    <span>
-                      <span
-                        className="inline-block w-1.5 h-1.5 rounded-full mr-0.5"
-                        style={{ backgroundColor: COMPANY_VIEW_COLORS.ifp }}
-                      />
-                      <Money amount={item.ifpVal} compact className="text-[10px]" />
-                    </span>
-                  )}
-                  {item.filatoVal > 0 && (
-                    <span>
-                      <span
-                        className="inline-block w-1.5 h-1.5 rounded-full mr-0.5"
-                        style={{ backgroundColor: COMPANY_VIEW_COLORS.filato }}
-                      />
-                      <Money amount={item.filatoVal} compact className="text-[10px]" />
-                    </span>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
+          </SubAccountDialog>
         ))}
       </div>
     </div>

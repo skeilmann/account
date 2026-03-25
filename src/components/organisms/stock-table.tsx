@@ -72,7 +72,7 @@ export function StockTable() {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Caut\u0103..."
+          placeholder="Caută..."
           className="bg-secondary border border-border rounded-lg px-3 py-1.5 text-xs w-48 focus:outline-none focus:ring-1 focus:ring-primary"
         />
       </div>

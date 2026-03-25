@@ -28,7 +28,7 @@ function getDeadlines(): FiscalDeadline[] {
     },
     {
       code: "D390",
-      nameRo: "Declara\u021Bie recapitulativ\u0103",
+      nameRo: "Declarație recapitulativă",
       nameEn: "Recapitulative statement",
       frequency: "lunar",
       day: 25,
@@ -55,7 +55,7 @@ function getDeadlines(): FiscalDeadline[] {
     },
     {
       code: "D394",
-      nameRo: "Declara\u021Bie informativ\u0103 (S2 2025)",
+      nameRo: "Declarație informativă (S2 2025)",
       nameEn: "Informative declaration (H2 2025)",
       frequency: "semestrial",
       day: 25,
@@ -63,8 +63,8 @@ function getDeadlines(): FiscalDeadline[] {
       urgency: "overdue",
     },
     {
-      code: "Bilan\u021B",
-      nameRo: "Depunere bilan\u021B contabil 2025",
+      code: "Bilanț",
+      nameRo: "Depunere bilanț contabil 2025",
       nameEn: "Annual financial statements 2025",
       frequency: "anual",
       day: 31,
@@ -81,21 +81,21 @@ const URGENCY_STYLE = {
     bg: "bg-red-500/10",
     border: "border-red-500/30",
     badge: "bg-red-500/20 text-red-400",
-    labelRo: "Dep\u0103\u0219it",
+    labelRo: "Depășit",
     labelEn: "Overdue",
   },
   soon: {
     bg: "bg-amber-500/10",
     border: "border-amber-500/30",
     badge: "bg-amber-500/20 text-amber-400",
-    labelRo: "M\u00E2ine!",
+    labelRo: "Mâine!",
     labelEn: "Tomorrow!",
   },
   upcoming: {
     bg: "bg-blue-500/10",
     border: "border-blue-500/30",
     badge: "bg-blue-500/20 text-blue-400",
-    labelRo: "Cur\u00E2nd",
+    labelRo: "Curând",
     labelEn: "Soon",
   },
   ok: {

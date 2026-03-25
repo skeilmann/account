@@ -9,7 +9,7 @@ type CalcMode = "basic" | "tva" | "margin" | "currency";
 const MODES: { key: CalcMode; label: string }[] = [
   { key: "basic", label: "Calc" },
   { key: "tva", label: "TVA" },
-  { key: "margin", label: "Marj\u0103" },
+  { key: "margin", label: "Marjă" },
   { key: "currency", label: "RON\u2194EUR" },
 ];
 
@@ -95,14 +95,14 @@ export function Calculator() {
             const marginPct = ((price - cost) / price) * 100;
             const markupPct = cost > 0 ? ((price - cost) / cost) * 100 : 0;
             const res =
-              `Marj\u0103: ${marginPct.toFixed(1)}%\n` +
+              `Marjă: ${marginPct.toFixed(1)}%\n` +
               `Adaos: ${markupPct.toFixed(1)}%\n` +
               `Profit: ${fmt(price - cost)}`;
             setResult(res);
-            addToHistory(input, `Marj\u0103 ${marginPct.toFixed(1)}%`);
+            addToHistory(input, `Marjă ${marginPct.toFixed(1)}%`);
           }
         } else {
-          setResult("Format: cost ; pre\u021B");
+          setResult("Format: cost ; preț");
         }
         break;
       }
@@ -194,7 +194,7 @@ export function Calculator() {
         {/* TVA rate selector */}
         {mode === "tva" && (
           <div className="flex items-center gap-2 text-[10px]">
-            <span className="text-muted-foreground">Cot\u0103:</span>
+            <span className="text-muted-foreground">Cotă:</span>
             {[9, 19, 5].map((r) => (
               <button
                 key={r}
@@ -231,9 +231,9 @@ export function Calculator() {
               <button
                 onClick={() => setEditingTva(true)}
                 className="px-2 py-0.5 rounded bg-secondary text-muted-foreground hover:text-foreground text-[10px]"
-                title="Cot\u0103 personalizat\u0103"
+                title="Cotă personalizată"
               >
-                Alt\u0103...
+                Altă...
               </button>
             )}
           </div>
@@ -244,7 +244,7 @@ export function Calculator() {
           <p className="text-sm font-mono text-foreground truncate">
             {input || (
               <span className="text-muted-foreground">
-                {mode === "basic" ? "0" : mode === "margin" ? "cost ; pre\u021B" : "Sum\u0103"}
+                {mode === "basic" ? "0" : mode === "margin" ? "cost ; preț" : "Sumă"}
               </span>
             )}
           </p>
