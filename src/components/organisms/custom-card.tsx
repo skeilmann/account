@@ -92,14 +92,28 @@ export function CustomCards() {
     saveCards(newCards);
   }, []);
 
+  const [editingCard, setEditingCard] = useState<CustomCard | null>(null);
+
   function addCard(card: CustomCard) {
     const newCards = [card, ...cards];
     updateCards(newCards);
     setShowBuilder(false);
+    setEditingCard(null);
+  }
+
+  function saveEditedCard(card: CustomCard) {
+    updateCards(cards.map((c) => (c.id === card.id ? card : c)));
+    setEditingCard(null);
   }
 
   function removeCard(id: string) {
     updateCards(cards.filter((c) => c.id !== id));
+    if (editingCard?.id === id) setEditingCard(null);
+  }
+
+  function startEdit(card: CustomCard) {
+    setEditingCard(card);
+    setShowBuilder(false);
   }
 
   return (
@@ -107,7 +121,7 @@ export function CustomCards() {
       {/* Add button */}
       <div className="flex items-center gap-2">
         <button
-          onClick={() => setShowBuilder(!showBuilder)}
+          onClick={() => { setShowBuilder(!showBuilder); setEditingCard(null); }}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20 text-primary text-xs font-medium hover:bg-primary/20 transition-colors"
         >
           {showBuilder ? "\u2715 Anuleaz\u0103" : "+ Card personalizat"}
@@ -135,26 +149,38 @@ export function CustomCards() {
       </AnimatePresence>
 
       {/* Rendered cards */}
-      {cards.map((card) => (
-        <CustomCardView
-          key={card.id}
-          card={card}
-          onRemove={() => removeCard(card.id)}
-        />
-      ))}
+      {cards.map((card) =>
+        editingCard?.id === card.id ? (
+          <CardBuilder
+            key={card.id}
+            initialCard={editingCard}
+            onSave={saveEditedCard}
+            onCancel={() => setEditingCard(null)}
+          />
+        ) : (
+          <CustomCardView
+            key={card.id}
+            card={card}
+            onRemove={() => removeCard(card.id)}
+            onEdit={() => startEdit(card)}
+          />
+        )
+      )}
     </div>
   );
 }
 
 function CardBuilder({
+  initialCard,
   onSave,
   onCancel,
 }: {
+  initialCard?: CustomCard;
   onSave: (card: CustomCard) => void;
   onCancel: () => void;
 }) {
-  const [title, setTitle] = useState("");
-  const [fields, setFields] = useState<CustomField[]>([]);
+  const [title, setTitle] = useState(initialCard?.title ?? "");
+  const [fields, setFields] = useState<CustomField[]>(initialCard?.fields ?? []);
   const [showPresets, setShowPresets] = useState(false);
 
   function addPreset(preset: (typeof PRESETS)[0]) {
@@ -207,10 +233,10 @@ function CardBuilder({
   function handleSave() {
     if (!title.trim() || fields.length === 0) return;
     onSave({
-      id: crypto.randomUUID(),
+      id: initialCard?.id ?? crypto.randomUUID(),
       title: title.trim(),
       fields,
-      createdAt: Date.now(),
+      createdAt: initialCard?.createdAt ?? Date.now(),
     });
   }
 
@@ -345,7 +371,7 @@ function CardBuilder({
           disabled={!title.trim() || fields.length === 0}
           className="px-4 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-medium hover:brightness-110 transition disabled:opacity-30 disabled:cursor-not-allowed"
         >
-          Salveaz\u0103 card
+          {initialCard ? "Salveaz\u0103 modific\u0103rile" : "Salveaz\u0103 card"}
         </button>
         <button
           onClick={onCancel}
@@ -361,9 +387,11 @@ function CardBuilder({
 function CustomCardView({
   card,
   onRemove,
+  onEdit,
 }: {
   card: CustomCard;
   onRemove: () => void;
+  onEdit: () => void;
 }) {
   const balanta = useDataStore((s) => s.balanta);
   const { activeView } = useCompanyStore();
@@ -399,13 +427,22 @@ function CustomCardView({
       className="rounded-xl bg-card border border-primary/20 p-5 relative"
       style={{ borderTopColor: "#f59e0b", borderTopWidth: 3 }}
     >
-      <button
-        onClick={onRemove}
-        className="absolute top-3 right-3 text-muted-foreground hover:text-red-400 text-xs transition-colors"
-        title="Sterge card"
-      >
-        {"\u2715"}
-      </button>
+      <div className="absolute top-3 right-3 flex items-center gap-1.5">
+        <button
+          onClick={onEdit}
+          className="text-muted-foreground hover:text-primary text-xs transition-colors"
+          title="Editeaz\u0103"
+        >
+          {"\u270E"}
+        </button>
+        <button
+          onClick={onRemove}
+          className="text-muted-foreground hover:text-red-400 text-xs transition-colors"
+          title="\u0218terge"
+        >
+          {"\u2715"}
+        </button>
+      </div>
 
       <p className="text-xs text-muted-foreground uppercase tracking-wider mb-3">
         {card.title}
