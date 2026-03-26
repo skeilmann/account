@@ -42,7 +42,13 @@
     "col_entries": "Intrări",
     "col_final_stock": "Stoc final",
     "col_price_kg": "Preț/kg",
-    "col_value": "Valoare"
+    "col_value": "Valoare",
+    "group_by_price": "Grupare preț",
+    "group_by_price_tooltip": "Grupează produsele după intervalul de preț",
+    "group_label": "{{min}}–{{max}} EUR/kg",
+    "group_label_above": "{{min}}+ EUR/kg",
+    "group_other": "Alte unități",
+    "group_products": "{{count}} produse"
   },
   "status": {
     "loading": "Se încarcă...",

@@ -42,7 +42,13 @@
     "col_entries": "Arrivi",
     "col_final_stock": "Scorta finale",
     "col_price_kg": "Prezzo/kg",
-    "col_value": "Valore"
+    "col_value": "Valore",
+    "group_by_price": "Raggruppa per prezzo",
+    "group_by_price_tooltip": "Raggruppa i prodotti per fascia di prezzo",
+    "group_label": "{{min}}–{{max}} EUR/kg",
+    "group_label_above": "{{min}}+ EUR/kg",
+    "group_other": "Altre unità",
+    "group_products": "{{count}} prodotti"
   },
   "status": {
     "loading": "Caricamento...",

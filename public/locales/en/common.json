@@ -42,7 +42,13 @@
     "col_entries": "Entries",
     "col_final_stock": "Final stock",
     "col_price_kg": "Price/kg",
-    "col_value": "Value"
+    "col_value": "Value",
+    "group_by_price": "Group by price",
+    "group_by_price_tooltip": "Group products by price range",
+    "group_label": "{{min}}–{{max}} EUR/kg",
+    "group_label_above": "{{min}}+ EUR/kg",
+    "group_other": "Other units",
+    "group_products": "{{count}} products"
   },
   "status": {
     "loading": "Loading...",
