@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useCurrencyStore } from "@/stores/currency-store";
 
@@ -32,17 +32,53 @@ export function Calculator() {
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const { eurRate, customRate } = useCurrencyStore();
   const rate = customRate || eurRate;
+  const historyEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    historyEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [history.length]);
 
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
       if (e.ctrlKey && e.key === "k") {
         e.preventDefault();
         setOpen((o) => !o);
+        return;
+      }
+      if (!open) return;
+      // Don't capture when typing in other inputs (e.g. TVA custom rate)
+      const tag = (e.target as HTMLElement)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+
+      const key = e.key;
+      if (/^[0-9]$/.test(key)) {
+        e.preventDefault();
+        setInput((prev) => prev + key);
+      } else if (key === "." || key === ",") {
+        e.preventDefault();
+        setInput((prev) => prev + ".");
+      } else if (key === ";" ) {
+        e.preventDefault();
+        setInput((prev) => prev + ";");
+      } else if (["+", "-", "*", "/"].includes(key)) {
+        e.preventDefault();
+        setInput((prev) => prev + ` ${key} `);
+      } else if (key === "Enter" || key === "=") {
+        e.preventDefault();
+        calculateRef.current();
+      } else if (key === "Backspace") {
+        e.preventDefault();
+        setInput((prev) => prev.trimEnd().slice(0, -1).trimEnd());
+      } else if (key === "Escape") {
+        e.preventDefault();
+        setOpen(false);
+      } else if (key === "Delete" || (key === "c" && !e.ctrlKey && !e.metaKey)) {
+        // 'c' without modifier clears — but only bare 'c', skip if user might be copying
       }
     }
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, []);
+  }, [open]);
 
   const addToHistory = useCallback(
     (inp: string, res: string) => {
@@ -50,6 +86,8 @@ export function Calculator() {
     },
     [mode]
   );
+
+  const calculateRef = useRef<() => void>(() => {});
 
   const calculate = useCallback(() => {
     const cleaned = input.replace(/\s/g, "").replace(",", ".");
@@ -121,6 +159,8 @@ export function Calculator() {
     }
   }, [input, mode, rate, tvaRate, addToHistory]);
 
+  calculateRef.current = calculate;
+
   function pressButton(char: string) {
     if (char === "," || char === ".") {
       setInput((prev) => prev + ".");
@@ -160,10 +200,10 @@ export function Calculator() {
       dragMomentum={false}
       initial={{ opacity: 0, scale: 0.9, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
-      className="fixed bottom-6 right-6 w-80 min-h-[520px] rounded-xl bg-card border border-border shadow-2xl z-50 overflow-hidden"
+      className="fixed bottom-6 right-6 w-80 rounded-xl bg-[#252836] border border-[#363a4e] shadow-2xl z-50 overflow-hidden"
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-3 py-2 bg-secondary/50 cursor-grab active:cursor-grabbing">
+      <div className="flex items-center justify-between px-3 py-2 bg-[#2d3044] cursor-grab active:cursor-grabbing">
         <span className="text-xs font-semibold">Calculator</span>
         <button
           onClick={() => setOpen(false)}
@@ -193,7 +233,7 @@ export function Calculator() {
       <div className="p-3 space-y-3">
         {/* History */}
         {history.length > 0 && (
-          <div className="bg-muted/40 rounded-lg px-2 py-1.5">
+          <div className="bg-[#1e2130] rounded-lg px-2 py-1.5">
             <div className="flex items-center justify-between mb-1">
               <p className="text-[9px] text-muted-foreground uppercase tracking-wider">Istoric</p>
               <button
@@ -204,7 +244,7 @@ export function Calculator() {
               </button>
             </div>
             <div className="space-y-0.5 max-h-28 overflow-y-auto">
-              {history.map((h, i) => (
+              {[...history].reverse().map((h, i) => (
                 <button
                   key={i}
                   onClick={() => { setInput(h.input); setMode(h.mode); }}
@@ -214,6 +254,7 @@ export function Calculator() {
                   <span className="font-mono shrink-0">{h.result}</span>
                 </button>
               ))}
+              <div ref={historyEndRef} />
             </div>
           </div>
         )}
@@ -267,7 +308,7 @@ export function Calculator() {
         )}
 
         {/* Display */}
-        <div className="bg-secondary/50 rounded-lg px-3 py-2 min-h-[36px]">
+        <div className="bg-[#1e2130] rounded-lg px-3 py-2 min-h-[36px]">
           <p className="text-sm font-mono text-foreground truncate">
             {input || (
               <span className="text-muted-foreground">
@@ -285,7 +326,7 @@ export function Calculator() {
         )}
 
         {/* Number pad */}
-        <div className="grid grid-cols-4 gap-1">
+        <div className="grid grid-cols-4 gap-1 [&>button]:aspect-square" style={{ gridTemplateColumns: "repeat(4, 3.2rem)" , justifyContent: "center" }}>
           {/* Row 1: C, BS, /, = */}
           <button onClick={clear} className="calc-btn bg-destructive/20 text-destructive hover:bg-destructive/30">C</button>
           <button onClick={backspace} className="calc-btn">{"\u232B"}</button>
@@ -339,9 +380,21 @@ export function Calculator() {
 
       <style jsx>{`
         .calc-btn {
-          @apply rounded-lg py-2 text-sm font-medium transition-colors;
-          @apply bg-secondary/70 hover:bg-secondary text-foreground;
-          @apply active:scale-95;
+          @apply rounded-md text-sm font-medium transition-all duration-100;
+          @apply flex items-center justify-center;
+          background: linear-gradient(to bottom, #353849, #2a2d3e);
+          color: var(--foreground);
+          box-shadow: 0 2px 0 #1a1c28, 0 3px 6px rgba(0,0,0,0.25);
+          border: 1px solid #3e4259;
+          border-bottom-color: #1e2030;
+        }
+        .calc-btn:hover {
+          background: linear-gradient(to bottom, #3e4259, #323548);
+          box-shadow: 0 2px 0 #1a1c28, 0 3px 8px rgba(0,0,0,0.3);
+        }
+        .calc-btn:active {
+          transform: translateY(2px);
+          box-shadow: 0 0 0 #1a1c28, 0 1px 2px rgba(0,0,0,0.2);
         }
       `}</style>
     </motion.div>
