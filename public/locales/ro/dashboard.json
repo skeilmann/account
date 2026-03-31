@@ -21,7 +21,13 @@
     "amortizari": "Amortizări",
     "combustibil_materiale": "Combustibil și materiale",
     "chirii_asigurari": "Chirii și asigurări",
-    "altele": "Alte cheltuieli"
+    "altele": "Alte cheltuieli",
+    "capitaluri": "Capital",
+    "imobilizari": "Imobilizari",
+    "stocuri": "Stocuri",
+    "terti": "Terti (clienti/furnizori)",
+    "trezorerie": "Trezorerie (banca/casa)",
+    "neclasificate": "Neclasificate"
   },
   "revenue_groups": {
     "vanzari_marfa": "Vanzari marfa",
@@ -77,9 +83,26 @@
     "save_changes": "Salveaza modificarile",
     "edit": "Editeaza",
     "delete": "Sterge",
+    "duplicate": "Duplica",
     "total": "Total",
     "new_card": "Card nou",
-    "new_card_hint": "Click pentru a crea un card personalizat"
+    "new_card_hint": "Click pentru a crea un card personalizat",
+    "search_accounts": "Cauta cont...",
+    "add_value": "Adauga la total",
+    "subtract_value": "Scade din total",
+    "adjustments": "Ajustari",
+    "multiplier": "Multiplicator",
+    "adjustment": "Ajustare (+/-)",
+    "actual_total": "Total actual",
+    "adjusted_total": "Total ajustat",
+    "delta": "Diferenta",
+    "tax_impact": "Impact fiscal estimat (16%)",
+    "tax_16": "Impozit pe profit (16%)",
+    "net_cash_impact": "Impact net cash",
+    "simulation_effects": "Efecte simulate",
+    "add_effect": "Adauga efect",
+    "effect_kpi_label": "Indicatori financiari:",
+    "effect_account_label": "Cont specific:"
   },
   "labels": {
     "of_revenue": "din venituri",

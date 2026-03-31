@@ -9,6 +9,9 @@ export interface PendingCardField {
   manualValue?: number;
   partnerCont?: string;
   partnerParent?: string;
+  operation?: "add" | "subtract";
+  multiplier?: number;
+  customAdjustment?: number;
 }
 
 interface CustomCardStore {

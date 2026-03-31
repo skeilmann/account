@@ -21,7 +21,13 @@
     "amortizari": "Ammortamenti",
     "combustibil_materiale": "Carburante e materiali",
     "chirii_asigurari": "Affitti e assicurazioni",
-    "altele": "Altre spese"
+    "altele": "Altre spese",
+    "capitaluri": "Capitale",
+    "imobilizari": "Immobilizzazioni",
+    "stocuri": "Magazzino",
+    "terti": "Terzi (clienti/fornitori)",
+    "trezorerie": "Tesoreria (banca/cassa)",
+    "neclasificate": "Non classificati"
   },
   "revenue_groups": {
     "vanzari_marfa": "Ricavi vendita merci",
@@ -77,9 +83,26 @@
     "save_changes": "Salva modifiche",
     "edit": "Modifica",
     "delete": "Elimina",
+    "duplicate": "Duplica",
     "total": "Totale",
     "new_card": "Nuova scheda",
-    "new_card_hint": "Clicca per creare una scheda personalizzata"
+    "new_card_hint": "Clicca per creare una scheda personalizzata",
+    "search_accounts": "Cerca conto...",
+    "add_value": "Aggiungi al totale",
+    "subtract_value": "Sottrai dal totale",
+    "adjustments": "Rettifiche",
+    "multiplier": "Moltiplicatore",
+    "adjustment": "Rettifica (+/-)",
+    "actual_total": "Totale effettivo",
+    "adjusted_total": "Totale rettificato",
+    "delta": "Differenza",
+    "tax_impact": "Impatto fiscale stimato (16%)",
+    "tax_16": "Imposta sul reddito (16%)",
+    "net_cash_impact": "Impatto netto cassa",
+    "simulation_effects": "Effetti simulati",
+    "add_effect": "Aggiungi effetto",
+    "effect_kpi_label": "Indicatori finanziari:",
+    "effect_account_label": "Conto specifico:"
   },
   "labels": {
     "of_revenue": "dei ricavi",

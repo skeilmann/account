@@ -81,6 +81,35 @@ export const EXPENSE_GROUP_DEFINITIONS: ExpenseGroupDefinition[] = [
   },
 ];
 
+/** Balance sheet group definitions — classes 1-5 */
+export const BALANCE_SHEET_GROUP_DEFINITIONS: ExpenseGroupDefinition[] = [
+  {
+    id: "capitaluri",
+    icon: "\uD83C\uDFE6",
+    accounts: ["1"],
+  },
+  {
+    id: "imobilizari",
+    icon: "\uD83C\uDFED",
+    accounts: ["2"],
+  },
+  {
+    id: "stocuri",
+    icon: "\uD83D\uDCE6",
+    accounts: ["3"],
+  },
+  {
+    id: "terti",
+    icon: "\uD83E\uDD1D",
+    accounts: ["4"],
+  },
+  {
+    id: "trezorerie",
+    icon: "\uD83D\uDCB5",
+    accounts: ["5"],
+  },
+];
+
 /** Revenue group definitions — mirrors expense groups but for class 7 accounts */
 export type RevenueGroupDefinition = ExpenseGroupDefinition;
 export type RevenueGroupValue = ExpenseGroupValue;

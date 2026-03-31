@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Money } from "@/components/atoms/money";
 import { useDataStore } from "@/stores/data-store";
@@ -9,6 +9,11 @@ import type { NormalizedBalantaRow } from "@/types/balanta";
 import type { DetailedAccountEntry } from "@/types/balanta-detaliata";
 import { useTranslation } from "react-i18next";
 import { useCustomCardStore } from "@/stores/custom-card-store";
+import {
+  EXPENSE_GROUP_DEFINITIONS,
+  REVENUE_GROUP_DEFINITIONS,
+  BALANCE_SHEET_GROUP_DEFINITIONS,
+} from "@/types/expense-group";
 
 interface CustomField {
   id: string;
@@ -19,12 +24,25 @@ interface CustomField {
   manualValue?: number;
   partnerCont?: string;
   partnerParent?: string;
+  operation?: "add" | "subtract";
+  multiplier?: number;
+  customAdjustment?: number;
+}
+
+interface SimulationEffect {
+  id: string;
+  type: "kpi" | "account";
+  /** For kpi: "revenue"|"expenses"|"profit"|"margin"|"tax"|"net_cash_impact" */
+  /** For account: any account code like "641", "707" etc. */
+  key: string;
+  label: string;
 }
 
 interface CustomCard {
   id: string;
   title: string;
   fields: CustomField[];
+  simulationEffects?: SimulationEffect[];
   createdAt: number;
 }
 
@@ -44,24 +62,65 @@ function saveCards(cards: CustomCard[]) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(cards));
 }
 
-const PRESETS = [
-  { label: "Marfa cumparata (607)", codes: "607", field: "sumeTotaleD" as const },
-  { label: "Salarii (641)", codes: "641", field: "sumeTotaleD" as const },
-  { label: "Transport (624)", codes: "624", field: "sumeTotaleD" as const },
-  { label: "Servicii externe (628)", codes: "628", field: "sumeTotaleD" as const },
-  { label: "Chirii (6123)", codes: "6123", field: "sumeTotaleD" as const },
-  { label: "Combustibil (6022)", codes: "6022", field: "sumeTotaleD" as const },
-  { label: "Amortizari (6811)", codes: "6811", field: "sumeTotaleD" as const },
-  { label: "Venituri vanzari (707)", codes: "707", field: "sumeTotaleC" as const },
-  { label: "Venituri servicii (704)", codes: "704", field: "sumeTotaleC" as const },
-  { label: "Valoare stoc (371)", codes: "371", field: "soldFinalD" as const },
-  { label: "Clienti (4111)", codes: "4111", field: "soldFinalD" as const },
-  { label: "Furnizori (401)", codes: "401", field: "soldFinalC" as const },
-  { label: "Asigurari (613)", codes: "613", field: "sumeTotaleD" as const },
-  { label: "Tichete masa (6422)", codes: "6422", field: "sumeTotaleD" as const },
-  { label: "Impozit profit (691)", codes: "691", field: "sumeTotaleD" as const },
-  { label: "Telecomunicatii (626)", codes: "626", field: "sumeTotaleD" as const },
+type ValueField = "sumeTotaleD" | "sumeTotaleC" | "soldFinalD" | "soldFinalC";
+
+interface GroupedPreset {
+  groupId: string;
+  icon: string;
+  accounts: { cont: string; denumire: string; defaultField: ValueField }[];
+}
+
+const ALL_GROUP_DEFS = [
+  ...EXPENSE_GROUP_DEFINITIONS,
+  ...REVENUE_GROUP_DEFINITIONS,
+  ...BALANCE_SHEET_GROUP_DEFINITIONS,
 ];
+
+function buildGroupedPresets(rows: NormalizedBalantaRow[]): GroupedPreset[] {
+  const accountMap = new Map<string, { cont: string; denumire: string }>();
+  for (const r of rows) {
+    if (r.isClassTotal || r.isGrandTotal) continue;
+    if (!accountMap.has(r.cont)) {
+      accountMap.set(r.cont, { cont: r.cont, denumire: r.denumire });
+    }
+  }
+
+  const groups: GroupedPreset[] = [];
+
+  for (const def of ALL_GROUP_DEFS) {
+    const matched: { cont: string; denumire: string; defaultField: ValueField }[] = [];
+    for (const acc of accountMap.values()) {
+      if (def.accounts.some((prefix) => acc.cont.startsWith(prefix))) {
+        const classNum = parseInt(acc.cont.charAt(0), 10);
+        const defaultField: ValueField =
+          classNum === 7 ? "sumeTotaleC" : classNum === 6 ? "sumeTotaleD" : "soldFinalD";
+        matched.push({ ...acc, defaultField });
+      }
+    }
+    if (matched.length > 0) {
+      matched.sort((a, b) => a.cont.localeCompare(b.cont));
+      groups.push({ groupId: def.id, icon: def.icon, accounts: matched });
+    }
+  }
+
+  // Collect any accounts not matched by any group definition
+  const matchedConts = new Set(groups.flatMap((g) => g.accounts.map((a) => a.cont)));
+  const unmatched: { cont: string; denumire: string; defaultField: ValueField }[] = [];
+  for (const acc of accountMap.values()) {
+    if (!matchedConts.has(acc.cont)) {
+      const classNum = parseInt(acc.cont.charAt(0), 10);
+      const defaultField: ValueField =
+        classNum === 7 ? "sumeTotaleC" : classNum === 6 ? "sumeTotaleD" : "soldFinalD";
+      unmatched.push({ ...acc, defaultField });
+    }
+  }
+  if (unmatched.length > 0) {
+    unmatched.sort((a, b) => a.cont.localeCompare(b.cont));
+    groups.push({ groupId: "neclasificate", icon: "\u2753", accounts: unmatched });
+  }
+
+  return groups;
+}
 
 function getFieldValue(
   rows: NormalizedBalantaRow[],
@@ -77,6 +136,134 @@ function getFieldValue(
         codeList.some((code) => r.cont === code || r.cont.startsWith(code))
     )
     .reduce((sum, r) => sum + ((r as unknown as Record<string, number>)[field] ?? 0), 0);
+}
+
+function getSignedValue(field: CustomField, rawValue: number): number {
+  return field.operation === "subtract" ? -rawValue : rawValue;
+}
+
+function getAdjustedValue(field: CustomField, rawValue: number): number {
+  const mult = (field.multiplier ?? 100) / 100;
+  const adj = field.customAdjustment ?? 0;
+  const base = rawValue * mult + adj;
+  return field.operation === "subtract" ? -base : base;
+}
+
+function hasAnyAdjustments(fields: CustomField[]): boolean {
+  return fields.some(
+    (f) =>
+      (f.multiplier !== undefined && f.multiplier !== 100) ||
+      (f.customAdjustment !== undefined && f.customAdjustment !== 0)
+  );
+}
+
+/**
+ * Calculates tax impact from adjusted fields.
+ * Logic: more expenses → less profit → less tax (and vice versa).
+ * For each adjusted field, the "expense delta" is the raw change in the
+ * underlying value (ignoring +/- operation), because expenses always reduce
+ * taxable profit regardless of how the card totals them.
+ */
+function calcTaxImpact(fields: CustomField[], getVal: (f: CustomField) => number): number {
+  let expenseDelta = 0;
+  for (const f of fields) {
+    const raw = getVal(f);
+    const mult = (f.multiplier ?? 100) / 100;
+    const adj = f.customAdjustment ?? 0;
+    const adjusted = raw * mult + adj;
+    const fieldDelta = adjusted - raw; // how much MORE is spent/earned
+    // Class 6 = expenses: more spending → less tax
+    // Class 7 = revenue: more revenue → more tax
+    const code = f.accountCodes?.trim().charAt(0) ?? "";
+    if (code === "6") {
+      expenseDelta += fieldDelta; // more expenses = less profit
+    } else if (code === "7") {
+      expenseDelta -= fieldDelta; // more revenue = more profit
+    }
+    // manual / partner / balance sheet fields: skip (ambiguous impact)
+  }
+  // Each RON of extra expense reduces profit by 1 RON, saving 16% tax
+  return expenseDelta * -0.16;
+}
+
+/** Predefined KPI effects the user can add to a card */
+const KPI_EFFECT_OPTIONS: { key: string; labelKey: string }[] = [
+  { key: "expenses", labelKey: "kpi.expenses" },
+  { key: "revenue", labelKey: "kpi.revenue" },
+  { key: "profit", labelKey: "kpi.profit" },
+  { key: "margin", labelKey: "kpi.margin" },
+  { key: "tax", labelKey: "custom_card.tax_16" },
+  { key: "net_cash_impact", labelKey: "custom_card.net_cash_impact" },
+];
+
+/**
+ * Calculate the ripple effects of card adjustments on KPIs and accounts.
+ *
+ * Given the field-level deltas (class 6 = expense change, class 7 = revenue change),
+ * compute how each selected metric is affected, including cascading tax savings.
+ */
+function calcSimulationEffects(
+  fields: CustomField[],
+  effects: SimulationEffect[],
+  getVal: (f: CustomField) => number,
+  getAccountValue: (codes: string, valueField: string) => number,
+): { effect: SimulationEffect; actual: number; simulated: number; delta: number }[] {
+  // Step 1: compute aggregate deltas by class
+  let expenseDelta = 0; // positive = spending more
+  let revenueDelta = 0; // positive = earning more
+  for (const f of fields) {
+    const raw = getVal(f);
+    const mult = (f.multiplier ?? 100) / 100;
+    const adj = f.customAdjustment ?? 0;
+    const adjusted = raw * mult + adj;
+    const fieldDelta = adjusted - raw;
+    if (Math.abs(fieldDelta) < 0.01) continue;
+    const code = f.accountCodes?.trim().charAt(0) ?? "";
+    if (code === "6") expenseDelta += fieldDelta;
+    else if (code === "7") revenueDelta += fieldDelta;
+  }
+
+  const profitDelta = revenueDelta - expenseDelta;
+  const taxDelta = profitDelta * 0.16; // more profit → more tax
+  const netCashDelta = profitDelta - taxDelta; // profit change minus tax change
+
+  return effects.map((effect) => {
+    if (effect.type === "kpi") {
+      switch (effect.key) {
+        case "expenses":
+          return { effect, actual: 0, simulated: expenseDelta, delta: expenseDelta };
+        case "revenue":
+          return { effect, actual: 0, simulated: revenueDelta, delta: revenueDelta };
+        case "profit":
+          return { effect, actual: 0, simulated: profitDelta, delta: profitDelta };
+        case "margin":
+          // margin is a % — can't compute without full revenue, return delta as pp
+          return { effect, actual: 0, simulated: profitDelta, delta: profitDelta };
+        case "tax":
+          return { effect, actual: 0, simulated: taxDelta, delta: taxDelta };
+        case "net_cash_impact":
+          return { effect, actual: 0, simulated: netCashDelta, delta: netCashDelta };
+        default:
+          return { effect, actual: 0, simulated: 0, delta: 0 };
+      }
+    }
+    // Account type: check if the account is one of the adjusted fields
+    if (effect.type === "account") {
+      let accountDelta = 0;
+      for (const f of fields) {
+        const codes = f.accountCodes?.split(",").map((c) => c.trim()) ?? [];
+        if (codes.some((c) => effect.key === c || effect.key.startsWith(c) || c.startsWith(effect.key))) {
+          const raw = getVal(f);
+          const mult = (f.multiplier ?? 100) / 100;
+          const adj = f.customAdjustment ?? 0;
+          accountDelta += (raw * mult + adj) - raw;
+        }
+      }
+      const actualVal = getAccountValue(effect.key, "sumeTotaleD");
+      return { effect, actual: actualVal, simulated: actualVal + accountDelta, delta: accountDelta };
+    }
+    return { effect, actual: 0, simulated: 0, delta: 0 };
+  });
 }
 
 export function CustomCards() {
@@ -124,6 +311,17 @@ export function CustomCards() {
     if (editingCard?.id === id) setEditingCard(null);
   }
 
+  function duplicateCard(card: CustomCard) {
+    const dup: CustomCard = {
+      id: crypto.randomUUID(),
+      title: `${card.title} (copy)`,
+      fields: card.fields.map((f) => ({ ...f, id: crypto.randomUUID() })),
+      simulationEffects: card.simulationEffects?.map((e) => ({ ...e, id: crypto.randomUUID() })),
+      createdAt: Date.now(),
+    };
+    updateCards([dup, ...cards]);
+  }
+
   function startEdit(card: CustomCard) {
     setEditingCard(card);
     setShowBuilder(false);
@@ -132,6 +330,44 @@ export function CustomCards() {
   function openBuilder() {
     setShowBuilder(true);
     setEditingCard(null);
+  }
+
+  // Drag & drop reorder
+  const dragIdRef = useRef<string | null>(null);
+  const [dragOverId, setDragOverId] = useState<string | null>(null);
+
+  function handleDragStart(id: string) {
+    dragIdRef.current = id;
+  }
+
+  function handleDragOver(e: React.DragEvent, overId: string) {
+    e.preventDefault();
+    if (dragIdRef.current && dragIdRef.current !== overId) {
+      setDragOverId(overId);
+    }
+  }
+
+  function handleDrop(targetId: string) {
+    const srcId = dragIdRef.current;
+    if (!srcId || srcId === targetId) {
+      dragIdRef.current = null;
+      setDragOverId(null);
+      return;
+    }
+    const srcIdx = cards.findIndex((c) => c.id === srcId);
+    const tgtIdx = cards.findIndex((c) => c.id === targetId);
+    if (srcIdx === -1 || tgtIdx === -1) return;
+    const reordered = [...cards];
+    const [moved] = reordered.splice(srcIdx, 1);
+    reordered.splice(tgtIdx, 0, moved);
+    updateCards(reordered);
+    dragIdRef.current = null;
+    setDragOverId(null);
+  }
+
+  function handleDragEnd() {
+    dragIdRef.current = null;
+    setDragOverId(null);
   }
 
   return (
@@ -173,6 +409,12 @@ export function CustomCards() {
               card={card}
               onRemove={() => removeCard(card.id)}
               onEdit={() => startEdit(card)}
+              onDuplicate={() => duplicateCard(card)}
+              isDragOver={dragOverId === card.id}
+              onDragStart={() => handleDragStart(card.id)}
+              onDragOver={(e: React.DragEvent) => handleDragOver(e, card.id)}
+              onDrop={() => handleDrop(card.id)}
+              onDragEnd={handleDragEnd}
             />
           )
         )}
@@ -215,6 +457,9 @@ function CardBuilder({
   const { t } = useTranslation("dashboard");
   const [title, setTitle] = useState(initialCard?.title ?? "");
   const [fields, setFields] = useState<CustomField[]>(initialCard?.fields ?? []);
+  const [simEffects, setSimEffects] = useState<SimulationEffect[]>(initialCard?.simulationEffects ?? []);
+  const [showEffectPicker, setShowEffectPicker] = useState(false);
+  const [effectAccountCode, setEffectAccountCode] = useState("");
 
   useEffect(() => {
     if (injectedFields && injectedFields.length > 0) {
@@ -255,18 +500,23 @@ function CardBuilder({
     return getFieldValue(rows, codes, vf);
   }
 
-  function addPreset(preset: (typeof PRESETS)[0]) {
+  const [presetSearch, setPresetSearch] = useState("");
+  const [expandedGroup, setExpandedGroup] = useState<string | null>(null);
+
+  const allRows = [...ifpRows, ...filatoRows];
+  const groupedPresets = buildGroupedPresets(allRows);
+
+  function addGroupedPreset(acc: GroupedPreset["accounts"][0]) {
     setFields([
       ...fields,
       {
         id: crypto.randomUUID(),
-        label: preset.label,
+        label: `${acc.denumire} (${acc.cont})`,
         type: "account",
-        accountCodes: preset.codes,
-        valueField: preset.field,
+        accountCodes: acc.cont,
+        valueField: acc.defaultField,
       },
     ]);
-    setShowPresets(false);
   }
 
   function addManualField() {
@@ -322,8 +572,29 @@ function CardBuilder({
       id: initialCard?.id ?? crypto.randomUUID(),
       title: title.trim(),
       fields,
+      simulationEffects: simEffects.length > 0 ? simEffects : undefined,
       createdAt: initialCard?.createdAt ?? Date.now(),
     });
+  }
+
+  function addKpiEffect(key: string, labelKey: string) {
+    if (simEffects.some((e) => e.type === "kpi" && e.key === key)) return;
+    setSimEffects([...simEffects, { id: crypto.randomUUID(), type: "kpi", key, label: t(labelKey) }]);
+  }
+
+  function addAccountEffect(code: string) {
+    if (!code.trim()) return;
+    if (simEffects.some((e) => e.type === "account" && e.key === code)) return;
+    // find label from rows
+    const allR = [...ifpRows, ...filatoRows];
+    const match = allR.find((r) => r.cont === code && !r.isClassTotal && !r.isGrandTotal);
+    const label = match ? `${match.denumire} (${code})` : code;
+    setSimEffects([...simEffects, { id: crypto.randomUUID(), type: "account", key: code, label }]);
+    setEffectAccountCode("");
+  }
+
+  function removeEffect(id: string) {
+    setSimEffects(simEffects.filter((e) => e.id !== id));
   }
 
   const partnerCategories = [
@@ -345,113 +616,348 @@ function CardBuilder({
 
       {/* Fields list */}
       <div className="space-y-2">
-        {fields.map((field) => (
-          <div
-            key={field.id}
-            className="flex items-center gap-2 bg-secondary/30 rounded-lg p-2"
-          >
-            {field.type === "account" && (
-              <>
-                <input
-                  type="text"
-                  value={field.label}
-                  onChange={(e) => updateField(field.id, { label: e.target.value })}
-                  placeholder={t("custom_card.label_placeholder")}
-                  className="flex-1 bg-secondary border border-border rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary"
+        {fields.map((field) => {
+          const rawVal = getValueForField(field);
+          const fieldHasAdj =
+            (field.multiplier !== undefined && field.multiplier !== 100) ||
+            (field.customAdjustment !== undefined && field.customAdjustment !== 0);
+
+          return (
+            <div key={field.id} className="bg-secondary/30 rounded-lg p-2 space-y-1">
+              <div className="flex items-center gap-2">
+                {field.type === "account" && (
+                  <>
+                    <input
+                      type="text"
+                      value={field.label}
+                      onChange={(e) => updateField(field.id, { label: e.target.value })}
+                      placeholder={t("custom_card.label_placeholder")}
+                      className="flex-1 bg-secondary border border-border rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary"
+                    />
+                    <input
+                      type="text"
+                      value={field.accountCodes || ""}
+                      onChange={(e) => updateField(field.id, { accountCodes: e.target.value })}
+                      placeholder={t("custom_card.account_placeholder")}
+                      className="w-24 bg-secondary border border-border rounded px-2 py-1 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-primary"
+                    />
+                    <select
+                      value={field.valueField || "sumeTotaleD"}
+                      onChange={(e) =>
+                        updateField(field.id, {
+                          valueField: e.target.value as CustomField["valueField"],
+                        })
+                      }
+                      className="bg-secondary border border-border rounded px-1 py-1 text-[10px]"
+                    >
+                      <option value="sumeTotaleD">{t("custom_card.total_debit")}</option>
+                      <option value="sumeTotaleC">{t("custom_card.total_credit")}</option>
+                      <option value="soldFinalD">{t("custom_card.balance_d")}</option>
+                      <option value="soldFinalC">{t("custom_card.balance_c")}</option>
+                    </select>
+                  </>
+                )}
+                {field.type === "manual" && (
+                  <>
+                    <input
+                      type="text"
+                      value={field.label}
+                      onChange={(e) => updateField(field.id, { label: e.target.value })}
+                      placeholder={t("custom_card.label_placeholder")}
+                      className="flex-1 bg-secondary border border-border rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary"
+                    />
+                    <input
+                      type="number"
+                      value={field.manualValue || ""}
+                      onChange={(e) =>
+                        updateField(field.id, { manualValue: parseFloat(e.target.value) || 0 })
+                      }
+                      placeholder={t("custom_card.value_placeholder")}
+                      className="w-28 bg-secondary border border-border rounded px-2 py-1 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-primary"
+                    />
+                  </>
+                )}
+                {field.type === "partner" && (
+                  <>
+                    <span className="text-[10px] text-emerald-400 shrink-0">{"\uD83D\uDC64"}</span>
+                    <input
+                      type="text"
+                      value={field.label}
+                      onChange={(e) => updateField(field.id, { label: e.target.value })}
+                      placeholder={t("custom_card.partner_placeholder")}
+                      className="flex-1 bg-secondary border border-border rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary"
+                    />
+                    <span className="text-[9px] text-muted-foreground font-mono shrink-0">{field.partnerCont}</span>
+                    <select
+                      value={field.valueField || "sumeTotaleD"}
+                      onChange={(e) =>
+                        updateField(field.id, {
+                          valueField: e.target.value as CustomField["valueField"],
+                        })
+                      }
+                      className="bg-secondary border border-border rounded px-1 py-1 text-[10px]"
+                    >
+                      <option value="sumeTotaleD">{t("custom_card.total_debit")}</option>
+                      <option value="sumeTotaleC">{t("custom_card.total_credit")}</option>
+                      <option value="soldFinalD">{t("custom_card.balance_d")}</option>
+                      <option value="soldFinalC">{t("custom_card.balance_c")}</option>
+                    </select>
+                  </>
+                )}
+                {/* Live value */}
+                <Money
+                  amount={rawVal}
+                  className="text-[11px] font-semibold text-muted-foreground shrink-0 min-w-[80px] text-right"
                 />
-                <input
-                  type="text"
-                  value={field.accountCodes || ""}
-                  onChange={(e) => updateField(field.id, { accountCodes: e.target.value })}
-                  placeholder={t("custom_card.account_placeholder")}
-                  className="w-24 bg-secondary border border-border rounded px-2 py-1 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-primary"
-                />
-                <select
-                  value={field.valueField || "sumeTotaleD"}
-                  onChange={(e) =>
+                {/* +/- toggle */}
+                <button
+                  onClick={() =>
                     updateField(field.id, {
-                      valueField: e.target.value as CustomField["valueField"],
+                      operation: field.operation === "subtract" ? "add" : "subtract",
                     })
                   }
-                  className="bg-secondary border border-border rounded px-1 py-1 text-[10px]"
-                >
-                  <option value="sumeTotaleD">{t("custom_card.total_debit")}</option>
-                  <option value="sumeTotaleC">{t("custom_card.total_credit")}</option>
-                  <option value="soldFinalD">{t("custom_card.balance_d")}</option>
-                  <option value="soldFinalC">{t("custom_card.balance_c")}</option>
-                </select>
-              </>
-            )}
-            {field.type === "manual" && (
-              <>
-                <input
-                  type="text"
-                  value={field.label}
-                  onChange={(e) => updateField(field.id, { label: e.target.value })}
-                  placeholder={t("custom_card.label_placeholder")}
-                  className="flex-1 bg-secondary border border-border rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary"
-                />
-                <input
-                  type="number"
-                  value={field.manualValue || ""}
-                  onChange={(e) =>
-                    updateField(field.id, { manualValue: parseFloat(e.target.value) || 0 })
+                  className={`w-6 h-6 rounded text-xs font-bold transition-colors shrink-0 ${
+                    field.operation === "subtract"
+                      ? "bg-red-500/20 text-red-400"
+                      : "bg-emerald-500/20 text-emerald-400"
+                  }`}
+                  title={
+                    field.operation === "subtract"
+                      ? t("custom_card.subtract_value")
+                      : t("custom_card.add_value")
                   }
-                  placeholder={t("custom_card.value_placeholder")}
-                  className="w-28 bg-secondary border border-border rounded px-2 py-1 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-primary"
-                />
-              </>
-            )}
-            {field.type === "partner" && (
-              <>
-                <span className="text-[10px] text-emerald-400 shrink-0">👤</span>
-                <input
-                  type="text"
-                  value={field.label}
-                  onChange={(e) => updateField(field.id, { label: e.target.value })}
-                  placeholder={t("custom_card.partner_placeholder")}
-                  className="flex-1 bg-secondary border border-border rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary"
-                />
-                <span className="text-[9px] text-muted-foreground font-mono shrink-0">{field.partnerCont}</span>
-                <select
-                  value={field.valueField || "sumeTotaleD"}
-                  onChange={(e) =>
+                >
+                  {field.operation === "subtract" ? "\u2212" : "+"}
+                </button>
+                {/* Adjustment toggle */}
+                <button
+                  onClick={() =>
                     updateField(field.id, {
-                      valueField: e.target.value as CustomField["valueField"],
+                      multiplier: field.multiplier === undefined ? 100 : undefined,
                     })
                   }
-                  className="bg-secondary border border-border rounded px-1 py-1 text-[10px]"
+                  className={`w-6 h-6 rounded text-[10px] transition-colors shrink-0 ${
+                    fieldHasAdj || field.multiplier !== undefined
+                      ? "bg-amber-500/20 text-amber-400"
+                      : "bg-secondary text-muted-foreground/50 hover:text-muted-foreground"
+                  }`}
+                  title={t("custom_card.adjustments")}
                 >
-                  <option value="sumeTotaleD">{t("custom_card.total_debit")}</option>
-                  <option value="sumeTotaleC">{t("custom_card.total_credit")}</option>
-                  <option value="soldFinalD">{t("custom_card.balance_d")}</option>
-                  <option value="soldFinalC">{t("custom_card.balance_c")}</option>
-                </select>
-              </>
-            )}
-            {/* Live value */}
-            <Money
-              amount={getValueForField(field)}
-              className="text-[11px] font-semibold text-muted-foreground shrink-0 min-w-[80px] text-right"
-            />
-            <button
-              onClick={() => removeField(field.id)}
-              className="text-muted-foreground hover:text-red-400 text-sm px-1"
-            >
-              {"\u2715"}
-            </button>
-          </div>
-        ))}
+                  {"\u2699"}
+                </button>
+                <button
+                  onClick={() => removeField(field.id)}
+                  className="text-muted-foreground hover:text-red-400 text-sm px-1"
+                >
+                  {"\u2715"}
+                </button>
+              </div>
+
+              {/* Adjustment inputs (collapsible) */}
+              {field.multiplier !== undefined && (
+                <div className="flex items-center gap-2 ml-4 pt-1">
+                  <label className="text-[9px] text-muted-foreground shrink-0">
+                    {t("custom_card.multiplier")}
+                  </label>
+                  <div className="flex items-center gap-0.5">
+                    <input
+                      type="number"
+                      value={field.multiplier}
+                      onChange={(e) =>
+                        updateField(field.id, {
+                          multiplier: parseFloat(e.target.value) || 0,
+                        })
+                      }
+                      className="w-16 bg-secondary border border-border rounded px-1.5 py-0.5 text-[10px] font-mono focus:outline-none focus:ring-1 focus:ring-primary"
+                    />
+                    <span className="text-[9px] text-muted-foreground">%</span>
+                  </div>
+                  <label className="text-[9px] text-muted-foreground shrink-0 ml-2">
+                    {t("custom_card.adjustment")}
+                  </label>
+                  <div className="flex items-center gap-0.5">
+                    <input
+                      type="number"
+                      value={field.customAdjustment || ""}
+                      onChange={(e) =>
+                        updateField(field.id, {
+                          customAdjustment: parseFloat(e.target.value) || 0,
+                        })
+                      }
+                      placeholder="0"
+                      className="w-20 bg-secondary border border-border rounded px-1.5 py-0.5 text-[10px] font-mono focus:outline-none focus:ring-1 focus:ring-primary"
+                    />
+                    <span className="text-[9px] text-muted-foreground">RON</span>
+                  </div>
+                  {fieldHasAdj && (
+                    <span className="text-[9px] text-amber-400 ml-auto">
+                      {"\u2192"}{" "}
+                      <Money
+                        amount={Math.abs(getAdjustedValue(field, rawVal))}
+                        className="text-[9px] text-amber-400 inline"
+                      />
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       {/* Running total */}
-      {fields.length > 0 && (
-        <div className="flex items-center justify-between text-xs border-t border-border/50 pt-2">
-          <span className="text-muted-foreground">{t("custom_card.total")}</span>
-          <Money
-            amount={fields.reduce((s, f) => s + getValueForField(f), 0)}
-            className="text-sm font-bold"
-          />
+      {fields.length > 0 && (() => {
+        const actualTotal = fields.reduce((s, f) => s + getSignedValue(f, getValueForField(f)), 0);
+        const withAdj = hasAnyAdjustments(fields);
+        const adjustedTotal = withAdj
+          ? fields.reduce((s, f) => s + getAdjustedValue(f, getValueForField(f)), 0)
+          : actualTotal;
+        const delta = adjustedTotal - actualTotal;
+
+        return (
+          <div className="border-t border-border/50 pt-2 space-y-1">
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-muted-foreground">
+                {withAdj ? t("custom_card.actual_total") : t("custom_card.total")}
+              </span>
+              <Money amount={actualTotal} className={`text-sm ${withAdj ? "text-muted-foreground" : "font-bold"}`} />
+            </div>
+            {withAdj && (
+              <>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-amber-400">{t("custom_card.adjusted_total")}</span>
+                  <Money amount={adjustedTotal} className="text-sm font-bold text-amber-400" />
+                </div>
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-muted-foreground">{t("custom_card.delta")}</span>
+                  <span className={`text-xs font-semibold ${delta >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+                    {delta >= 0 ? "+" : ""}<Money amount={delta} className="inline text-xs" />
+                  </span>
+                </div>
+                {(() => {
+                  const taxImpact = calcTaxImpact(fields, getValueForField);
+                  if (Math.abs(taxImpact) < 1) return null;
+                  return (
+                    <div className="flex items-center justify-between text-[10px] text-muted-foreground/70">
+                      <span>{t("custom_card.tax_impact")}</span>
+                      <span className={taxImpact >= 0 ? "text-emerald-400/70" : "text-red-400/70"}>
+                        {taxImpact >= 0 ? "+" : ""}<Money amount={taxImpact} className="inline text-[10px]" />
+                      </span>
+                    </div>
+                  );
+                })()}
+              </>
+            )}
+          </div>
+        );
+      })()}
+
+      {/* Simulation effects */}
+      {hasAnyAdjustments(fields) && (
+        <div className="border-t border-border/50 pt-2 space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] text-muted-foreground uppercase tracking-wider">
+              {t("custom_card.simulation_effects")}
+            </span>
+            <button
+              onClick={() => setShowEffectPicker(!showEffectPicker)}
+              className="text-[10px] text-primary hover:text-primary/80 transition-colors"
+            >
+              + {t("custom_card.add_effect")}
+            </button>
+          </div>
+
+          {/* Effect picker */}
+          <AnimatePresence>
+            {showEffectPicker && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="bg-secondary/30 rounded-lg p-3 space-y-2">
+                  <p className="text-[9px] text-muted-foreground">{t("custom_card.effect_kpi_label")}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {KPI_EFFECT_OPTIONS.map((opt) => {
+                      const alreadyAdded = simEffects.some((e) => e.type === "kpi" && e.key === opt.key);
+                      return (
+                        <button
+                          key={opt.key}
+                          onClick={() => addKpiEffect(opt.key, opt.labelKey)}
+                          disabled={alreadyAdded}
+                          className={`px-2 py-1 rounded text-[10px] transition-colors ${
+                            alreadyAdded
+                              ? "bg-primary/20 text-primary/50 cursor-not-allowed"
+                              : "bg-secondary border border-border hover:border-primary/50 hover:text-primary"
+                          }`}
+                        >
+                          {t(opt.labelKey)}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <p className="text-[9px] text-muted-foreground mt-2">{t("custom_card.effect_account_label")}</p>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="text"
+                      value={effectAccountCode}
+                      onChange={(e) => setEffectAccountCode(e.target.value)}
+                      placeholder={t("custom_card.account_placeholder")}
+                      className="w-24 bg-secondary border border-border rounded px-2 py-1 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-primary"
+                      onKeyDown={(e) => e.key === "Enter" && addAccountEffect(effectAccountCode)}
+                    />
+                    <button
+                      onClick={() => addAccountEffect(effectAccountCode)}
+                      className="px-2 py-1 rounded bg-secondary border border-border text-[10px] hover:border-primary/50 hover:text-primary transition-colors"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Active effects with live calculation */}
+          {simEffects.length > 0 && (
+            <div className="space-y-1">
+              {calcSimulationEffects(fields, simEffects, getValueForField, (codes, vf) => {
+                if (activeView === "combined") {
+                  return getFieldValue(ifpRows, codes, vf) + getFieldValue(filatoRows, codes, vf);
+                }
+                return getFieldValue(activeView === "ifp" ? ifpRows : filatoRows, codes, vf);
+              }).map(({ effect, actual, simulated, delta: d }) => (
+                <div key={effect.id} className="flex items-center justify-between bg-secondary/20 rounded px-2 py-1.5">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <span className="text-[10px] text-cyan-400">{"\u2192"}</span>
+                    <span className="text-[10px] truncate">{effect.label}</span>
+                    {effect.type === "account" && (
+                      <span className="text-[9px] font-mono text-muted-foreground/50">{effect.key}</span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-2 shrink-0 ml-2">
+                    {effect.type === "account" && actual !== 0 && (
+                      <>
+                        <Money amount={actual} className="text-[9px] text-muted-foreground/50" />
+                        <span className="text-[8px] text-muted-foreground/40">{"\u2192"}</span>
+                        <Money amount={simulated} className="text-[10px] text-cyan-400" />
+                      </>
+                    )}
+                    <span className={`text-[10px] font-semibold ${d >= 0 ? "text-emerald-400" : "text-red-400"}`}>
+                      {d >= 0 ? "+" : ""}<Money amount={d} className="inline text-[10px]" />
+                    </span>
+                    <button
+                      onClick={() => removeEffect(effect.id)}
+                      className="text-muted-foreground/40 hover:text-red-400 text-[10px] ml-1"
+                    >
+                      {"\u2715"}
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -546,7 +1052,7 @@ function CardBuilder({
         )}
       </AnimatePresence>
 
-      {/* Presets dropdown */}
+      {/* Grouped account picker */}
       <AnimatePresence>
         {showPresets && (
           <motion.div
@@ -555,16 +1061,86 @@ function CardBuilder({
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden"
           >
-            <div className="flex flex-wrap gap-1.5 p-2 bg-secondary/30 rounded-lg">
-              {PRESETS.map((preset) => (
-                <button
-                  key={preset.codes}
-                  onClick={() => addPreset(preset)}
-                  className="px-2 py-1 rounded bg-secondary border border-border text-[10px] hover:border-primary/50 hover:text-primary transition-colors"
-                >
-                  {preset.label}
-                </button>
-              ))}
+            <div className="bg-secondary/30 rounded-lg p-3 space-y-2">
+              <input
+                type="text"
+                value={presetSearch}
+                onChange={(e) => setPresetSearch(e.target.value)}
+                placeholder={t("custom_card.search_accounts")}
+                className="w-full bg-secondary border border-border rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary"
+                autoFocus
+              />
+              <div className="max-h-60 overflow-y-auto space-y-1">
+                {groupedPresets
+                  .map((group) => {
+                    const search = presetSearch.toLowerCase();
+                    const filtered = search
+                      ? group.accounts.filter(
+                          (a) =>
+                            a.cont.includes(search) ||
+                            a.denumire.toLowerCase().includes(search)
+                        )
+                      : group.accounts;
+                    if (filtered.length === 0) return null;
+
+                    const isOpen = expandedGroup === group.groupId || !!presetSearch;
+
+                    return (
+                      <div key={group.groupId}>
+                        <button
+                          onClick={() =>
+                            setExpandedGroup(isOpen && !presetSearch ? null : group.groupId)
+                          }
+                          className="w-full flex items-center gap-2 px-2 py-1.5 rounded hover:bg-secondary/80 text-left transition-colors"
+                        >
+                          <span className="text-sm">{group.icon}</span>
+                          <span className="text-[11px] font-medium flex-1">
+                            {t(`expense_groups.${group.groupId}`, group.groupId)}
+                          </span>
+                          <span className="text-[9px] text-muted-foreground">
+                            {filtered.length}
+                          </span>
+                          <motion.span
+                            className="text-[8px] text-muted-foreground/60"
+                            animate={{ rotate: isOpen ? 180 : 0 }}
+                            transition={{ duration: 0.15 }}
+                          >
+                            {"\u25BC"}
+                          </motion.span>
+                        </button>
+                        <AnimatePresence>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.15 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="ml-6 space-y-0.5 border-l-2 border-primary/20 pl-2 py-1">
+                                {filtered.map((acc) => (
+                                  <button
+                                    key={acc.cont}
+                                    onClick={() => addGroupedPreset(acc)}
+                                    className="w-full flex items-center gap-2 px-2 py-1 rounded hover:bg-secondary/80 text-left transition-colors"
+                                  >
+                                    <span className="text-primary font-mono text-[10px] shrink-0">
+                                      {acc.cont}
+                                    </span>
+                                    <span className="text-[10px] text-muted-foreground truncate flex-1">
+                                      {acc.denumire}
+                                    </span>
+                                  </button>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })
+                  .filter(Boolean)}
+              </div>
             </div>
           </motion.div>
         )}
@@ -594,10 +1170,22 @@ function CustomCardView({
   card,
   onRemove,
   onEdit,
+  onDuplicate,
+  isDragOver,
+  onDragStart,
+  onDragOver,
+  onDrop,
+  onDragEnd,
 }: {
   card: CustomCard;
   onRemove: () => void;
   onEdit: () => void;
+  onDuplicate: () => void;
+  isDragOver?: boolean;
+  onDragStart?: () => void;
+  onDragOver?: (e: React.DragEvent) => void;
+  onDrop?: () => void;
+  onDragEnd?: () => void;
 }) {
   const { t } = useTranslation("dashboard");
   const balanta = useDataStore((s) => s.balanta);
@@ -632,14 +1220,29 @@ function CustomCardView({
     value: getValueForField(f),
   }));
 
-  const total = fieldValues.reduce((s, fv) => s + fv.value, 0);
+  const actualTotal = fieldValues.reduce((s, fv) => s + getSignedValue(fv.field, fv.value), 0);
+  const withAdj = hasAnyAdjustments(card.fields);
+  const adjustedTotal = withAdj
+    ? fieldValues.reduce((s, fv) => s + getAdjustedValue(fv.field, fv.value), 0)
+    : actualTotal;
+  const delta = adjustedTotal - actualTotal;
+  const displayTotal = withAdj ? adjustedTotal : actualTotal;
 
   return (
     <motion.div
       layout
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="rounded-xl bg-card border border-primary/20 p-4 relative"
+      draggable
+      onDragStart={onDragStart}
+      onDragOver={onDragOver}
+      onDrop={onDrop}
+      onDragEnd={onDragEnd}
+      className={`rounded-xl bg-card border p-4 relative cursor-grab active:cursor-grabbing transition-all ${
+        isDragOver
+          ? "border-primary ring-2 ring-primary/30 scale-[1.02]"
+          : "border-primary/20"
+      }`}
       style={{ borderTopColor: "#f59e0b", borderTopWidth: 3 }}
     >
       <div className="absolute top-2 right-2 flex items-center gap-1">
@@ -649,6 +1252,13 @@ function CustomCardView({
           title={t("custom_card.edit")}
         >
           {"\u270E"}
+        </button>
+        <button
+          onClick={onDuplicate}
+          className="w-6 h-6 rounded-md bg-secondary/80 hover:bg-primary/20 text-muted-foreground hover:text-primary text-[10px] flex items-center justify-center transition-colors"
+          title={t("custom_card.duplicate")}
+        >
+          {"\u2398"}
         </button>
         <button
           onClick={onRemove}
@@ -663,32 +1273,122 @@ function CustomCardView({
         {card.title}
       </p>
 
-      <div className="text-xl font-bold font-mono font-tabular mb-2">
-        <Money amount={total} />
+      <div className="text-xl font-bold font-mono font-tabular mb-1">
+        <Money amount={displayTotal} />
       </div>
+
+      {/* Actual vs adjusted summary */}
+      {withAdj && (
+        <div className="flex items-center gap-3 text-[10px] mb-2">
+          <span className="text-muted-foreground">
+            {t("custom_card.actual_total")}: <Money amount={actualTotal} className="inline text-[10px]" />
+          </span>
+          <span className={delta >= 0 ? "text-emerald-400" : "text-red-400"}>
+            {t("custom_card.delta")}: {delta >= 0 ? "+" : ""}<Money amount={delta} className="inline text-[10px]" />
+          </span>
+        </div>
+      )}
 
       {/* Field breakdown */}
       <div className="space-y-1 border-t border-border/30 pt-2">
-        {fieldValues.map(({ field, value }) => (
-          <div key={field.id} className="flex items-center justify-between text-[10px]">
-            <span className="text-muted-foreground flex items-center gap-1 min-w-0 truncate">
-              {field.type === "account" && (
-                <span className="text-primary/60 font-mono text-[9px] shrink-0">
-                  {field.accountCodes}
+        {fieldValues.map(({ field, value }) => {
+          const fieldAdj =
+            (field.multiplier !== undefined && field.multiplier !== 100) ||
+            (field.customAdjustment !== undefined && field.customAdjustment !== 0);
+          const adjVal = fieldAdj ? Math.abs(getAdjustedValue(field, value)) : null;
+
+          return (
+            <div key={field.id} className="flex items-center justify-between text-[10px]">
+              <span className="text-muted-foreground flex items-center gap-1 min-w-0 truncate">
+                {field.operation === "subtract" && (
+                  <span className="text-red-400 font-bold text-[9px] shrink-0">{"\u2212"}</span>
+                )}
+                {field.type === "account" && (
+                  <span className="text-primary/60 font-mono text-[9px] shrink-0">
+                    {field.accountCodes}
+                  </span>
+                )}
+                {field.type === "manual" && (
+                  <span className="text-amber-500/60 text-[8px] shrink-0">manual</span>
+                )}
+                {field.type === "partner" && (
+                  <span className="text-emerald-500/60 text-[8px] shrink-0">{"\uD83D\uDC64"} {field.partnerCont}</span>
+                )}
+                <span className={`truncate ${field.operation === "subtract" ? "text-red-400/70" : ""}`}>
+                  {field.label}
                 </span>
-              )}
-              {field.type === "manual" && (
-                <span className="text-amber-500/60 text-[8px] shrink-0">manual</span>
-              )}
-              {field.type === "partner" && (
-                <span className="text-emerald-500/60 text-[8px] shrink-0">👤 {field.partnerCont}</span>
-              )}
-              <span className="truncate">{field.label}</span>
-            </span>
-            <Money amount={value} className="text-[10px] font-semibold shrink-0 ml-2" />
-          </div>
-        ))}
+                {fieldAdj && (
+                  <span className="text-amber-400/60 text-[8px] shrink-0">
+                    {field.multiplier !== undefined && field.multiplier !== 100 ? `${field.multiplier}%` : ""}
+                  </span>
+                )}
+              </span>
+              <div className="flex items-center gap-1 shrink-0 ml-2">
+                {fieldAdj && (
+                  <Money
+                    amount={value}
+                    className="text-[9px] text-muted-foreground/50 line-through"
+                  />
+                )}
+                <Money
+                  amount={adjVal ?? value}
+                  className={`text-[10px] font-semibold ${
+                    field.operation === "subtract" ? "text-red-400" : fieldAdj ? "text-amber-400" : ""
+                  }`}
+                />
+              </div>
+            </div>
+          );
+        })}
       </div>
+
+      {/* Tax impact */}
+      {withAdj && (() => {
+        const taxImpact = calcTaxImpact(card.fields, getValueForField);
+        if (Math.abs(taxImpact) < 1) return null;
+        return (
+          <div className="flex items-center justify-between text-[9px] text-muted-foreground/60 border-t border-border/20 pt-1 mt-2">
+            <span>{t("custom_card.tax_impact")}</span>
+            <span className={taxImpact >= 0 ? "text-emerald-400/60" : "text-red-400/60"}>
+              {taxImpact >= 0 ? "+" : ""}<Money amount={taxImpact} className="inline text-[9px]" />
+            </span>
+          </div>
+        );
+      })()}
+
+      {/* Simulation effects */}
+      {withAdj && card.simulationEffects && card.simulationEffects.length > 0 && (
+        <div className="border-t border-border/20 pt-1.5 mt-2 space-y-1">
+          <p className="text-[8px] text-muted-foreground/50 uppercase tracking-wider">
+            {t("custom_card.simulation_effects")}
+          </p>
+          {calcSimulationEffects(card.fields, card.simulationEffects, getValueForField, (codes, vf) => {
+            if (activeView === "combined") {
+              return getFieldValue(ifpRows, codes, vf) + getFieldValue(filatoRows, codes, vf);
+            }
+            return getFieldValue(activeView === "ifp" ? ifpRows : filatoRows, codes, vf);
+          }).map(({ effect, actual, simulated, delta: d }) => (
+            <div key={effect.id} className="flex items-center justify-between text-[9px]">
+              <span className="text-muted-foreground/70 flex items-center gap-1 min-w-0 truncate">
+                <span className="text-cyan-400/60">{"\u2192"}</span>
+                <span className="truncate">{effect.label}</span>
+              </span>
+              <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                {effect.type === "account" && actual !== 0 && (
+                  <>
+                    <Money amount={actual} className="text-[8px] text-muted-foreground/40" />
+                    <span className="text-[7px] text-muted-foreground/30">{"\u2192"}</span>
+                    <Money amount={simulated} className="text-[9px] text-cyan-400/70" />
+                  </>
+                )}
+                <span className={`font-semibold ${d >= 0 ? "text-emerald-400/70" : "text-red-400/70"}`}>
+                  {d >= 0 ? "+" : ""}<Money amount={d} className="inline text-[9px]" />
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </motion.div>
   );
 }

@@ -21,7 +21,13 @@
     "amortizari": "Depreciation",
     "combustibil_materiale": "Fuel & materials",
     "chirii_asigurari": "Rent & insurance",
-    "altele": "Other expenses"
+    "altele": "Other expenses",
+    "capitaluri": "Capital",
+    "imobilizari": "Fixed assets",
+    "stocuri": "Inventory",
+    "terti": "Third parties (clients/suppliers)",
+    "trezorerie": "Treasury (bank/cash)",
+    "neclasificate": "Unclassified"
   },
   "revenue_groups": {
     "vanzari_marfa": "Goods sales revenue",
@@ -77,9 +83,26 @@
     "save_changes": "Save changes",
     "edit": "Edit",
     "delete": "Delete",
+    "duplicate": "Duplicate",
     "total": "Total",
     "new_card": "New card",
-    "new_card_hint": "Click to create a custom card"
+    "new_card_hint": "Click to create a custom card",
+    "search_accounts": "Search account...",
+    "add_value": "Add to total",
+    "subtract_value": "Subtract from total",
+    "adjustments": "Adjustments",
+    "multiplier": "Multiplier",
+    "adjustment": "Adjustment (+/-)",
+    "actual_total": "Actual total",
+    "adjusted_total": "Adjusted total",
+    "delta": "Difference",
+    "tax_impact": "Estimated tax impact (16%)",
+    "tax_16": "Income tax (16%)",
+    "net_cash_impact": "Net cash impact",
+    "simulation_effects": "Simulation effects",
+    "add_effect": "Add effect",
+    "effect_kpi_label": "Financial KPIs:",
+    "effect_account_label": "Specific account:"
   },
   "labels": {
     "of_revenue": "of revenue",
