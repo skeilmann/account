@@ -46,7 +46,7 @@ export function Calculator() {
 
   const addToHistory = useCallback(
     (inp: string, res: string) => {
-      setHistory((prev) => [{ input: inp, result: res, mode }, ...prev].slice(0, 8));
+      setHistory((prev) => [{ input: inp, result: res, mode }, ...prev]);
     },
     [mode]
   );
@@ -160,7 +160,7 @@ export function Calculator() {
       dragMomentum={false}
       initial={{ opacity: 0, scale: 0.9, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
-      className="fixed bottom-6 right-6 w-80 rounded-xl bg-card border border-border shadow-2xl z-50 overflow-hidden"
+      className="fixed bottom-6 right-6 w-80 min-h-[520px] rounded-xl bg-card border border-border shadow-2xl z-50 overflow-hidden"
     >
       {/* Header */}
       <div className="flex items-center justify-between px-3 py-2 bg-secondary/50 cursor-grab active:cursor-grabbing">
@@ -190,7 +190,34 @@ export function Calculator() {
         ))}
       </div>
 
-      <div className="p-3 space-y-2">
+      <div className="p-3 space-y-3">
+        {/* History */}
+        {history.length > 0 && (
+          <div className="bg-muted/40 rounded-lg px-2 py-1.5">
+            <div className="flex items-center justify-between mb-1">
+              <p className="text-[9px] text-muted-foreground uppercase tracking-wider">Istoric</p>
+              <button
+                onClick={() => setHistory([])}
+                className="text-[9px] text-muted-foreground hover:text-destructive transition-colors"
+              >
+                Șterge tot
+              </button>
+            </div>
+            <div className="space-y-0.5 max-h-28 overflow-y-auto">
+              {history.map((h, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setInput(h.input); setMode(h.mode); }}
+                  className="w-full flex items-center justify-between text-[10px] px-1.5 py-0.5 rounded hover:bg-secondary/80 transition-colors"
+                >
+                  <span className="text-muted-foreground truncate mr-2">{h.input}</span>
+                  <span className="font-mono shrink-0">{h.result}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* TVA rate selector */}
         {mode === "tva" && (
           <div className="flex items-center gap-2 text-[10px]">
@@ -308,24 +335,6 @@ export function Calculator() {
           </p>
         )}
 
-        {/* History */}
-        {history.length > 0 && (
-          <div className="border-t border-border pt-2 mt-1">
-            <p className="text-[9px] text-muted-foreground uppercase tracking-wider mb-1">Istoric</p>
-            <div className="space-y-0.5 max-h-24 overflow-y-auto">
-              {history.map((h, i) => (
-                <button
-                  key={i}
-                  onClick={() => { setInput(h.input); setMode(h.mode); }}
-                  className="w-full flex items-center justify-between text-[10px] px-1.5 py-0.5 rounded hover:bg-secondary/50 transition-colors"
-                >
-                  <span className="text-muted-foreground truncate mr-2">{h.input}</span>
-                  <span className="font-mono shrink-0">{h.result}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
 
       <style jsx>{`
