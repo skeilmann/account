@@ -14,11 +14,10 @@ interface CurrencyState {
   setCustomRate: (rate: number | null) => void;
 }
 
+const SERVER_DEFAULT: CurrencyCode = "EUR";
+
 export const useCurrencyStore = create<CurrencyState>((set, get) => ({
-  currency:
-    (typeof window !== "undefined"
-      ? (localStorage.getItem("currency") as CurrencyCode)
-      : null) || "EUR",
+  currency: SERVER_DEFAULT,
   eurRate: DEFAULT_EUR_RATE,
   eurRateDate: "2026-03-24",
   customRate: null,
@@ -34,6 +33,14 @@ export const useCurrencyStore = create<CurrencyState>((set, get) => ({
   setRate: (rate, date) => set({ eurRate: rate, eurRateDate: date }),
   setCustomRate: (rate) => set({ customRate: rate }),
 }));
+
+// Hydrate from localStorage after mount to avoid SSR mismatch
+if (typeof window !== "undefined") {
+  const stored = localStorage.getItem("currency") as CurrencyCode | null;
+  if (stored === "RON" || stored === "EUR") {
+    useCurrencyStore.setState({ currency: stored });
+  }
+}
 
 /**
  * Convert RON to the active display currency.
